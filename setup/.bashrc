@@ -3,6 +3,7 @@
 # for examples
 
 export PATH=/home/ubuntu/bin/samtools-1.1:/home/ubuntu/bin/bam-readcount/bin:/home/ubuntu/bin/bowtie2-2.2.4:/home/ubuntu/bin/tophat-2.0.13.Linux_x86_64:/home/ubuntu/bin/STAR-STAR_2.4.0f1/source:/home/ubuntu/bin/cufflinks-2.2.1.Linux_x86_64:/home/ubuntu/bin/HTSeq-0.6.1p1/scripts:/home/ubuntu/bin/FastQC:/home/ubuntu/bin/picard-tools-1.124:/home/ubuntu/bin/samstat-1.5/src:/home/ubuntu/bin/bedtools-2.17.0/bin:$PATH
+export RNA_HOME=~/workspace/rnaseq
 
 # If not running interactively, don't do anything
 case $- in
