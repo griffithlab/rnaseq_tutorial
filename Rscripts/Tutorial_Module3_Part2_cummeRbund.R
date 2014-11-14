@@ -47,16 +47,16 @@ densRep
 brep<-csBoxplot(genes(cuff),replicates=T)
 brep
 
-# Plot #3 - A single scatter comparing Tumor vs Normal
-sampleScatter<-csScatter(genes(cuff),"Tumor","Normal",smooth=T)
+# Plot #3 - A single scatter comparing UHR vs HBR
+sampleScatter<-csScatter(genes(cuff),"UHR","HBR",smooth=T)
 sampleScatter
 
-# Plot #4 - An MAplot of Tumor vs Normal
-m<-MAplot(genes(cuff),"Tumor","Normal")
+# Plot #4 - An MAplot of UHR vs HBR
+m<-MAplot(genes(cuff),"UHR","HBR")
 m
 
 # Plot #5 - A volcano plot of p-value and fold_change per sample
-v<-csVolcano(genes(cuff),"Tumor","Normal",alpha=0.05)
+v<-csVolcano(genes(cuff),"UHR","HBR",alpha=0.05)
 v
 
 # Plot #6 - Using k-means clustering a dendrogram of the distance between sample replicates
@@ -102,11 +102,11 @@ myGene
 head(fpkm(myGene))
 head(fpkm(isoforms(myGene)))
 
-# Plot #11 - gene-level expression levels for tumor vs normal
+# Plot #11 - gene-level expression levels for UHR vs HBR
 gl.rep<-expressionPlot(myGene,replicates=TRUE)
 gl.rep
 
-# Plot #12 - isoform-level expression levels for tumor vs normal
+# Plot #12 - isoform-level expression levels for UHR vs HBR
 gl.iso.rep<-expressionPlot(isoforms(myGene),replicates=T)
 gl.iso.rep
 
@@ -155,8 +155,8 @@ pdf(file=outfile2)
 disp<-dispersionPlot(genes(cuff))
 disp
 
-# A count based MAplot of Tumor vs Normal (use counts instead of FPKM)
-mCount<-MAplot(genes(cuff),"Tumor","Normal",useCount=T)
+# A count based MAplot of UHR vs HBR (use counts instead of FPKM)
+mCount<-MAplot(genes(cuff),"UHR","HBR",useCount=T)
 mCount
 
 # A volcano matrix per sample
@@ -171,19 +171,19 @@ mySigMat
 genes.PCA.rep<-PCAplot(genes(cuff),"PC1","PC2",replicates=T)
 genes.PCA.rep
 
-#Plot CDS-level expression levels for tumor vs normal
+#Plot CDS-level expression levels for UHR vs HBR
 gl.cds.rep<-expressionPlot(CDS(myGene),replicates=T)
 gl.cds.rep
 
-#Barplot of gene-level expression levels for tumor vs normal
+#Barplot of gene-level expression levels for UHR vs HBR
 gb<-expressionBarplot(myGene)
 gb
 
-#Barplot of gene-level expression levels for tumor vs normal, by replicate
+#Barplot of gene-level expression levels for UHR vs HBR, by replicate
 gb.rep<-expressionBarplot(myGene,replicates=T)
 gb.rep
 
-#Barplot of isoform-level expression levels for tumor vs normal, by replicate
+#Barplot of isoform-level expression levels for UHR vs HBR, by replicate
 igb<-expressionBarplot(isoforms(myGene),replicates=T)
 igb
 
