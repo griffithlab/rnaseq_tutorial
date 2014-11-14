@@ -14,6 +14,14 @@
 # Load cummeRbund library
 library(cummeRbund)
 
+#A recent overhaul of RSQLite (update to version 1.0.0 on October 25th, 2014) broke number of cummeRbund functions
+#This version of the package no longer contains the function used by cummeRbund called "sqliteQuickSQL" and others
+#The authors of cummeRbund are working on fixes
+#See http://seqanswers.com/forums/showthread.php?t=47785&page=2
+#The following is a temporary workaround
+sqliteQuickSQL<-dbGetQuery
+dbBeginTransaction<-dbBegin
+
 # Set the paths to cuffdiff/cuffmerge output
 # Change these paths if you wish to produce cummeRbund output for different cuffdiff runs (e.g., using STAR alignments)
 refCuffdiff="~/workspace/rnaseq/de/tophat_cufflinks/ref_only"
