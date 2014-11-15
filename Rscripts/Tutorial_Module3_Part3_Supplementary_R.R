@@ -13,7 +13,7 @@ library(ggplot2)
 library(gplots)
 
 #If X11 not available, open a pdf device for output of all plots
-pdf(file="~/workspace/rnaseq/final_results/tophat_cufflinks/ref_only/Tutorial_Part3_Supplementary_R_output.pdf")
+pdf(file="Tutorial_Part3_Supplementary_R_output.pdf")
 
 #### Basic R usage.
 
