@@ -119,24 +119,25 @@ plotTracks(genetrack)
 
 # Plot #14 - Add an ideogram for relevant chromosome and the gene's position on chromosome
 #Plot cufflinks features for the gene plus known isoforms for gene region with 2kb flanking region
+###NOTE several of the track plotting functions below are currently broken.###
 trackList<-list()
 myStart<-min(features(myGene)$start)
 myEnd<-max(features(myGene)$end)
 myChr<-unique(features(myGene)$seqnames)
 genome<-'hg19'
-ideoTrack<-IdeogramTrack(genome=genome,chromosome=myChr)
-trackList<-c(trackList,ideoTrack)
+#ideoTrack<-IdeogramTrack(genome=genome,chromosome=myChr)
+#trackList<-c(trackList,ideoTrack)
 axtrack<-GenomeAxisTrack()
 trackList<-c(trackList,axtrack)
 genetrack<-makeGeneRegionTrack(myGene)
 genetrack
 trackList<-c(trackList,genetrack)
-biomTrack<-BiomartGeneRegionTrack(genome=genome,chromosome=as.character(myChr),start=myStart,end=myEnd,name="ENSEMBL",showId=T)
-trackList<-c(trackList,biomTrack)
+#biomTrack<-BiomartGeneRegionTrack(genome=genome,chromosome=as.character(myChr),start=myStart,end=myEnd,name="ENSEMBL",showId=T)
+#trackList<-c(trackList,biomTrack)
 
 #Add conservation levels
-conservation<-UcscTrack(genome="hg19",chromosome=myChr,track="Conservation",table="phyloP100wayAll",from=myStart-2000,to=myEnd+2000,trackType="DataTrack",start="start",end="end",data="score",type="hist",window="auto",col.histogram="darkblue",fill.histogram="darkblue",ylim=c(-3.7,4),name="Conservation")
-trackList<-c(trackList,conservation)
+#conservation<-UcscTrack(genome="hg19",chromosome=myChr,track="Conservation",table="phyloP100wayAll",from=myStart-2000,to=myEnd+2000,trackType="DataTrack",start="start",end="end",data="score",type="hist",window="auto",col.histogram="darkblue",fill.histogram="darkblue",ylim=c(-3.7,4),name="Conservation")
+#trackList<-c(trackList,conservation)
 plotTracks(trackList,from=myStart-2000,to=myEnd+2000)
 
 #Close pdf device - necessary before you can open it in your browser
@@ -144,7 +145,7 @@ dev.off()
 
 #The output file can be viewed in your browser at the following url:
 #Note, you must replace cbw## with your own amazon instance number (e.g., "cshl01"))
-#http://cshl##.dyndns.org/rnaseq/de/tophat_cufflinks/ref_only/Tutorial_Part2_cummeRbund_output.pdf
+#http://cshl##.dyndns.org/workspace/rnaseq/de/tophat_cufflinks/ref_only/Tutorial_Part2_cummeRbund_output.pdf
 
 #Additional plot examples to try on your own:
 
@@ -182,7 +183,7 @@ dev.off()
 
 #The output file can be viewed in your browser at the following url:
 #Note, you must replace cbw## with your own amazon instance number (e.g., "cshl01"))
-#http://cshl##.dyndns.org/rnaseq/de/tophat_cufflinks/ref_only/Tutorial_Part2_cummeRbund_output_extras.pdf
+#http://cshl##.dyndns.org/workspace/rnaseq/de/tophat_cufflinks/ref_only/Tutorial_Part2_cummeRbund_output_extras.pdf
 
 #To exit R type:
 quit(save="no")
