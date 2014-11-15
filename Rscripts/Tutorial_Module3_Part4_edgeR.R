@@ -23,7 +23,7 @@ dat=read.table("~/workspace/rnaseq/expression/tophat_counts/gene_read_counts_tab
 rawdata=dat[1:(length(rownames(dat))-5),]
 
 # Set column names (optional, but this helps keep the conditions straight)
-colnames(rawdata) <- c("Normal_cDNA1_lib2","Normal_cDNA2_lib2","Tumor_cDNA1_lib2","Tumor_cDNA2_lib2")
+colnames(rawdata) <- c("UHR_1","UHR_2","UHR_3","HBR_1","HBR_2","HBR_3")
 
 # Check dimensions
 dim(rawdata)
@@ -42,7 +42,7 @@ dim(rawdata)
 library('edgeR')
 
 # make class labels
-class <- factor( c( rep("Normal",2), rep("Tumor",2) ))
+class <- factor( c( rep("UHR",3), rep("HBR",3) ))
 
 # Get common gene names
 genes=rownames(rawdata)
