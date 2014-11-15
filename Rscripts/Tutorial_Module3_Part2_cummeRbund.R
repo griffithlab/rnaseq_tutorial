@@ -143,8 +143,8 @@ plotTracks(trackList,from=myStart-2000,to=myEnd+2000)
 dev.off()
 
 #The output file can be viewed in your browser at the following url:
-#Note, you must replace cbw## with your own amazon instance number (e.g., "cbw01"))
-#http://cbw##.ssh01.com/rnaseq/de/tophat_cufflinks/ref_only/Tutorial_Part2_cummeRbund_output.pdf
+#Note, you must replace cbw## with your own amazon instance number (e.g., "cshl01"))
+#http://cshl##.dyndns.org/rnaseq/de/tophat_cufflinks/ref_only/Tutorial_Part2_cummeRbund_output.pdf
 
 #Additional plot examples to try on your own:
 
@@ -193,8 +193,8 @@ igb
 dev.off()
 
 #The output file can be viewed in your browser at the following url:
-#Note, you must replace cbw## with your own amazon instance number (e.g., "cbw01"))
-#http://cbw##.ssh01.com/rnaseq/de/tophat_cufflinks/ref_only/Tutorial_Part2_cummeRbund_output_extras.pdf
+#Note, you must replace cbw## with your own amazon instance number (e.g., "cshl01"))
+#http://cshl##.dyndns.org/rnaseq/de/tophat_cufflinks/ref_only/Tutorial_Part2_cummeRbund_output_extras.pdf
 
 #To exit R type:
 quit(save="no")
