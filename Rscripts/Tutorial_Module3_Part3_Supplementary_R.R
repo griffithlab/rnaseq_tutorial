@@ -108,26 +108,28 @@ gene_mapping=tn_fpkm[,"gene_name"]
 names(gene_mapping)=tn_fpkm[,"tracking_id"]
 
 #Reformat per-replicate FPKM data into a standard matrix
-Tumor_1=all_fpkm[all_fpkm[,"condition"]=="Tumor" & all_fpkm[,"replicate"]==0,"FPKM"]
-Tumor_2=all_fpkm[all_fpkm[,"condition"]=="Tumor" & all_fpkm[,"replicate"]==1,"FPKM"]
-Normal_1=all_fpkm[all_fpkm[,"condition"]=="Normal" & all_fpkm[,"replicate"]==0,"FPKM"]
-Normal_2=all_fpkm[all_fpkm[,"condition"]=="Normal" & all_fpkm[,"replicate"]==1,"FPKM"]
+UHR_1=all_fpkm[all_fpkm[,"condition"]=="UHR" & all_fpkm[,"replicate"]==0,"FPKM"]
+UHR_2=all_fpkm[all_fpkm[,"condition"]=="UHR" & all_fpkm[,"replicate"]==1,"FPKM"]
+UHR_3=all_fpkm[all_fpkm[,"condition"]=="UHR" & all_fpkm[,"replicate"]==2,"FPKM"]
+HBR_1=all_fpkm[all_fpkm[,"condition"]=="HBR" & all_fpkm[,"replicate"]==0,"FPKM"]
+HBR_2=all_fpkm[all_fpkm[,"condition"]=="HBR" & all_fpkm[,"replicate"]==1,"FPKM"]
+HBR_3=all_fpkm[all_fpkm[,"condition"]=="HBR" & all_fpkm[,"replicate"]==2,"FPKM"]
 
 #Add ids as row names and gene names as initial column along with all data
 ids=unique(all_fpkm[,"tracking_id"])
 gene_names=gene_mapping[ids]
-fpkm_matrix=data.frame(gene_names,Tumor_1,Tumor_2,Normal_1,Normal_2)
+fpkm_matrix=data.frame(gene_names,UHR_1,UHR_2,UHR_3,HBR_1,HBR_2,HBR_3)
 row.names(fpkm_matrix)=ids 
-data_columns=c(2:5)
-short_names=c("Tumor_1","Tumor_2","Normal_1","Normal_2")
+data_columns=c(2:7)
+short_names=c("UHR_1","UHR_2","UHR_3","HBR_1","HBR_2","HBR_3")
 
 #Assign colors to each.  You can specify color by RGB, Hex code, or name
 #To get a list of color names:
 colours()
-data_colors=c("tomato1","tomato2","royalblue1","royalblue2")
+data_colors=c("tomato1","tomato2","tomato3","royalblue1","royalblue2","royalblue3")
 
-#View expression values for the transcripts of a particular gene symbol of chromosome 1.  e.g. 'NOTCH2'
-#First determine the rows in the data.frame that match 'NOTCH2', then display only those rows of the data.frame
+#View expression values for the transcripts of a particular gene symbol of chromosome 1.  e.g. 'TST'
+#First determine the rows in the data.frame that match 'TST', then display only those rows of the data.frame
 i = which(fpkm_matrix[,"gene_names"] == "TST")
 fpkm_matrix[i,]
 
@@ -145,23 +147,24 @@ status_counts=table(tn_de[,"status"])
 status_counts
 
 #Plot #1 - Make a barplot of these status counts, first using the basic plotting functions of R, and then using the ggplot2 package
-barplot(status_counts, col=rainbow(4), xlab="Status", ylab="Transcript count", main="Status counts reported by Cuffdiff")
+barplot(status_counts, col=rainbow(6), xlab="Status", ylab="Transcript count", main="Status counts reported by Cuffdiff")
 
 #Plot #2 - Now the same idea using ggplot2
 Status=factor(tn_de[,"status"])
 qplot(Status, data=tn_de, geom="bar", fill=Status, xlab="Status", ylab="Transcript count", main="Status counts reported by Cuffdiff")
 
 #Plot #3 - Make a piechart of these status counts, first using the basic plotting functions of R, and then using the ggplot2 package
-pie(status_counts, col=rainbow(4), main="Status counts reported by Cuffdiff")
+pie(status_counts, col=rainbow(6), main="Status counts reported by Cuffdiff")
 
 #Plot #4 - Now the same idea using ggplot2
-zz=as.data.frame(status_counts)
-names(zz) = c("Status", "Count")
-pp <- ggplot(zz, aes(x="", y=Count, fill=Status)) + geom_bar(width=1) + coord_polar("y")
-print(pp)
+#zz=as.data.frame(status_counts)
+#names(zz) = c("Status", "Count")
+#pp <- ggplot(zz, aes(x="", y=Count, fill=Status)) + geom_bar(width=1) + coord_polar("y")
+#print(pp)
+### NOTE: The above needs to be updated as ggplot has changed###
 
 #Plot #5 - Make a dotchart of these status counts
-dotchart(as.numeric(status_counts), col=rainbow(4), labels=names(status_counts), xlab="Transcript count", main="Status counts reported by Cuffdiff", pch=16)
+dotchart(as.numeric(status_counts), col=rainbow(6), labels=names(status_counts), xlab="Transcript count", main="Status counts reported by Cuffdiff", pch=16)
 
 #Each row of data represents a transcript. Many of these transcripts represent the same gene. Determine the numbers of transcripts and unique genes  
 length(tn_de[,"gene_name"]) #Transcript count
@@ -189,10 +192,10 @@ legend("topright", legend_text, lty=NULL)
 hist(tn_fpkm[,"length"], breaks=50, xlab="Transcript length (bp)", main="Distribution of transcript lengths", col="steelblue")
 
 
-#### Summarize FPKM values for all 4 replicates
+#### Summarize FPKM values for all 6 replicates
 #What are the minimum and maximum FPKM values for a particular library?
-min(fpkm_matrix[,"Tumor_1"])
-max(fpkm_matrix[,"Tumor_1"])
+min(fpkm_matrix[,"UHR_1"])
+max(fpkm_matrix[,"UHR_1"])
 
 #Get the minimum non-zero FPKM values for use later.
 #Do this by grabbing a copy of all data values, coverting 0's to NA, and calculating the minimum or all non NA values
@@ -209,9 +212,9 @@ boxplot(log2(fpkm_matrix[,data_columns]+min_nonzero), col=data_colors, names=sho
 
 #### Plot #9 - plot a pair of replicates to assess reproducibility of technical replicates
 #Tranform the data by converting to log2 scale after adding an arbitrary small value to avoid log2(0)
-x = fpkm_matrix[,"Tumor_1"]
-y = fpkm_matrix[,"Tumor_2"]
-plot(x=log2(x+min_nonzero), y=log2(y+min_nonzero), pch=16, col="blue", cex=0.25, xlab="FPKM (Tumor, Replicate 1)", ylab="FPKM (Tumor, Replicate 2)", main="Comparison of expression values for a pair of replicates")
+x = fpkm_matrix[,"UHR_1"]
+y = fpkm_matrix[,"UHR_2"]
+plot(x=log2(x+min_nonzero), y=log2(y+min_nonzero), pch=16, col="blue", cex=0.25, xlab="FPKM (UHR, Replicate 1)", ylab="FPKM (UHR, Replicate 2)", main="Comparison of expression values for a pair of replicates")
 
 #Add a straight line of slope 1, and intercept 0
 abline(a=0,b=1)
@@ -222,7 +225,7 @@ legend("topleft", paste("R squared = ", round(rs, digits=3), sep=""), lwd=1, col
 
 #### Plot #10 - Scatter plots with a large number of data points can be misleading ... regenerate this figure as a density scatter plot
 colors = colorRampPalette(c("white", "blue", "#007FFF", "cyan","#7FFF7F", "yellow", "#FF7F00", "red", "#7F0000"))
-smoothScatter(x=log2(x+min_nonzero), y=log2(y+min_nonzero), xlab="FPKM (Tumor, Replicate 1)", ylab="FPKM (Tumor, Replicate 2)", main="Comparison of expression values for a pair of replicates", colramp=colors, nbin=200)
+smoothScatter(x=log2(x+min_nonzero), y=log2(y+min_nonzero), xlab="FPKM (UHR, Replicate 1)", ylab="FPKM (UHR, Replicate 2)", main="Comparison of expression values for a pair of replicates", colramp=colors, nbin=200)
 
 
 #### Plot all sets of replicates on a single plot
@@ -241,8 +244,8 @@ plotCor = function(lib1, lib2, name, color){
 par(mfrow=c(1,2))
 
 #Plot #11 - Now make a call to our custom function created above, once for each library comparison
-plotCor("Tumor_1", "Normal_1", "Tumor_1 vs Normal_1", "tomato2")
-plotCor("Tumor_2", "Normal_2", "Tumor_2 vs Normal_2", "royalblue2")
+plotCor("UHR_1", "HBR_1", "UHR_1 vs HBR_1", "tomato2")
+plotCor("UHR_2", "HBR_2", "UHR_2 vs HBR_2", "royalblue2")
 
 
 ##### One problem with these plots is that there are so many data points on top of each other, that information is being lost
@@ -261,14 +264,14 @@ plotCor2 = function(lib1, lib2, name, color){
 
 #### Plot #12 - Now make a call to our custom function created above, once for each library comparison
 par(mfrow=c(1,2))
-plotCor2("Tumor_1", "Normal_1", "Tumor_1 vs Normal_1", "tomato2")
-plotCor2("Tumor_2", "Normal_2", "Tumor_2 vs Normal_2", "royalblue2")
+plotCor2("UHR_1", "HBR_1", "UHR_1 vs HBR_1", "tomato2")
+plotCor2("UHR_2", "HBR_2", "UHR_2 vs HBR_2", "royalblue2")
 
 
 #### Compare the correlation 'distance' between all replicates
 #Do we see the expected pattern for all eight libraries (i.e. replicates most similar, then tumor vs. normal)?
 
-#Calculate the FPKM sum for all 4 libraries
+#Calculate the FPKM sum for all 6 libraries
 fpkm_matrix[,"sum"]=apply(fpkm_matrix[,data_columns], 1, sum)
 
 #Identify the genes with a grand sum FPKM of at least 5 - we will filter out the genes with very low expression across the board
@@ -296,16 +299,16 @@ text(mds$points[,1], mds$points[,2], short_names, col=data_colors)
 sig = which(tn_de[,"p_value"]<0.05)
 de = log2(tn_de[sig,"value_1"]+min_nonzero) - log2(tn_de[sig,"value_2"]+min_nonzero)
 tn_de[,"de"] = log2(tn_de[,"value_1"]+min_nonzero) - log2(tn_de[,"value_2"]+min_nonzero)
-hist(de, breaks=50, col="seagreen", xlab="Log2 difference (Tumor - Normal)", main="Distribution of differential expression values")
+hist(de, breaks=50, col="seagreen", xlab="Log2 difference (UHR - HBR)", main="Distribution of differential expression values")
 abline(v=-2, col="black", lwd=2, lty=2)
 abline(v=2, col="black", lwd=2, lty=2)
 legend("topleft", "Fold-change > 4", lwd=2, lty=2)
 
 
-#### Plot #15 - Display the grand expression values from Tumor and Normal and mark those that are significantly differentially expressed
+#### Plot #15 - Display the grand expression values from UHR and HBR and mark those that are significantly differentially expressed
 x=log2(tn_de[,"value_1"]+min_nonzero)
 y=log2(tn_de[,"value_2"]+min_nonzero)
-plot(x=x, y=y, pch=16, cex=0.25, xlab="Tumor FPKM (log2)", ylab="Normal FPKM (log2)", main="Tumor vs Normal FPKMs")
+plot(x=x, y=y, pch=16, cex=0.25, xlab="UHR FPKM (log2)", ylab="HBR FPKM (log2)", main="UHR vs HBR FPKMs")
 abline(a=0, b=1)
 xsig=x[sig]
 ysig=y[sig]
@@ -341,7 +344,7 @@ dir()
 mydist=function(c) {dist(c,method="euclidian")}
 myclust=function(c) {hclust(c,method="average")}
 
-main_title="Colon Cancer Genes with sig DE Transcripts"
+main_title="sig DE Transcripts"
 par(cex.main=0.8)
 sig_genes=tn_de[sig,"test_id"]
 sig_gene_names=gene_mapping[sig_genes]
