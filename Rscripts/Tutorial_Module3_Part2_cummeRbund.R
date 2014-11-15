@@ -175,18 +175,6 @@ genes.PCA.rep
 gl.cds.rep<-expressionPlot(CDS(myGene),replicates=T)
 gl.cds.rep
 
-#Barplot of gene-level expression levels for UHR vs HBR
-gb<-expressionBarplot(myGene)
-gb
-
-#Barplot of gene-level expression levels for UHR vs HBR, by replicate
-gb.rep<-expressionBarplot(myGene,replicates=T)
-gb.rep
-
-#Barplot of isoform-level expression levels for UHR vs HBR, by replicate
-igb<-expressionBarplot(isoforms(myGene),replicates=T)
-igb
-
 #Many more... see cummeRbund documentation
 
 #Close pdf device - necessary before you can open it in your browser
@@ -198,4 +186,18 @@ dev.off()
 
 #To exit R type:
 quit(save="no")
+
+#The following plots no longer work in the current cummeRbund. They could possibly be reworked:
+
+#Barplot of gene-level expression levels for UHR vs HBR
+#gb<-expressionBarplot(myGene)
+#gb
+
+#Barplot of gene-level expression levels for UHR vs HBR, by replicate
+#gb.rep<-expressionBarplot(myGene,replicates=T)
+#gb.rep
+
+#Barplot of isoform-level expression levels for UHR vs HBR, by replicate
+#igb<-expressionBarplot(isoforms(myGene),replicates=T)
+#igb
 
