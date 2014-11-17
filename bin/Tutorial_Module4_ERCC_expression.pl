@@ -6,8 +6,9 @@ use warnings;
 use IO::File;
 
 my $data_dir = $ENV{RNA_HOME} .'/refs/ERCC';
+my $ercc_file = $data_dir .'/ERCC_Controls_Analysis.txt';
 my $counts_file = $ENV{RNA_HOME} .'/expression/tophat_counts/gene_read_counts_table_all.tsv';
-my $ercc_file = $ENV{RNA_HOME} .'/expression/tophat_counts/ercc_read_counts.tsv';
+my $ercc_counts_file = $ENV{RNA_HOME} .'/expression/tophat_counts/ercc_read_counts.tsv';
 
 my $ercc_fh = IO::File->new($ercc_file,'r');
 unless ($ercc_fh) { die('Failed to find file: '. $ercc_file) }
@@ -26,11 +27,11 @@ my @labels = qw/UHR_Rep1 UHR_Rep2 UHR_Rep3 HBR_Rep1 HBR_Rep2 HBR_Rep3/;
 my $counts_fh = IO::File->new($counts_file,'r');
 unless ($counts_fh) { die('Failed to find file: '. $counts_file); }
 
-my $ercc_fh = IO::File->new($ercc_file,'w');
-unless ($ercc_fh) { die('Failed to open file: '. $ercc_file); }
+my $ercc_counts_fh = IO::File->new($ercc_counts_file,'w');
+unless ($ercc_counts_fh) { die('Failed to open file: '. $ercc_counts_file); }
 
 my %count_data;
-print $ercc_fh "ID\tSubgroup\tLabel\tMix\tConcentration\tCount\n";
+print $ercc_counts_fh "ID\tSubgroup\tLabel\tMix\tConcentration\tCount\n";
 while (my $counts_line = $counts_fh->getline) {
     chomp($counts_line);
     my @count_entry = split(' ',$counts_line);
@@ -49,7 +50,7 @@ while (my $counts_line = $counts_fh->getline) {
                 $mix = 2;
                 $conc = $ercc_data{$id}->[4];
             }
-            print $ercc_fh $id ."\t". $subgroup ."\t". $label ."\t". $mix ."\t". $conc ."\t". $count ."\n";
+            print $ercc_counts_fh $id ."\t". $subgroup ."\t". $label ."\t". $mix ."\t". $conc ."\t". $count ."\n";
         }
     }
 }

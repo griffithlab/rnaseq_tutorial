@@ -1,14 +1,9 @@
 #!/usr/bin/env Rscript
 
 library(ggplot2)
-library(optparse)
 
-option_parser <- OptionParser(option_list=list(
-    make_option(c("-f", "--filename"))                       
-))
-
-options  <- parse_args(option_parser)
-filename <- options[[1]]
+args <- commandArgs(TRUE)
+filename <- args[1]
 
 data = read.delim(filename)
 
