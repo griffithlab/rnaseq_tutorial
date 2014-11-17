@@ -90,7 +90,7 @@ mySigGenes<-getGenes(cuff,mySigGeneIds)
 mySigGenes
 
 # Plot #10 - A heatmap of significant differentially expressed genes
-sigHeat<-csHeatmap(mySigGenes,cluster='both')
+sigHeat<-csHeatmap(mySigGenes,cluster='both',labRow=F)
 sigHeat
 
 # Grab a single gene of interest
