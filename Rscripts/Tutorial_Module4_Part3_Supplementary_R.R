@@ -204,6 +204,9 @@ zz[zz==0] = NA
 min_nonzero = min(zz, na.rm=TRUE)
 min_nonzero
 
+#Alternatively just set min value to 1
+min_nonzero=1
+
 #### Plot #8 - View the range of values and general distribution of FPKM values for all 4 libraries
 #Create boxplots for this purpose
 #Display on a log2 scale and add the minimum non-zero value to avoid log2(0)
