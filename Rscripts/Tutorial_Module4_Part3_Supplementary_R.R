@@ -101,7 +101,7 @@ tn_de[1:3, c("gene_id","locus","value_1","value_2")]
 #Rename some of the columns from ugly names to more human readable names
 names(all_fpkm) = c("tracking_id", "condition", "replicate", "raw_frags", "internal_scaled_frags", "external_scaled_frags", "FPKM", "effective_length", "status")
 names(tn_de) = c("test_id", "gene_id", "gene_name", "locus", "sample_1", "sample_2", "status", "value_1", "value_2", "fold_change", "test_stat", "p_value", "q_value", "significant")
-names(tn_fpkm) = c("tracking_id", "class_code", "nearest_ref_id", "gene_id", "gene_name", "tss_id", "locus", "length", "coverage", "Tumor_FPKM", "Tumor_conf_lo", "Tumor_conf_hi", "Tumor_status", "Normal_FPKM", "Normal_conf_lo", "Normal_conf_hi", "Normal_status")
+names(tn_fpkm) = c("tracking_id", "class_code", "nearest_ref_id", "gene_id", "gene_name", "tss_id", "locus", "length", "coverage", "UHR_FPKM", "UHR_conf_lo", "UHR_conf_hi", "UHR_status", "HBR_FPKM", "HBR_conf_lo", "HBR_conf_hi", "HBR_status")
 
 #Get ID to gene name mapping
 gene_mapping=tn_fpkm[,"gene_name"]
@@ -207,7 +207,7 @@ min_nonzero
 #### Plot #8 - View the range of values and general distribution of FPKM values for all 4 libraries
 #Create boxplots for this purpose
 #Display on a log2 scale and add the minimum non-zero value to avoid log2(0)
-boxplot(log2(fpkm_matrix[,data_columns]+min_nonzero), col=data_colors, names=short_names, las=2, ylab="log2(FPKM)", main="Distribution of FPKMs for all 4 libraries")
+boxplot(log2(fpkm_matrix[,data_columns]+min_nonzero), col=data_colors, names=short_names, las=2, ylab="log2(FPKM)", main="Distribution of FPKMs for all 6 libraries")
 #Note that the bold horizontal line on each boxplot is the median
 
 #### Plot #9 - plot a pair of replicates to assess reproducibility of technical replicates
