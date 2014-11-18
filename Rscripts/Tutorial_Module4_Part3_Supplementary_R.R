@@ -352,7 +352,7 @@ par(cex.main=0.8)
 sig_genes=tn_de[sig,"test_id"]
 sig_gene_names=gene_mapping[sig_genes]
 data=log2(as.matrix(fpkm_matrix[sig_genes,data_columns])+1)
-heatmap.2(data, hclustfun=myclust, distfun=mydist, na.rm = TRUE, scale="none", dendrogram="both", margins=c(6,7), Rowv=TRUE, Colv=TRUE, symbreaks=FALSE, key=TRUE, symkey=FALSE, density.info="none", trace="none", main=main_title, cexRow=0.5, cexCol=1, labRow=sig_gene_names,col=rev(heat.colors(75)))
+heatmap.2(data, hclustfun=myclust, distfun=mydist, na.rm = TRUE, scale="none", dendrogram="both", margins=c(6,7), Rowv=TRUE, Colv=TRUE, symbreaks=FALSE, key=TRUE, symkey=FALSE, density.info="none", trace="none", main=main_title, cexRow=0.3, cexCol=1, labRow=sig_gene_names,col=rev(heat.colors(75)))
 
 dev.off()
 
