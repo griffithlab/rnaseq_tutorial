@@ -1,13 +1,5 @@
+###Supplementary Table 2.  Strand related settings for RNA-seq tools that must be adjusted to account for library construction strategy
 
-
-
-| First Header  | Second Header |
-| ------------- | ------------- |
-| Content Cell  | Content Cell  |
-| Content Cell  | Content Cell  |
-
-
-Supplementary Table 2.  Strand related settings for RNA-seq tools that must be adjusted to account for library construction strategy
 The following table provides further explanation of IGV’s read orientation codes for RNA-seq data viewed in the browser.  Also provided are recommended software settings for three additional tools involved in common RNA-seq analysis workflows: TopHat (PMID: 19289445, 23618408), HTSeq (PMID: 25260700), and Picard.  Each of these explanations/settings is provided for several commonly used RNA-seq library construction kits that produce either stranded or unstranded data.
 
 | Library Kit | Stranded | 5p to 3p IGV | TopHat (--library-type parameter) | HTSeq (--stranded/-s) | Picard (STRAND_SPECIFICITY option of CollectRnaSeqMetrics) |
