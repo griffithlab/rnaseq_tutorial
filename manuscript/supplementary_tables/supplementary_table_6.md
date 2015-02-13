@@ -4,7 +4,7 @@ The following table lists RNA-seq workshops and other tutorials complementary to
 
 | Workshop/Tutorial | URL |
 | ----------------- | --- |
-| Canadian Bioinformatics Workshops (CBW). Informatics for RNA-sequence analysis.  Various additional bioinformatics courses.  A live delivery of the tutorials accompanying this publication. http://bioinformatics.ca/ |
+| Canadian Bioinformatics Workshops (CBW). Informatics for RNA-sequence analysis.  Various additional bioinformatics courses.  A live delivery of the tutorials accompanying this publication. | http://bioinformatics.ca/ |
 | Cold Spring Harbor Laboratory (CSHL). Advanced Sequencing Technologies & Applications. | http://meetings.cshl.edu/courses/2014/c-seqtec14.shtml |
 | Biostars.  Discussion of ongoing and upcoming training opportunities. | https://www.biostars.org/p/11034/ https://www.biostars.org/p/79845/ |
 | Michigan State University. Analyzing Next-Generation Sequencing Data. | http://bioinformatics.msu.edu/ngs-summer-course-2015 |
