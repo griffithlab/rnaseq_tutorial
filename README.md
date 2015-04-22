@@ -7,7 +7,7 @@ This repository is used to store code and certain raw materials for a detailed R
 
 ###Table of Contents
 1. **Module 1 - Introduction and Cloud Computing**
-   1. [[Authors|https://github.com/griffithlab/rnaseq_tutorial/wiki/Authors]]
+   1. [Authors](https://github.com/griffithlab/rnaseq_tutorial/wiki/Authors)
    2. [[Citation|https://github.com/griffithlab/rnaseq_tutorial/wiki/Citation]]
    3. [[Syntax|https://github.com/griffithlab/rnaseq_tutorial/wiki/Syntax]]
    4. [[Intro to AWS Cloud Computing|https://github.com/griffithlab/rnaseq_tutorial/wiki/Intro-to-AWS-Cloud-Computing]]
