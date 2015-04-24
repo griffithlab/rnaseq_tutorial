@@ -37,10 +37,11 @@ This repository is used to store code and certain raw materials for a detailed R
    4. [Differential Splicing](https://github.com/griffithlab/rnaseq_tutorial/wiki/Differential-Splicing)
    5. [Transcript Assembly Visualization](https://github.com/griffithlab/rnaseq_tutorial/wiki/Transcript-Assembly-Visualization)
 5. **Appendix**
-   1. [Lectures](https://github.com/griffithlab/rnaseq_tutorial/wiki/Lectures)
-   2. [Practical Exercise Solutions](https://github.com/griffithlab/rnaseq_tutorial/wiki/Solutions)
-   3. [Integrated Assignment](https://github.com/griffithlab/rnaseq_tutorial/wiki/Integrated-Assignment)
-   4. [Proposed Improvements](https://github.com/griffithlab/rnaseq_tutorial/wiki/Proposed-Improvements)
-   5. [AWS Setup](https://github.com/griffithlab/rnaseq_tutorial/wiki/AWS-Setup)
+   1. [Abbreviations](https://github.com/griffithlab/rnaseq_tutorial/wiki/Abbreviations)
+   2. [Lectures](https://github.com/griffithlab/rnaseq_tutorial/wiki/Lectures)
+   3. [Practical Exercise Solutions](https://github.com/griffithlab/rnaseq_tutorial/wiki/Solutions)
+   4. [Integrated Assignment](https://github.com/griffithlab/rnaseq_tutorial/wiki/Integrated-Assignment)
+   5. [Proposed Improvements](https://github.com/griffithlab/rnaseq_tutorial/wiki/Proposed-Improvements)
+   6. [AWS Setup](https://github.com/griffithlab/rnaseq_tutorial/wiki/AWS-Setup)
 
 
