@@ -9,7 +9,7 @@ This repository is used to store code and certain raw materials for a detailed R
 <ol start="0">
   <li>**Module 0 - Introduction and Cloud Computing**</li>
   <ol start="i">
-    <li>[Authors](https://github.com/griffithlab/rnaseq_tutorial/wiki/Authors)</li>
+    <li><a href="https://github.com/griffithlab/rnaseq_tutorial/wiki/Authors">Authors</a></li>
     <li>[Citation](https://github.com/griffithlab/rnaseq_tutorial/wiki/Citation)</li>
     <li>[Syntax](https://github.com/griffithlab/rnaseq_tutorial/wiki/Syntax)</li>
     <li>[Intro to AWS Cloud Computing](https://github.com/griffithlab/rnaseq_tutorial/wiki/Intro-to-AWS-Cloud-Computing)</li>
