@@ -19,42 +19,42 @@ This repository is used to store code and certain raw materials for a detailed R
   </ol>
   <li><strong>Module 1 - Introduction to RNA sequencing</strong></li>
   <ol start="i">
-   <li>[Installation](https://github.com/griffithlab/rnaseq_tutorial/wiki/Installation)</li>
-   <li>[Reference Genome](https://github.com/griffithlab/rnaseq_tutorial/wiki/Reference-Genome)</li>
-   <li>[Annotation](https://github.com/griffithlab/rnaseq_tutorial/wiki/Annotation)</li>
-   <li>[Indexing](https://github.com/griffithlab/rnaseq_tutorial/wiki/Indexing)</li>
-   <li>[RNA-seq Data](https://github.com/griffithlab/rnaseq_tutorial/wiki/RNAseq-Data)</li>
-   <li>[PreAlignment QC](https://github.com/griffithlab/rnaseq_tutorial/wiki/PreAlignment-QC)</li>
+   <li><a href="https://github.com/griffithlab/rnaseq_tutorial/wiki/Installation">Installation</a></li>
+   <li><a href="https://github.com/griffithlab/rnaseq_tutorial/wiki/Reference-Genome">Reference Genome</a></li>
+   <li><a href="https://github.com/griffithlab/rnaseq_tutorial/wiki/Annotation">Annotation</a></li>
+   <li><a href="https://github.com/griffithlab/rnaseq_tutorial/wiki/Indexing">Indexing</a></li>
+   <li><a href="https://github.com/griffithlab/rnaseq_tutorial/wiki/RNAseq-Data">RNA-seq Data</a></li>
+   <li><a href="https://github.com/griffithlab/rnaseq_tutorial/wiki/PreAlignment-QC">PreAlignment QC</a></li>
   </ol>
   <li><strong>Module 2 - RNA-seq Alignment and Visualization</strong></li>
   <ol start="i">
-   <li>[Adapter Trim](https://github.com/griffithlab/rnaseq_tutorial/wiki/Adapter-Trim)</li>
-   <li>[Alignment](https://github.com/griffithlab/rnaseq_tutorial/wiki/Alignment)</li>
-   <li>[PostAlignment Visualization](https://github.com/griffithlab/rnaseq_tutorial/wiki/PostAlignment-Visualization)</li>
-   <li>[PostAlignment QC](https://github.com/griffithlab/rnaseq_tutorial/wiki/PostAlignment-QC)</li>
+   <li><a href="https://github.com/griffithlab/rnaseq_tutorial/wiki/Adapter-Trim">Adapter Trim</a></li>
+   <li><a href="https://github.com/griffithlab/rnaseq_tutorial/wiki/Alignment">Alignment</a></li>
+   <li><a href="https://github.com/griffithlab/rnaseq_tutorial/wiki/PostAlignment-Visualization">PostAlignment Visualization</a></li>
+   <li><a href="https://github.com/griffithlab/rnaseq_tutorial/wiki/PostAlignment-QC">PostAlignment QC</a></li>
   </ol>
   <li><strong>Module 3 - Expression and Differential Expression</strong></li>
   <ol start="i">
-   <li>[Expression](https://github.com/griffithlab/rnaseq_tutorial/wiki/Expression)</li>
-   <li>[Differential Expression](https://github.com/griffithlab/rnaseq_tutorial/wiki/Differential-Expression)</li>
-   <li>[DE Visualization](https://github.com/griffithlab/rnaseq_tutorial/wiki/DE-Visualization)</li>
+   <li><a href="https://github.com/griffithlab/rnaseq_tutorial/wiki/Expression">Expression</a></li>
+   <li><a href="https://github.com/griffithlab/rnaseq_tutorial/wiki/Differential-Expression">Differential Expression</a></li>
+   <li><a href="https://github.com/griffithlab/rnaseq_tutorial/wiki/DE-Visualization">DE Visualization</a></li>
   </ol>
   <li><strong>Module 4 - Isoform Discovery and Alternative Expression</strong></li>
   <ol start="i">
-   <li>[Reference Guided Transcript Assembly](https://github.com/griffithlab/rnaseq_tutorial/wiki/Reference-Guided-Transcript-Assembly)</li>
-   <li>[de novo Transcript Assembly](https://github.com/griffithlab/rnaseq_tutorial/wiki/de-novo-Transcript-Assembly)</li>
-   <li>[Transcript Assembly Merge](https://github.com/griffithlab/rnaseq_tutorial/wiki/Transcript-Assembly-Merge)</li>
-   <li>[Differential Splicing](https://github.com/griffithlab/rnaseq_tutorial/wiki/Differential-Splicing)</li>
-   <li>[Transcript Assembly Visualization](https://github.com/griffithlab/rnaseq_tutorial/wiki/Transcript-Assembly-Visualization)</li>
+   <li><a href="https://github.com/griffithlab/rnaseq_tutorial/wiki/Reference-Guided-Transcript-Assembly">Reference Guided Transcript Assembly</a></li>
+   <li><a href="https://github.com/griffithlab/rnaseq_tutorial/wiki/de-novo-Transcript-Assembly">de novo Transcript Assembly</a></li>
+   <li><a href="https://github.com/griffithlab/rnaseq_tutorial/wiki/Transcript-Assembly-Merge">Transcript Assembly Merge</a></li>
+   <li><a href="https://github.com/griffithlab/rnaseq_tutorial/wiki/Differential-Splicing">Differential Splicing</a></li>
+   <li><a href="https://github.com/griffithlab/rnaseq_tutorial/wiki/Transcript-Assembly-Visualization">Transcript Assembly Visualization</a></li>
    </ol>
   <li><strong>Appendix</strong></li>
   <ol start="i">
-   <li>[Abbreviations](https://github.com/griffithlab/rnaseq_tutorial/wiki/Abbreviations)</li>
-   <li>[Lectures](https://github.com/griffithlab/rnaseq_tutorial/wiki/Lectures)</li>
-   <li>[Practical Exercise Solutions](https://github.com/griffithlab/rnaseq_tutorial/wiki/Solutions)</li>
-   <li>[Integrated Assignment](https://github.com/griffithlab/rnaseq_tutorial/wiki/Integrated-Assignment)</li>
-   <li>[Proposed Improvements](https://github.com/griffithlab/rnaseq_tutorial/wiki/Proposed-Improvements)</li>
-   <li>[AWS Setup](https://github.com/griffithlab/rnaseq_tutorial/wiki/AWS-Setup)</li>
+   <li><a href=""></a>[Abbreviations](https://github.com/griffithlab/rnaseq_tutorial/wiki/Abbreviations)</li>
+   <li><a href=""></a>[Lectures](https://github.com/griffithlab/rnaseq_tutorial/wiki/Lectures)</li>
+   <li><a href=""></a>[Practical Exercise Solutions](https://github.com/griffithlab/rnaseq_tutorial/wiki/Solutions)</li>
+   <li><a href=""></a>[Integrated Assignment](https://github.com/griffithlab/rnaseq_tutorial/wiki/Integrated-Assignment)</li>
+   <li><a href=""></a>[Proposed Improvements](https://github.com/griffithlab/rnaseq_tutorial/wiki/Proposed-Improvements)</li>
+   <li><a href=""></a>[AWS Setup](https://github.com/griffithlab/rnaseq_tutorial/wiki/AWS-Setup)</li>
   </ol>
 </ol>
 
