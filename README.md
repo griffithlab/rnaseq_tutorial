@@ -10,12 +10,12 @@ This repository is used to store code and certain raw materials for a detailed R
   <li>**Module 0 - Introduction and Cloud Computing**</li>
   <ol start="i">
     <li><a href="https://github.com/griffithlab/rnaseq_tutorial/wiki/Authors">Authors</a></li>
-    <li>[Citation](https://github.com/griffithlab/rnaseq_tutorial/wiki/Citation)</li>
-    <li>[Syntax](https://github.com/griffithlab/rnaseq_tutorial/wiki/Syntax)</li>
-    <li>[Intro to AWS Cloud Computing](https://github.com/griffithlab/rnaseq_tutorial/wiki/Intro-to-AWS-Cloud-Computing)</li>
-    <li>[Logging into Amazon Cloud](https://github.com/griffithlab/rnaseq_tutorial/wiki/Logging-into-Amazon-Cloud)</li>
-    <li>[Environment](https://github.com/griffithlab/rnaseq_tutorial/wiki/Environment)</li>
-    <li>[Resources](https://github.com/griffithlab/rnaseq_tutorial/wiki/Resources)</li>
+    <li><a href="https://github.com/griffithlab/rnaseq_tutorial/wiki/Citation">Citation</a></li>
+    <li><a href="https://github.com/griffithlab/rnaseq_tutorial/wiki/Syntax">Syntax</a></li>
+    <li><a href="https://github.com/griffithlab/rnaseq_tutorial/wiki/Intro-to-AWS-Cloud-Computing">Intro to AWS Cloud Computing</a></li>
+    <li><a href="https://github.com/griffithlab/rnaseq_tutorial/wiki/Logging-into-Amazon-Cloud">Logging into Amazon Cloud</a></li>
+    <li><a href="https://github.com/griffithlab/rnaseq_tutorial/wiki/Environment">Environment</a></li>
+    <li><a href="https://github.com/griffithlab/rnaseq_tutorial/wiki/Resources">Resources</a></li>
   </ol>
   <li>**Module 1 - Introduction to RNA sequencing**</li>
   <ol start="i">
