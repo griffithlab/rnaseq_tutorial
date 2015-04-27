@@ -49,12 +49,12 @@ This repository is used to store code and certain raw materials for a detailed R
    </ol>
   <li><strong>Appendix</strong></li>
   <ol start="i">
-   <li><a href=""></a>[Abbreviations](https://github.com/griffithlab/rnaseq_tutorial/wiki/Abbreviations)</li>
-   <li><a href=""></a>[Lectures](https://github.com/griffithlab/rnaseq_tutorial/wiki/Lectures)</li>
-   <li><a href=""></a>[Practical Exercise Solutions](https://github.com/griffithlab/rnaseq_tutorial/wiki/Solutions)</li>
-   <li><a href=""></a>[Integrated Assignment](https://github.com/griffithlab/rnaseq_tutorial/wiki/Integrated-Assignment)</li>
-   <li><a href=""></a>[Proposed Improvements](https://github.com/griffithlab/rnaseq_tutorial/wiki/Proposed-Improvements)</li>
-   <li><a href=""></a>[AWS Setup](https://github.com/griffithlab/rnaseq_tutorial/wiki/AWS-Setup)</li>
+   <li><a href="https://github.com/griffithlab/rnaseq_tutorial/wiki/Abbreviations">Abbreviations</a></li>
+   <li><a href="https://github.com/griffithlab/rnaseq_tutorial/wiki/Lectures">Lectures</a></li>
+   <li><a href="https://github.com/griffithlab/rnaseq_tutorial/wiki/Solutions">Practical Exercise Solutions</a></li>
+   <li><a href="https://github.com/griffithlab/rnaseq_tutorial/wiki/Integrated-Assignment">Integrated Assignment</a></li>
+   <li><a href="https://github.com/griffithlab/rnaseq_tutorial/wiki/Proposed-Improvements">Proposed Improvements</a></li>
+   <li><a href="https://github.com/griffithlab/rnaseq_tutorial/wiki/AWS-Setup">AWS Setup</a></li>
   </ol>
 </ol>
 
