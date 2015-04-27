@@ -7,7 +7,7 @@ This repository is used to store code and certain raw materials for a detailed R
 ===============
 ###Tutorial Table of Contents
 <ol start="0">
-  <li>**Module 0 - Introduction and Cloud Computing**</li>a
+  <li>**Module 0 - Introduction and Cloud Computing**</li>
   <ol start="i">
     <li>[Authors](https://github.com/griffithlab/rnaseq_tutorial/wiki/Authors)</li>
     <li>[Citation](https://github.com/griffithlab/rnaseq_tutorial/wiki/Citation)</li>
