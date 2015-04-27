@@ -7,7 +7,7 @@ This repository is used to store code and certain raw materials for a detailed R
 ===============
 ###Tutorial Table of Contents
 <ol start="0">
-  <li>**Module 0 - Introduction and Cloud Computing**</li>
+  <li><strong>Module 0 - Introduction and Cloud Computing</strong></li>
   <ol start="i">
     <li><a href="https://github.com/griffithlab/rnaseq_tutorial/wiki/Authors">Authors</a></li>
     <li><a href="https://github.com/griffithlab/rnaseq_tutorial/wiki/Citation">Citation</a></li>
@@ -17,7 +17,7 @@ This repository is used to store code and certain raw materials for a detailed R
     <li><a href="https://github.com/griffithlab/rnaseq_tutorial/wiki/Environment">Environment</a></li>
     <li><a href="https://github.com/griffithlab/rnaseq_tutorial/wiki/Resources">Resources</a></li>
   </ol>
-  <li>**Module 1 - Introduction to RNA sequencing**</li>
+  <li><strong>Module 1 - Introduction to RNA sequencing</strong></li>
   <ol start="i">
    1. [Installation](https://github.com/griffithlab/rnaseq_tutorial/wiki/Installation)</li>
    2. [Reference Genome](https://github.com/griffithlab/rnaseq_tutorial/wiki/Reference-Genome)</li>
@@ -26,20 +26,20 @@ This repository is used to store code and certain raw materials for a detailed R
    5. [RNA-seq Data](https://github.com/griffithlab/rnaseq_tutorial/wiki/RNAseq-Data)</li>
    6. [PreAlignment QC](https://github.com/griffithlab/rnaseq_tutorial/wiki/PreAlignment-QC)</li>
   </ol>
-  <li>**Module 2 - RNA-seq Alignment and Visualization**</li>
+  <li><strong>Module 2 - RNA-seq Alignment and Visualization</strong></li>
   <ol start="i">
    1. [Adapter Trim](https://github.com/griffithlab/rnaseq_tutorial/wiki/Adapter-Trim)</li>
    2. [Alignment](https://github.com/griffithlab/rnaseq_tutorial/wiki/Alignment)</li>
    3. [PostAlignment Visualization](https://github.com/griffithlab/rnaseq_tutorial/wiki/PostAlignment-Visualization)</li>
    4. [PostAlignment QC](https://github.com/griffithlab/rnaseq_tutorial/wiki/PostAlignment-QC)</li>
   </ol>
-  <li>**Module 3 - Expression and Differential Expression**</li>
+  <li><strong>Module 3 - Expression and Differential Expression</strong></li>
   <ol start="i">
    1. [Expression](https://github.com/griffithlab/rnaseq_tutorial/wiki/Expression)</li>
    2. [Differential Expression](https://github.com/griffithlab/rnaseq_tutorial/wiki/Differential-Expression)</li>
    3. [DE Visualization](https://github.com/griffithlab/rnaseq_tutorial/wiki/DE-Visualization)</li>
   </ol>
-  <li>**Module 4 - Isoform Discovery and Alternative Expression**</li>
+  <li><strong>Module 4 - Isoform Discovery and Alternative Expression</strong></li>
   <ol start="i">
    1. [Reference Guided Transcript Assembly](https://github.com/griffithlab/rnaseq_tutorial/wiki/Reference-Guided-Transcript-Assembly)</li>
    2. [de novo Transcript Assembly](https://github.com/griffithlab/rnaseq_tutorial/wiki/de-novo-Transcript-Assembly)</li>
@@ -47,7 +47,7 @@ This repository is used to store code and certain raw materials for a detailed R
    4. [Differential Splicing](https://github.com/griffithlab/rnaseq_tutorial/wiki/Differential-Splicing)</li>
    5. [Transcript Assembly Visualization](https://github.com/griffithlab/rnaseq_tutorial/wiki/Transcript-Assembly-Visualization)</li>
    </ol>
-  <li>**Appendix**</li>
+  <li><strong>Appendix</strong></li>
   <ol start="i">
    1. [Abbreviations](https://github.com/griffithlab/rnaseq_tutorial/wiki/Abbreviations)</li>
    2. [Lectures](https://github.com/griffithlab/rnaseq_tutorial/wiki/Lectures)</li>
