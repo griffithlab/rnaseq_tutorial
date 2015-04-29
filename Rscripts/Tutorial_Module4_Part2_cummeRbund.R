@@ -125,8 +125,8 @@ myStart<-min(features(myGene)$start)
 myEnd<-max(features(myGene)$end)
 myChr<-unique(features(myGene)$seqnames)
 genome<-'hg19'
-#ideoTrack<-IdeogramTrack(genome=genome,chromosome=myChr)
-#trackList<-c(trackList,ideoTrack)
+ideoTrack<-IdeogramTrack(genome=genome,chromosome=myChr)
+trackList<-c(trackList,ideoTrack)
 axtrack<-GenomeAxisTrack()
 trackList<-c(trackList,axtrack)
 genetrack<-makeGeneRegionTrack(myGene)
@@ -136,8 +136,8 @@ trackList<-c(trackList,genetrack)
 #trackList<-c(trackList,biomTrack)
 
 #Add conservation levels
-#conservation<-UcscTrack(genome="hg19",chromosome=myChr,track="Conservation",table="phyloP100wayAll",from=myStart-2000,to=myEnd+2000,trackType="DataTrack",start="start",end="end",data="score",type="hist",window="auto",col.histogram="darkblue",fill.histogram="darkblue",ylim=c(-3.7,4),name="Conservation")
-#trackList<-c(trackList,conservation)
+conservation<-UcscTrack(genome="hg19",chromosome=myChr,track="Conservation",table="phyloP100wayAll",from=myStart-2000,to=myEnd+2000,trackType="DataTrack",start="start",end="end",data="score",type="hist",window="auto",col.histogram="darkblue",fill.histogram="darkblue",ylim=c(-3.7,4),name="Conservation")
+trackList<-c(trackList,conservation)
 plotTracks(trackList,from=myStart-2000,to=myEnd+2000)
 
 #Close pdf device - necessary before you can open it in your browser
