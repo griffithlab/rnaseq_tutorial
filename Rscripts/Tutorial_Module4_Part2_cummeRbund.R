@@ -184,7 +184,8 @@ dev.off()
 #The output file can be viewed in your browser at the following url:
 #Note, you must replace cbw## with your own amazon instance number (e.g., "cshl01"))
 #http://cshl##.dyndns.org/workspace/rnaseq/de/tophat_cufflinks/ref_only/Tutorial_Part2_cummeRbund_output_extras.pdf
-
+#NYC_WORKSHOP_LINK
+#http://cbw##.entrydns.org/rnaseq/de/tophat_cufflinks/ref_only/Tutorial_Part2_cummeRbund_output.pdf
 #To exit R type:
 quit(save="no")
 
