@@ -4,9 +4,9 @@ The following table provides a list of general resources to help understand the 
 
 | Resource name and description |
 | ----------------------------- |
-| SeqAnswers.  An online forum for next generation sequencing. |
-| BioStars.  An online forum for bioinformatics (PMID: 22046109). |
-| Illumina videos on the basic of NGS sequencing: video 1, video 2. |
+| <a href="http://seqanswers.com/">SeqAnswers</a>.  An online forum for next generation sequencing. |
+| <a href="https://www.biostars.org/">BioStars</a>.  An online forum for bioinformatics (PMID: 22046109). |
+| Illumina videos on the basic of NGS sequencing: <a href="https://www.youtube.com/watch?v=womKfikWlxM">video 1</a>, <a href="https://www.youtube.com/watch?v=womKfikWlxM">video 2</a>. |
 | Molecular Biology of the Cell. From DNA to RNA.  A comprehensive introduction to transcription, strandedness, RNA types, gene regulation, RNA polymerase function, splicing, and so on. |
 | The RNA-seqlopedia.  An overview of RNA-seq and the choices necessary to carry out a successful RNA-seq experiment. |
 | RNA-seq Data: Challenges in and Recommendations for Experimental Design and Analysis. |
