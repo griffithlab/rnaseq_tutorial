@@ -1,5 +1,5 @@
 ###Supplementary Table 4.  Description of RNA-seq library enrichment strategies
-A description of three RNA enrichment strategies is provided along with their anticipated effects on RNA-seq library construction and data interpretation.  For a visual depiction of the concepts discussed here, refer to Figure 4.
+A description of three RNA enrichment strategies is provided along with their anticipated effects on RNA-seq library construction and data interpretation.  For a visual depiction of the concepts discussed here, refer to <a href="https://github.com/griffithlab/rnaseq_tutorial/blob/master/manuscript/figures/Figure4.pdf">Figure 4</a>.
 
 ####Enrichment strategy
     
