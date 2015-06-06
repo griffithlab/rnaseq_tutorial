@@ -1,4 +1,4 @@
-###Supplementary Table 1.  Concepts in sample preparation and library construction that can influence study design, analysis and interpretation
+###Supplementary Table 3.  Concepts in sample preparation and library construction that can influence study design, analysis and interpretation
 The following table summarizes several key concepts relating to sample preparation and library construction that may influence analysis and interpretation of RNA-seq data.  Several initiatives are underway to develop standards and best practices that cover many of these concepts.  These include: the Sequencing Quality Control (SEQC) consortium (PMID: 25150838), the Encyclopedia of DNA Elements (ENCODE) consortium, the Roadmap Epigenomics Mapping Consortium (REMC), and the Beta Cell Biology Consortium (BCBC).
 
 | Strategy/concept         | Relevance to RNA-seq analysis and data interpretation |
