@@ -1,21 +1,23 @@
-###Supplementary Table 6.  RNA-seq workshops and online tutorials
+###Supplementary Table 3.  General resources for RNA-seq analysis
 
-The following table lists RNA-seq workshops and other tutorials complementary to this article.  These examples are limited to online materials or short workshops.  Not listed here are formal training programs or degrees in bioinformatics.  For ongoing discussion of this topic, refer to these BioStar (PMID: 22046109) posts: https://www.biostars.org/p/79845/ and https://www.biostars.org/p/11034/.
+The following table provides a list of general resources to help understand the background of RNA biology, next generation sequencing, RNA-seq laboratory methods, and RNA-seq analysis.  Additional educational resources can be found in the resources section of the online tutorial at www.rnaseq.wiki. 
 
-| Workshop/Tutorial | URL |
-| ----------------- | --- |
-| Canadian Bioinformatics Workshops (CBW). Informatics for RNA-sequence analysis.  Various additional bioinformatics courses.  A live delivery of the tutorials accompanying this publication. | http://bioinformatics.ca/ |
-| Cold Spring Harbor Laboratory (CSHL). Advanced Sequencing Technologies & Applications. | http://meetings.cshl.edu/courses/2014/c-seqtec14.shtml |
-| Biostars.  Discussion of ongoing and upcoming training opportunities. | https://www.biostars.org/p/11034/ https://www.biostars.org/p/79845/ |
-| Michigan State University. Analyzing Next-Generation Sequencing Data. | http://bioinformatics.msu.edu/ngs-summer-course-2015 |
-| EBI. Advanced RNA-Seq and ChiP-Seq Data Analysis. | http://www.ebi.ac.uk/training/ |
-| UC Davis Bioinformatics Training Program.  RNA-Seq Workshop: From Pipette to P-value!  Bootcamp: Introduction to RNA-seq. | http://training.bioinformatics.ucdavis.edu/ |
-| EMBL.  Various bioinformatics courses. | http://www.embl.de/training/events/index.php |
-| Wellcome Trust.  Various bioinformatics courses. | http://www.wellcome.ac.uk/Education-resources/Courses-and-conferences/ |
-| ECSEQ Bioinformatics. RNA-seq Bioinformatics: A Practical Introduction. | http://www.ecseq.com/training.html |
-| Bioinformatics.org.  Various bioinformatics courses. | http://www.bioinformatics.org/wiki/Educational_services |
-| Data carpentry.  Various data science relevant topics. | http://datacarpentry.org/ |
-| Software carpentry.  Various software and analysis relevant topics. | http://software-carpentry.org/ |
-| HarvardX. Case study: RNA-seq data analysis | https://www.edx.org/course/case-study-rna-seq-data-analysis-harvardx-ph525-5x |
-| Princeton RNA-seq workshop | http://www.princeton.edu/genomics/sequencing/instructions/rna-seq-workshop/RNA-seq-introduction-v2.pdf |
+| Resource name and description |
+| ----------------------------- |
+| SeqAnswers.  An online forum for next generation sequencing. |
+| BioStars.  An online forum for bioinformatics (PMID: 22046109). |
+| Illumina videos on the basic of NGS sequencing: video 1, video 2. |
+| Molecular Biology of the Cell. From DNA to RNA.  A comprehensive introduction to transcription, strandedness, RNA types, gene regulation, RNA polymerase function, splicing, and so on. |
+| The RNA-seqlopedia.  An overview of RNA-seq and the choices necessary to carry out a successful RNA-seq experiment. |
+| RNA-seq Data: Challenges in and Recommendations for Experimental Design and Analysis. |
+| RNA Bioinformatics, a 25 chapter book covering many topics relevant to RNA-seq analysis. |
+| The RNA-Seq blog.  An actively maintained news feed of RNA-seq related developments. |
+| HTS Mappers.  An actively maintained list of short read aligners (RNA-seq aligners are indicated in red). |
+| The periodic table of bioinformatics.  A list of commonly used bioinformatics tools. |
+| ENCODE standards, guidelines and best practices for RNA-seq. |
+| REMC standards and guidelines for RNA-sequencing. |
+| A comprehensive assessment of RNA-seq accuracy, reproducibility and information content by the Sequencing Quality Control Consortium. |
+| List of RNA-seq bioinformatics tools. | 
+| GEO: The Gene Expression Omnibus (contains many publicly available RNA-seq data sets). |
+
 
