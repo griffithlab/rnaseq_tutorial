@@ -332,7 +332,7 @@ sig_tn_de = tn_de[sig,]
 #Order the output by or p-value and then break ties using fold-change
 o = order(sig_tn_de[,"q_value"], -abs(sig_tn_de[,"de"]), decreasing=FALSE)
 output = sig_tn_de[o,c("gene_id","gene_name","locus","value_1","value_2","de","p_value")]
-write.table(output, file="SigDE.txt", sep="\t", row.names=FALSE, quote=FALSE)
+write.table(output, file="SigDE_supplementary_R.txt", sep="\t", row.names=FALSE, quote=FALSE)
 
 #View selected columns of the first 25 lines of output
 output[1:25,c(2,4,5,6,7)]
