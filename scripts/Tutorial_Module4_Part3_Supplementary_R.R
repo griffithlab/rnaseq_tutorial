@@ -64,7 +64,7 @@ ls()
 #### Import the gene expression data from the Tophat/Cufflinks/Cuffdiff tutorial
 
 #Set working directory where results files exist
-working_dir = "~/workspace/rnaseq/final_results/tophat_cufflinks/ref_only" 
+working_dir = "~/workspace/rnaseq/de/tophat_cufflinks/ref_only" 
 setwd(working_dir)
 
 #List the current contents of this directory - it is empty right now so it will be displayed as 'character(0)'
@@ -358,9 +358,8 @@ dev.off()
 
 #The output file can be viewed in your browser at the following url:
 #Note, you must replace cbw## with your own amazon instance number (e.g., "cbw01"))
-#http://cshl##.dyndns.org/workspace/rnaseq/final_results/tophat_cufflinks/ref_only/Tutorial_Part3_Supplementary_R_output.pdf
-#NYC_WORKSHOP_LINK
-#http://cbw##.entrydns.org/rnaseq/final_results/tophat_cufflinks/ref_only/Tutorial_Part3_Supplementary_R_output.pdf
+#http://cshl##.dyndns.info/rnaseq/de/tophat_cufflinks/ref_only/Tutorial_Part3_Supplementary_R_output.pdf
+#http://cbw##.dyndns.info/rnaseq/de/tophat_cufflinks/ref_only/Tutorial_Part3_Supplementary_R_output.pdf
 #To exit R type:
 quit(save="no")
 
