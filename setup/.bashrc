@@ -2,7 +2,7 @@
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
 
-export PATH=/home/ubuntu/bin/samtools-1.2:/home/ubuntu/bin/bam-readcount/bin:/home/ubuntu/bin/bowtie2-2.2.6:/home/ubuntu/bin/tophat-2.1.0.Linux_x86_64:/home/ubuntu/bin/STAR-STAR_2.5.0a/source:/home/ubuntu/bin/cufflinks-2.2.1.Linux_x86_64:/home/ubuntu/bin/HTSeq-0.6.1p1/scripts:/home/ubuntu/bin/FastQC:/home/ubuntu/bin/picard-tools-1.140:/home/ubuntu/bin/samstat-1.5.1/src:/home/ubuntu/bin/bedtools2/bin:/home/ubuntu/bin/flexbar_v2.4_linux64:/home/ubuntu/bin/R-3.2.2/bin:$PATH
+export PATH=/home/ubuntu/bin/samtools-1.2:/home/ubuntu/bin/bam-readcount/bin:/home/ubuntu/bin/bowtie2-2.2.6:/home/ubuntu/bin/tophat-2.1.0.Linux_x86_64:/home/ubuntu/bin/STAR-STAR_2.5.0a/source:/home/ubuntu/bin/cufflinks-2.2.1.Linux_x86_64:/home/ubuntu/bin/HTSeq-0.6.1p1/scripts:/home/ubuntu/bin/FastQC:/home/ubuntu/bin/picard-tools-1.140:/home/ubuntu/bin/samstat-1.5.1/src:/home/ubuntu/bin/bedtools2/bin:/home/ubuntu/bin/flexbar_v2.4_linux64:/home/ubuntu/bin/R-3.2.2/bin:/home/ubuntu/bin/allpathslg-52488/bin:/home/ubuntu/bin/MUMmer3.23:/home/ubuntu/workspace/data/bin:/home/ubuntu/workspace/tools/anaconda/bin/:/home/ubuntu/bin/tabix-0.2.6:/home/ubuntu/bin/gkno_launcher:/home/ubuntu/workspace/data/bin:$PATH
 export RNA_HOME=~/workspace/rnaseq
 export LD_LIBRARY_PATH=/home/ubuntu/bin/flexbar_v2.4_linux64:$LD_LIBRARY_PATH
 
