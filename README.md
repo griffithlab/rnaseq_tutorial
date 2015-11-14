@@ -19,6 +19,7 @@ Malachi Griffith\*, Jason R. Walker, Nicholas C. Spies, Benjamin J. Ainscough, O
    <li><a href="https://github.com/griffithlab/rnaseq_tutorial/wiki/Syntax">Syntax</a></li>
    <li><a href="https://github.com/griffithlab/rnaseq_tutorial/wiki/Intro-to-AWS-Cloud-Computing">Intro to AWS Cloud Computing</a></li>
    <li><a href="https://github.com/griffithlab/rnaseq_tutorial/wiki/Logging-into-Amazon-Cloud">Logging into Amazon Cloud</a></li>
+   <li><a href="https://github.com/griffithlab/rnaseq_tutorial/wiki/Unix-Bootcamp">Unix Bootcamp</a></li>
    <li><a href="https://github.com/griffithlab/rnaseq_tutorial/wiki/Environment">Environment</a></li>
    <li><a href="https://github.com/griffithlab/rnaseq_tutorial/wiki/Resources">Resources</a></li>
   </ol>
