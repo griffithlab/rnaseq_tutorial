@@ -1,0 +1,51 @@
+#new
+#setSleepInterval 200
+
+# change this path to point to your files:
+#load /Users/asm_work/HT-Seq/igv/data/igv_HCC1143_attributes.txt,/Users/asm_work/HT-Seq/igv/data/HCC1143.normal.21.19M-20M.bam
+
+snapshotDirectory /Users/asm_work/HT-Seq/igv/screenshots/
+
+
+# Example1:
+goto chr21:19479237-19479814
+sort strand
+maxPanelHeight 50000
+snapshot HCC1143_exercise1_SNV_SNP_pair.png
+
+# Example2:
+goto chr21:19,518,412-19,518,497
+sort strand
+snapshot HCC1143_exercise2_homopolymerRepeat.png
+
+# Ecample3:
+goto chr21:19,611,925-19,631,555
+collapse
+snapshot HCC1143_exercise3_lowGC.png
+
+# Example4:
+goto chr21:19,666,833-19,667,007
+expand
+sort base
+snapshot HCC1143_exercise4_hetSNP_allelic.png
+
+# Example5:
+goto chr21:19,800,320-19,818,162
+collapse
+snapshot HCC1143_exercise5_LINErepeat.png
+
+# Example6:
+goto chr21:19,324,469-19,331,468
+expand
+viewaspairs
+snapshot HCC1143_exercise6_homDEL.png
+
+# Example7:
+goto chr21:19,102,154-19,103,108
+snapshot HCC1143_exercise7_AluY.png
+
+# Example8:
+goto chr21:19,089,694-19,095,362
+snapshot HCC1143_exercise8_translocation.png
+
+# exit
