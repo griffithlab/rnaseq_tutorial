@@ -35,6 +35,7 @@ Malachi Griffith\*, Jason R. Walker, Nicholas C. Spies, Benjamin J. Ainscough, O
   <ol start="i">
    <li><a href="https://github.com/griffithlab/rnaseq_tutorial/wiki/Adapter-Trim">Adapter Trim</a></li>
    <li><a href="https://github.com/griffithlab/rnaseq_tutorial/wiki/Alignment">Alignment</a></li>
+   <li><a href="https://github.com/griffithlab/rnaseq_tutorial/wiki/IGV-Tutorial">IGV</a></li>
    <li><a href="https://github.com/griffithlab/rnaseq_tutorial/wiki/PostAlignment-Visualization">PostAlignment Visualization</a></li>
    <li><a href="https://github.com/griffithlab/rnaseq_tutorial/wiki/PostAlignment-QC">PostAlignment QC</a></li>
   </ol>
