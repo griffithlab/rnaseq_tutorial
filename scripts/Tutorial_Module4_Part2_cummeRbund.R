@@ -56,8 +56,12 @@ m<-MAplot(genes(cuff),"UHR","HBR")
 m
 
 # Plot #5 - A volcano plot of p-value and fold_change per sample
-v<-csVolcano(genes(cuff),"UHR","HBR",alpha=0.05)
+#v<-csVolcano(genes(cuff),"UHR","HBR",alpha=0.05)
+#v
+# Replaced above with the matrix volcano view
+v<-csVolcanoMatrix(genes(cuff))
 v
+
 
 # Plot #6 - Using k-means clustering a dendrogram of the distance between sample replicates
 dend.rep<-csDendro(genes(cuff),replicates=T)
