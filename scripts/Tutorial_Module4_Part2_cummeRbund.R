@@ -56,10 +56,7 @@ m<-MAplot(genes(cuff),"UHR","HBR")
 m
 
 # Plot #5 - A volcano plot of p-value and fold_change per sample
-#v<-csVolcano(genes(cuff),"UHR","HBR",alpha=0.05)
-#v
-# Replaced above with the matrix volcano view
-v<-csVolcanoMatrix(genes(cuff))
+v<-csVolcano(genes(cuff),"UHR","HBR",alpha=0.05)
 v
 
 
@@ -148,8 +145,8 @@ plotTracks(trackList,from=myStart-2000,to=myEnd+2000)
 dev.off()
 
 #The output file can be viewed in your browser at the following url:
-#Note, you must replace cbw## with your own amazon instance number (e.g., "cshl01"))
-#http://cshl##.dyndns.org/workspace/rnaseq/de/tophat_cufflinks/ref_only/Tutorial_Part2_cummeRbund_output.pdf
+#Note, you must replace __YOUR_IP_ADRESS__ with your own amazon instance number IP (ex. 101.0.1.101)
+#http://__YOUR_IP_ADDRESS__/workspace/rnaseq/de/tophat_cufflinks/ref_only/Tutorial_Part2_cummeRbund_output.pdf
 
 #Additional plot examples to try on your own:
 
@@ -186,10 +183,9 @@ gl.cds.rep
 dev.off()
 
 #The output file can be viewed in your browser at the following url:
-#Note, you must replace cbw## with your own amazon instance number (e.g., "cshl01"))
-#http://cshl##.dyndns.org/workspace/rnaseq/de/tophat_cufflinks/ref_only/Tutorial_Part2_cummeRbund_output_extras.pdf
-#NYC_WORKSHOP_LINK
-#http://cbw##.entrydns.org/rnaseq/de/tophat_cufflinks/ref_only/Tutorial_Part2_cummeRbund_output.pdf
+#Note, you must replace __YOUR_IP_ADRESS__ with your own amazon instance IP
+#http://__YOUR_IP_ADDRESS__/workspace/rnaseq/de/tophat_cufflinks/ref_only/Tutorial_Part2_cummeRbund_output_extras.pdf
+
 #To exit R type:
 quit(save="no")
 
