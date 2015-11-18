@@ -53,7 +53,11 @@ Malachi Griffith\*, Jason R. Walker, Nicholas C. Spies, Benjamin J. Ainscough, O
    <li><a href="https://github.com/griffithlab/rnaseq_tutorial/wiki/Transcript-Assembly-Merge">Transcript Assembly Merge</a></li>
    <li><a href="https://github.com/griffithlab/rnaseq_tutorial/wiki/Differential-Splicing">Differential Splicing</a></li>
    <li><a href="https://github.com/griffithlab/rnaseq_tutorial/wiki/Transcript-Assembly-Visualization">Transcript Assembly Visualization</a></li>
-   </ol>
+  </ol>
+  <li><strong>Module 5 - Reference free analysis</strong></li>
+   <ol start="i">  
+   <li><a href="https://github.com/griffithlab/rnaseq_tutorial/wiki/Kallisto">Use of Kallisto for Abundance Estimation</a></li>
+  </ol>
   <li><strong>Appendix</strong></li>
   <ol start="i">
    <li><a href="https://github.com/griffithlab/rnaseq_tutorial/wiki/Abbreviations">Abbreviations</a></li>
