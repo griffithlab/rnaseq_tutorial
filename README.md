@@ -15,7 +15,7 @@ Malachi Griffith\*, Jason R. Walker, Nicholas C. Spies, Benjamin J. Ainscough, O
   <li><strong>Module 0 - Introduction and Cloud Computing</strong></li>
   <ol start="i">
    <li><a href="https://github.com/griffithlab/rnaseq_tutorial/wiki/Authors">Authors</a></li>
-   <li><a href="https://github.com/griffithlab/rnaseq_tutorial/wiki/Citation">Citation</a></li>
+   <li><a href="https://github.com/griffithlab/rnaseq_tutorial/wiki/Citation">Citation and Supplementary Materials</a></li>
    <li><a href="https://github.com/griffithlab/rnaseq_tutorial/wiki/Syntax">Syntax</a></li>
    <li><a href="https://github.com/griffithlab/rnaseq_tutorial/wiki/Intro-to-AWS-Cloud-Computing">Intro to AWS Cloud Computing</a></li>
    <li><a href="https://github.com/griffithlab/rnaseq_tutorial/wiki/Logging-into-Amazon-Cloud">Logging into Amazon Cloud</a></li>
