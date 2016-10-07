@@ -5,10 +5,9 @@ use warnings;
 
 use IO::File;
 
-my $data_dir = $ENV{RNA_HOME} .'/expression/tophat_counts';
-my $ercc_file = $data_dir .'/ERCC_Controls_Analysis.txt';
-my $counts_file = $data_dir .'/gene_read_counts_table_all.tsv';
-my $ercc_counts_file = $data_dir .'/ercc_read_counts.tsv';
+my $ercc_file = 'ERCC_Controls_Analysis.txt';
+my $counts_file = 'gene_read_counts_table_all.tsv';
+my $ercc_counts_file = 'ercc_read_counts.tsv';
 
 my $ercc_fh = IO::File->new($ercc_file,'r');
 unless ($ercc_fh) { die('Failed to find file: '. $ercc_file) }
