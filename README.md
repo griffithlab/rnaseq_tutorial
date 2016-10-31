@@ -9,6 +9,10 @@ Malachi Griffith\*, Jason R. Walker, Nicholas C. Spies, Benjamin J. Ainscough, O
 
 \*To whom correspondence should be addressed: E-mail: mgriffit[AT]genome.wustl.edu, ogriffit[AT]genome.wustl.edu
 
+### Want to contribute to the RNA-seq Wiki?
+
+[Fork it and send a pull request.](https://github.com/griffithlab/rnaseq_tutorial_wiki.git)
+
 ===============
 ###Tutorial Table of Contents
 <ol start="0">
