@@ -10,14 +10,14 @@
 #######################
 
 #Set working directory where output will go
-working_dir = "~/workspace/rnaseq/de/tophat_counts"
+working_dir = "~/workspace/rnaseq/de/htseq_counts"
 setwd(working_dir)
 
 #Read in gene mapping
-mapping=read.table("~/workspace/rnaseq/refs/hg19/genes/ENSG_ID2Name.txt", header=FALSE, stringsAsFactors=FALSE, row.names=1)
+mapping=read.table("~/workspace/rnaseq/de/htseq_counts/ENSG_ID2Name.txt", header=FALSE, stringsAsFactors=FALSE, row.names=1)
 
 # Read in count matrix
-dat=read.table("~/workspace/rnaseq/expression/tophat_counts/gene_read_counts_table_all.tsv", header=TRUE, stringsAsFactors=FALSE, row.names=1)
+dat=read.table("~/workspace/rnaseq/expression/htseq_counts/gene_read_counts_table_all.tsv", header=TRUE, stringsAsFactors=FALSE, row.names=1)
 
 #The last 5 rows are summary data, remove
 rawdata=dat[1:(length(rownames(dat))-5),]

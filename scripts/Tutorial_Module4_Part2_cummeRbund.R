@@ -26,7 +26,7 @@ dbBeginTransaction<-dbBegin
 # Change these paths if you wish to produce cummeRbund output for different cuffdiff runs (e.g., using STAR alignments)
 refCuffdiff="~/workspace/rnaseq/de/tophat_cufflinks/ref_only"
 gtfFilePath="~/workspace/rnaseq/expression/tophat_cufflinks/ref_only/merged/merged.gtf"
-genomePath="~/workspace/rnaseq/refs/hg19/fasta/chr22_ERCC92/chr22_ERCC92.fa"
+genomePath="~/workspace/data/fasta/GRCh38/chr22_with_ERCC92.fa"
 outfile="~/workspace/rnaseq/de/tophat_cufflinks/ref_only/Tutorial_Part2_cummeRbund_output.pdf"
 outfile2="~/workspace/rnaseq/de/tophat_cufflinks/ref_only/Tutorial_Part2_cummeRbund_output_extras.pdf"
 
