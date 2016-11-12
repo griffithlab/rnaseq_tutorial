@@ -4,7 +4,7 @@
 # change this path to point to your files:
 #load /Users/asm_work/HT-Seq/igv/data/igv_HCC1143_attributes.txt,/Users/asm_work/HT-Seq/igv/data/HCC1143.normal.21.19M-20M.bam
 
-snapshotDirectory /Users/asm_work/HT-Seq/igv/screenshots/
+snapshotDirectory ~/Downloads/
 
 
 # Example1:
