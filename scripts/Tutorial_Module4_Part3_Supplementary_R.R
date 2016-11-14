@@ -13,6 +13,8 @@
 #Load libraries
 library(ggplot2)
 library(gplots)
+library(GenomicRanges)
+library(ballgown)
 
 #If X11 not available, open a pdf device for output of all plots
 pdf(file="Tutorial_Part3_Supplementary_R_output.pdf")
@@ -79,7 +81,7 @@ load('bg.rda')
 bg
 
 # Pull the gene_expression data frame from the ballgown object
-gene_expression = gexpr(bg)
+gene_expression = as.data.frame(gexpr(bg))
 
 #### Working with 'dataframes'
 #View the first five rows of data (all columns) in one of the dataframes created
@@ -144,6 +146,7 @@ legend("topright", legend_text, lty=NULL)
 #If we had a low coverage library, or other problems, we might get short 'transcripts' that are actually only pieces of real transcripts
 
 # TODO : We can use structure(bg)$trans which is a GRangesList, the lenght is there but can't figure out how to get at it
+# HINT: lapply(structure(bg)$trans, width)
 #hist(tn_fpkm[,"length"], breaks=50, xlab="Transcript length (bp)", main="Distribution of transcript lengths", col="steelblue")
 
 #### Summarize FPKM values for all 6 replicates
@@ -258,10 +261,14 @@ text(mds$points[,1], mds$points[,2], short_names, col=data_colors)
 ###TODO### - fix below here
 #### Plot #9 - View the distribution of differential expression values as a histogram
 #Display only those that are significant according to Ballgown
-sig = which(tn_de[,"p_value"]<0.05)
-de = log2(tn_de[sig,"value_1"]+min_nonzero) - log2(tn_de[sig,"value_2"]+min_nonzero)
-tn_de[,"de"] = log2(tn_de[,"value_1"]+min_nonzero) - log2(tn_de[,"value_2"]+min_nonzero)
-hist(de, breaks=50, col="seagreen", xlab="Log2 difference (UHR - HBR)", main="Distribution of differential expression values")
+
+results_genes = stattest(bg, feature="gene", covariate="type", getFC=TRUE, meas="FPKM")
+sig_genes = subset(results_genes,results_genes$pval<0.05)
+
+#sig = which(tn_de[,"p_value"]<0.05)
+#de = log2(tn_de[sig,"value_1"]+min_nonzero) - log2(tn_de[sig,"value_2"]+min_nonzero)
+#tn_de[,"de"] = log2(tn_de[,"value_1"]+min_nonzero) - log2(tn_de[,"value_2"]+min_nonzero)
+hist(log2(sig_genes[,"fc"]), breaks=50, col="seagreen", xlab="log2(Fold change) UHR vs HBR", main="Distribution of differential expression values")
 abline(v=-2, col="black", lwd=2, lty=2)
 abline(v=2, col="black", lwd=2, lty=2)
 legend("topleft", "Fold-change > 4", lwd=2, lty=2)
