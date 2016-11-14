@@ -2,13 +2,15 @@
 
 #Malachi Griffith, mgriffit[AT]genome.wustl.edu
 #Obi Griffith, ogriffit[AT]genome.wustl.edu
-#The Genome Institute, Washington Univerisity School of Medicine
+#Jason Walker, jason.walker[AT]wustl.edu
+
+#McDonneLll Genome Institute, Washington Univerisity School of Medicine
 #R tutorial for CBW - Bioinformatics for Cancer Genomics - RNA Sequence Analysis
+#R tutorial for CSHL - Advanced Sequencing Technologies & Applications
 
 #Starting from the output of the RNA-seq Tutorial Part 1.
 
-#Install packages and load libraries
-#install.packages("ggplot2")
+#Load libraries
 library(ggplot2)
 library(gplots)
 
@@ -25,7 +27,7 @@ pdf(file="Tutorial_Part3_Supplementary_R_output.pdf")
 #To learn about any command type: ?command_name  OR  help.search("command_name")
 #e.g.    ?read.table
 
-#This tutorial assumes you are running R on your own laptop and therefore the graphics generated can be viewed directly
+#This tutorial assumes you are running R on your laptop and therefore the graphics generated can be viewed directly
 #If you were running this tutorial in a Linux terminal without X you would write each graph to a file and then open that file
 #Every time you execute a 'plot()', 'hist()', 'boxplot()', etc. command, a new window will open to render the graph
 #Or if you leave this window open, each time you draw a new graph it will replace the old one
@@ -70,12 +72,13 @@ setwd(working_dir)
 # List the current contents of this directory
 dir()
 
-#Import expression and differential expression results from the Bowtie/Samtools/Tophat/Cufflinks/Cuffdiff pipeline
+#Import expression and differential expression results from the HISAT2/StringTie/Ballgown pipeline
 load('bg.rda')
 
 # View a summary of the ballgown object
 bg
 
+# Pull the gene_expression data frame from the ballgown object
 gene_expression = gexpr(bg)
 
 #### Working with 'dataframes'
@@ -83,7 +86,10 @@ gene_expression = gexpr(bg)
 head(gene_expression)
 
 #View the column names
-names(gene_expression)
+colnames(gene_expression)
+
+#View the row names
+row.names(gene_expression)
 
 #Determine the dimensions of the dataframe.  'dim()' will return the number of rows and columns
 dim(gene_expression)
@@ -92,7 +98,7 @@ dim(gene_expression)
 gene_expression[1:3,c(1:3,6)]
 
 #Do the same thing, but using the column names instead of numbers
-gene_expression[1:3, c("FPKM.HBR_rep1","FPKM.UHR_Rep1")]
+gene_expression[1:3, c("FPKM.UHR_Rep1","FPKM.UHR_Rep2","FPKM.UHR_Rep3","FPKM.HBR_Rep3")]
 
 #Assign colors to each.  You can specify color by RGB, Hex code, or name
 #To get a list of color names:
@@ -110,9 +116,7 @@ genes_of_interest = c("ENSG00000128311","ENSG00000099953","ENSG00000100079","ENS
 i = which(row.names(gene_expression) %in% genes_of_interest)
 gene_expression[i,]
 
-
 # Load the transcript to gene index from the ballgown object
-
 transcript_gene_table = indexes(bg)$t2g
 head(transcript_gene_table)
 
@@ -120,7 +124,7 @@ head(transcript_gene_table)
 length(row.names(transcript_gene_table)) #Transcript count
 length(unique(transcript_gene_table[,"g_id"])) #Unique Gene count
 
-#### the number of transcripts per gene.  
+#### Plot #1 - the number of transcripts per gene.  
 #Many genes will have only 1 transcript, some genes will have several transcripts
 #Use the 'table()' command to count the number of times each gene symbol occurs (i.e. the # of transcripts that have each gene symbol)
 #Then use the 'hist' command to create a histogram of these counts
@@ -134,17 +138,18 @@ legend_text = c(paste("Genes with one transcript =", c_one), paste("Genes with m
 legend("topright", legend_text, lty=NULL)
 
 
-#### Plot #7 - the distribution of transcript sizes as a histogram
+#### Plot #2 - the distribution of transcript sizes as a histogram
 #In this analysis we supplied Cufflinks with transcript models so the lengths will be those of known transcripts
 #However, if we had used a de novo transcript discovery mode, this step would give us some idea of how well transcripts were being assembled
 #If we had a low coverage library, or other problems, we might get short 'transcripts' that are actually only pieces of real transcripts
-#hist(tn_fpkm[,"length"], breaks=50, xlab="Transcript length (bp)", main="Distribution of transcript lengths", col="steelblue")
 
+# TODO : We can use structure(bg)$trans which is a GRangesList, the lenght is there but can't figure out how to get at it
+#hist(tn_fpkm[,"length"], breaks=50, xlab="Transcript length (bp)", main="Distribution of transcript lengths", col="steelblue")
 
 #### Summarize FPKM values for all 6 replicates
 #What are the minimum and maximum FPKM values for a particular library?
-min(gene_expression[,"UHR_1"])
-max(gene_expression[,"UHR_1"])
+min(gene_expression[,"FPKM.UHR_Rep1"])
+max(gene_expression[,"FPKM.UHR_Rep1"])
 
 #Set the minimum non-zero FPKM values for use later.
 #Do this by grabbing a copy of all data values, coverting 0's to NA, and calculating the minimum or all non NA values
@@ -160,16 +165,16 @@ min_nonzero=1
 data_columns=c(1:6)
 short_names=c("UHR_1","UHR_2","UHR_3","HBR_1","HBR_2","HBR_3")
 
-#### Plot # - View the range of values and general distribution of FPKM values for all 4 libraries
+#### Plot #3 - View the range of values and general distribution of FPKM values for all 4 libraries
 #Create boxplots for this purpose
 #Display on a log2 scale and add the minimum non-zero value to avoid log2(0)
 boxplot(log2(gene_expression[,data_columns]+min_nonzero), col=data_colors, names=short_names, las=2, ylab="log2(FPKM)", main="Distribution of FPKMs for all 6 libraries")
 #Note that the bold horizontal line on each boxplot is the median
 
-#### Plot # - plot a pair of replicates to assess reproducibility of technical replicates
+#### Plot #4 - plot a pair of replicates to assess reproducibility of technical replicates
 #Tranform the data by converting to log2 scale after adding an arbitrary small value to avoid log2(0)
-x = gene_expression[,"UHR_1"]
-y = gene_expression[,"UHR_2"]
+x = gene_expression[,"FPKM.UHR_Rep1"]
+y = gene_expression[,"FPKM.UHR_Rep2"]
 plot(x=log2(x+min_nonzero), y=log2(y+min_nonzero), pch=16, col="blue", cex=0.25, xlab="FPKM (UHR, Replicate 1)", ylab="FPKM (UHR, Replicate 2)", main="Comparison of expression values for a pair of replicates")
 
 #Add a straight line of slope 1, and intercept 0
@@ -179,7 +184,7 @@ abline(a=0,b=1)
 rs=cor(x,y)^2
 legend("topleft", paste("R squared = ", round(rs, digits=3), sep=""), lwd=1, col="black")
 
-#### Plot #10 - Scatter plots with a large number of data points can be misleading ... regenerate this figure as a density scatter plot
+#### Plot #5 - Scatter plots with a large number of data points can be misleading ... regenerate this figure as a density scatter plot
 colors = colorRampPalette(c("white", "blue", "#007FFF", "cyan","#7FFF7F", "yellow", "#FF7F00", "red", "#7F0000"))
 smoothScatter(x=log2(x+min_nonzero), y=log2(y+min_nonzero), xlab="FPKM (UHR, Replicate 1)", ylab="FPKM (UHR, Replicate 2)", main="Comparison of expression values for a pair of replicates", colramp=colors, nbin=200)
 
@@ -199,9 +204,9 @@ plotCor = function(lib1, lib2, name, color){
 #Open a plotting page with room for two plots on one page
 par(mfrow=c(1,2))
 
-#Plot #11 - Now make a call to our custom function created above, once for each library comparison
-plotCor("UHR_1", "HBR_1", "UHR_1 vs HBR_1", "tomato2")
-plotCor("UHR_2", "HBR_2", "UHR_2 vs HBR_2", "royalblue2")
+#Plot #6 - Now make a call to our custom function created above, once for each library comparison
+plotCor("FPKM.UHR_Rep1", "FPKM.HBR_Rep1", "UHR_1 vs HBR_1", "tomato2")
+plotCor("FPKM.UHR_Rep2", "FPKM.HBR_Rep2", "UHR_2 vs HBR_2", "royalblue2")
 
 
 ##### One problem with these plots is that there are so many data points on top of each other, that information is being lost
@@ -218,10 +223,10 @@ plotCor2 = function(lib1, lib2, name, color){
 	legend("topleft", legend_text, lwd=c(1,NA), col="black", bg="white", cex=0.8)
 }
 
-#### Plot #12 - Now make a call to our custom function created above, once for each library comparison
+#### Plot #7 - Now make a call to our custom function created above, once for each library comparison
 par(mfrow=c(1,2))
-plotCor2("UHR_1", "HBR_1", "UHR_1 vs HBR_1", "tomato2")
-plotCor2("UHR_2", "HBR_2", "UHR_2 vs HBR_2", "royalblue2")
+plotCor2("FPKM.UHR_Rep1", "FPKM.HBR_Rep1", "UHR_1 vs HBR_1", "tomato2")
+plotCor2("FPKM.UHR_Rep2", "FPKM.HBR_Rep2", "UHR_2 vs HBR_2", "royalblue2")
 
 
 #### Compare the correlation 'distance' between all replicates
@@ -239,7 +244,7 @@ r=cor(gene_expression[i,data_columns], use="pairwise.complete.obs", method="pear
 #Print out these correlation values
 r
 
-#### Plot #13 - Convert correlation to 'distance', and use 'multi-dimensional scaling' to display the relative differences between libraries
+#### Plot #8 - Convert correlation to 'distance', and use 'multi-dimensional scaling' to display the relative differences between libraries
 #This step calculates 2-dimensional coordinates to plot points for each library
 #Libraries with similar expression patterns (highly correlated to each other) should group together
 #What pattern do we expect to see, given the types of libraries we have (technical replicates, biologal replicates, tumor/normal)?
@@ -250,8 +255,9 @@ plot(mds$points, type="n", xlab="", ylab="", main="MDS distance plot (all non-ze
 points(mds$points[,1], mds$points[,2], col="grey", cex=2, pch=16)
 text(mds$points[,1], mds$points[,2], short_names, col=data_colors)
 
-#### Plot #14 - View the distribution of differential expression values as a histogram
-#Display only those that are significant according to Cuffdiff
+###TODO### - fix below here
+#### Plot #9 - View the distribution of differential expression values as a histogram
+#Display only those that are significant according to Ballgown
 sig = which(tn_de[,"p_value"]<0.05)
 de = log2(tn_de[sig,"value_1"]+min_nonzero) - log2(tn_de[sig,"value_2"]+min_nonzero)
 tn_de[,"de"] = log2(tn_de[,"value_1"]+min_nonzero) - log2(tn_de[,"value_2"]+min_nonzero)
