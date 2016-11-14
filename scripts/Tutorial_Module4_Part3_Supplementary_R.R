@@ -292,17 +292,19 @@ text(x[topn], y[topn], results_genes[topn,"id"], col="black", cex=0.75, srt=45)
 
 #### Write a simple table of differentially expressed transcripts to an output file
 #Each should be significant with a log2 fold-change >= 2
-sigi = which(results_genes$pval<0.05 & abs(results_genes[sig,"de"]) >= 2)
-sig_tn_de = results_genes[sigi,]
+sigpi = which(results_genes[,"pval"]<0.05)
+sigp = results_genes[sigpi,]
+sigde = which(abs(sigp[,"de"]) >= 2)
+sig_tn_de = sigp[sigde,]
 
 #Order the output by or p-value and then break ties using fold-change
 o = order(sig_tn_de[,"qval"], -abs(sig_tn_de[,"de"]), decreasing=FALSE)
 
-#output = sig_tn_de[o,c("gene_id","gene_name","locus","value_1","value_2","de","p_value")]
-#write.table(output, file="SigDE_supplementary_R.txt", sep="\t", row.names=FALSE, quote=FALSE)
+output = sig_tn_de[o,c("id","fc","pval","qval","de")]
+write.table(output, file="SigDE_supplementary_R.txt", sep="\t", row.names=FALSE, quote=FALSE)
 
 #View selected columns of the first 25 lines of output
-output[1:25,c(2,4,5,6,7)]
+output[1:25,c(1,4,5)]
 
 #You can open the file "SigDE.txt" in Excel, Calc, etc.
 #It should have been written to the current working directory that you set at the beginning of the R tutorial
