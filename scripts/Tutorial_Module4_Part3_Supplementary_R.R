@@ -61,122 +61,71 @@ my_sequence
 ls()
 
 
-#### Import the gene expression data from the Tophat/Cufflinks/Cuffdiff tutorial
+#### Import the gene expression data from the HISAT2/StringTie/Ballgown tutorial
 
 #Set working directory where results files exist
-working_dir = "~/workspace/rnaseq/de/tophat_cufflinks/ref_only" 
+working_dir = "~/workspace/rnaseq/de/ballgown/ref_only" 
 setwd(working_dir)
 
-#List the current contents of this directory - it is empty right now so it will be displayed as 'character(0)'
+# List the current contents of this directory
 dir()
 
 #Import expression and differential expression results from the Bowtie/Samtools/Tophat/Cufflinks/Cuffdiff pipeline
-file1="isoforms.read_group_tracking"
-file2="isoform_exp.diff"
-file3="isoforms.fpkm_tracking"
+load('bg.rda')
 
-#Read in tab delimited files and assign the resulting 'dataframe' to a variable
-#Use 'as.is' for columns that contain text/character values (i.e. non-numerical values)
-all_fpkm = read.table(file1, header=TRUE, sep="\t", as.is=c(1:2,9))
-tn_de = read.table(file2, header=TRUE, sep="\t", as.is=c(1:7,14))
-tn_fpkm = read.table(file3, header=TRUE, sep="\t", as.is=c(1:9,13,17))
+# View a summary of the ballgown object
+bg
 
+gene_expression = gexpr(bg)
 
 #### Working with 'dataframes'
 #View the first five rows of data (all columns) in one of the dataframes created
-head(tn_de)
+head(gene_expression)
 
 #View the column names
-names(tn_de)
+names(gene_expression)
 
 #Determine the dimensions of the dataframe.  'dim()' will return the number of rows and columns
-dim(tn_de)
+dim(gene_expression)
 
 #Get the first 3 rows of data and a selection of columns
-tn_de[1:3,c(2:4,7,10,12)]
+gene_expression[1:3,c(1:3,6)]
 
 #Do the same thing, but using the column names instead of numbers
-tn_de[1:3, c("gene_id","locus","value_1","value_2")]
-
-#Rename some of the columns from ugly names to more human readable names
-names(all_fpkm) = c("tracking_id", "condition", "replicate", "raw_frags", "internal_scaled_frags", "external_scaled_frags", "FPKM", "effective_length", "status")
-names(tn_de) = c("test_id", "gene_id", "gene_name", "locus", "sample_1", "sample_2", "status", "value_1", "value_2", "fold_change", "test_stat", "p_value", "q_value", "significant")
-names(tn_fpkm) = c("tracking_id", "class_code", "nearest_ref_id", "gene_id", "gene_name", "tss_id", "locus", "length", "coverage", "UHR_FPKM", "UHR_conf_lo", "UHR_conf_hi", "UHR_status", "HBR_FPKM", "HBR_conf_lo", "HBR_conf_hi", "HBR_status")
-
-#Get ID to gene name mapping
-gene_mapping=tn_fpkm[,"gene_name"]
-names(gene_mapping)=tn_fpkm[,"tracking_id"]
-
-#Reformat per-replicate FPKM data into a standard matrix
-UHR_1=all_fpkm[all_fpkm[,"condition"]=="UHR" & all_fpkm[,"replicate"]==0,"FPKM"]
-UHR_2=all_fpkm[all_fpkm[,"condition"]=="UHR" & all_fpkm[,"replicate"]==1,"FPKM"]
-UHR_3=all_fpkm[all_fpkm[,"condition"]=="UHR" & all_fpkm[,"replicate"]==2,"FPKM"]
-HBR_1=all_fpkm[all_fpkm[,"condition"]=="HBR" & all_fpkm[,"replicate"]==0,"FPKM"]
-HBR_2=all_fpkm[all_fpkm[,"condition"]=="HBR" & all_fpkm[,"replicate"]==1,"FPKM"]
-HBR_3=all_fpkm[all_fpkm[,"condition"]=="HBR" & all_fpkm[,"replicate"]==2,"FPKM"]
-
-#Add ids as row names and gene names as initial column along with all data
-ids=unique(all_fpkm[,"tracking_id"])
-gene_names=gene_mapping[ids]
-fpkm_matrix=data.frame(gene_names,UHR_1,UHR_2,UHR_3,HBR_1,HBR_2,HBR_3)
-row.names(fpkm_matrix)=ids 
-data_columns=c(2:7)
-short_names=c("UHR_1","UHR_2","UHR_3","HBR_1","HBR_2","HBR_3")
+gene_expression[1:3, c("FPKM.HBR_rep1","FPKM.UHR_Rep1")]
 
 #Assign colors to each.  You can specify color by RGB, Hex code, or name
 #To get a list of color names:
 colours()
 data_colors=c("tomato1","tomato2","tomato3","royalblue1","royalblue2","royalblue3")
 
-#View expression values for the transcripts of a particular gene symbol of chromosome 1.  e.g. 'TST'
-#First determine the rows in the data.frame that match 'TST', then display only those rows of the data.frame
-i = which(fpkm_matrix[,"gene_names"] == "TST")
-fpkm_matrix[i,]
+#View expression values for the transcripts of a particular gene symbol of chromosome 22.  e.g. 'TST'
+#First determine the rows in the data.frame that match 'TST', aka. ENSG00000128311, then display only those rows of the data.frame
+i = row.names(gene_expression) == "ENSG00000128311"
+gene_expression[i,]
 
 #What if we want to view values for a list of genes of interest all at once? 
-genes_of_interest = c("TST", "MMP11", "LGALS2", "ISX")
-i = which(fpkm_matrix[,"gene_names"] %in% genes_of_interest)
-fpkm_matrix[i,]
+#genes_of_interest = c("TST", "MMP11", "LGALS2", "ISX")
+genes_of_interest = c("ENSG00000128311","ENSG00000099953","ENSG00000100079","ENSG00000175329")
+i = which(row.names(gene_expression) %in% genes_of_interest)
+gene_expression[i,]
 
 
-#### Examine basic features of the differential expression file
-#In part 1 of the tutorial, cuffdiff attempted to perform a differential expression test for each row of data (i.e. each gene/transcript)
-#However, sometimes this test fails due to insufficient data, etc.  These cases are summarized in the 'status' column
-#Summarize the status of all tests
-status_counts=table(tn_de[,"status"])
-status_counts
+# Load the transcript to gene index from the ballgown object
 
-#Plot #1 - Make a barplot of these status counts, first using the basic plotting functions of R, and then using the ggplot2 package
-barplot(status_counts, col=rainbow(6), xlab="Status", ylab="Transcript count", main="Status counts reported by Cuffdiff")
-
-#Plot #2 - Now the same idea using ggplot2
-Status=factor(tn_de[,"status"])
-qplot(Status, data=tn_de, geom="bar", fill=Status, xlab="Status", ylab="Transcript count", main="Status counts reported by Cuffdiff")
-
-#Plot #3 - Make a piechart of these status counts, first using the basic plotting functions of R, and then using the ggplot2 package
-pie(status_counts, col=rainbow(6), main="Status counts reported by Cuffdiff")
-
-#Plot #4 - Now the same idea using ggplot2
-#zz=as.data.frame(status_counts)
-#names(zz) = c("Status", "Count")
-#pp <- ggplot(zz, aes(x="", y=Count, fill=Status)) + geom_bar(width=1) + coord_polar("y")
-#print(pp)
-### NOTE: The above needs to be updated as ggplot has changed###
-
-#Plot #5 - Make a dotchart of these status counts
-dotchart(as.numeric(status_counts), col=rainbow(6), labels=names(status_counts), xlab="Transcript count", main="Status counts reported by Cuffdiff", pch=16)
+transcript_gene_table = indexes(bg)$t2g
+head(transcript_gene_table)
 
 #Each row of data represents a transcript. Many of these transcripts represent the same gene. Determine the numbers of transcripts and unique genes  
-length(tn_de[,"gene_name"]) #Transcript count
-length(unique(tn_de[,"gene_name"])) #Unique Gene count
+length(row.names(transcript_gene_table)) #Transcript count
+length(unique(transcript_gene_table[,"g_id"])) #Unique Gene count
 
-
-#### Plot #6 - the number of transcripts per gene.  
+#### the number of transcripts per gene.  
 #Many genes will have only 1 transcript, some genes will have several transcripts
 #Use the 'table()' command to count the number of times each gene symbol occurs (i.e. the # of transcripts that have each gene symbol)
 #Then use the 'hist' command to create a histogram of these counts
 #How many genes have 1 transcript?  More than one transcript?  What is the maximum number of transcripts for a single gene?
-counts=table(tn_de[,"gene_name"])
+counts=table(transcript_gene_table[,"g_id"])
 c_one = length(which(counts == 1))
 c_more_than_one = length(which(counts > 1))
 c_max = max(counts)
@@ -189,13 +138,13 @@ legend("topright", legend_text, lty=NULL)
 #In this analysis we supplied Cufflinks with transcript models so the lengths will be those of known transcripts
 #However, if we had used a de novo transcript discovery mode, this step would give us some idea of how well transcripts were being assembled
 #If we had a low coverage library, or other problems, we might get short 'transcripts' that are actually only pieces of real transcripts
-hist(tn_fpkm[,"length"], breaks=50, xlab="Transcript length (bp)", main="Distribution of transcript lengths", col="steelblue")
+#hist(tn_fpkm[,"length"], breaks=50, xlab="Transcript length (bp)", main="Distribution of transcript lengths", col="steelblue")
 
 
 #### Summarize FPKM values for all 6 replicates
 #What are the minimum and maximum FPKM values for a particular library?
-min(fpkm_matrix[,"UHR_1"])
-max(fpkm_matrix[,"UHR_1"])
+min(gene_expression[,"UHR_1"])
+max(gene_expression[,"UHR_1"])
 
 #Set the minimum non-zero FPKM values for use later.
 #Do this by grabbing a copy of all data values, coverting 0's to NA, and calculating the minimum or all non NA values
@@ -207,16 +156,20 @@ max(fpkm_matrix[,"UHR_1"])
 #Alternatively just set min value to 1
 min_nonzero=1
 
-#### Plot #8 - View the range of values and general distribution of FPKM values for all 4 libraries
+# Set the columns for finding FPKM and create shorter names for figures
+data_columns=c(1:6)
+short_names=c("UHR_1","UHR_2","UHR_3","HBR_1","HBR_2","HBR_3")
+
+#### Plot # - View the range of values and general distribution of FPKM values for all 4 libraries
 #Create boxplots for this purpose
 #Display on a log2 scale and add the minimum non-zero value to avoid log2(0)
-boxplot(log2(fpkm_matrix[,data_columns]+min_nonzero), col=data_colors, names=short_names, las=2, ylab="log2(FPKM)", main="Distribution of FPKMs for all 6 libraries")
+boxplot(log2(gene_expression[,data_columns]+min_nonzero), col=data_colors, names=short_names, las=2, ylab="log2(FPKM)", main="Distribution of FPKMs for all 6 libraries")
 #Note that the bold horizontal line on each boxplot is the median
 
-#### Plot #9 - plot a pair of replicates to assess reproducibility of technical replicates
+#### Plot # - plot a pair of replicates to assess reproducibility of technical replicates
 #Tranform the data by converting to log2 scale after adding an arbitrary small value to avoid log2(0)
-x = fpkm_matrix[,"UHR_1"]
-y = fpkm_matrix[,"UHR_2"]
+x = gene_expression[,"UHR_1"]
+y = gene_expression[,"UHR_2"]
 plot(x=log2(x+min_nonzero), y=log2(y+min_nonzero), pch=16, col="blue", cex=0.25, xlab="FPKM (UHR, Replicate 1)", ylab="FPKM (UHR, Replicate 2)", main="Comparison of expression values for a pair of replicates")
 
 #Add a straight line of slope 1, and intercept 0
@@ -234,8 +187,8 @@ smoothScatter(x=log2(x+min_nonzero), y=log2(y+min_nonzero), xlab="FPKM (UHR, Rep
 #### Plot all sets of replicates on a single plot
 #Create an function that generates an R plot.  This function will take as input the two libraries to be compared and a plot name and color
 plotCor = function(lib1, lib2, name, color){
-	x=fpkm_matrix[,lib1]
-	y=fpkm_matrix[,lib2]
+	x=gene_expression[,lib1]
+	y=gene_expression[,lib2]
 	zero_count = length(which(x==0)) + length(which(y==0))
 	plot(x=log2(x+min_nonzero), y=log2(y+min_nonzero), pch=16, col=color, cex=0.25, xlab=lib1, ylab=lib2, main=name)
 	abline(a=0,b=1)
@@ -254,8 +207,8 @@ plotCor("UHR_2", "HBR_2", "UHR_2 vs HBR_2", "royalblue2")
 ##### One problem with these plots is that there are so many data points on top of each other, that information is being lost
 #Regenerate these plots using a density scatter plot
 plotCor2 = function(lib1, lib2, name, color){
-	x=fpkm_matrix[,lib1]
-	y=fpkm_matrix[,lib2]
+	x=gene_expression[,lib1]
+	y=gene_expression[,lib2]
 	zero_count = length(which(x==0)) + length(which(y==0))
 	colors = colorRampPalette(c("white", "blue", "#007FFF", "cyan","#7FFF7F", "yellow", "#FF7F00", "red", "#7F0000"))
 	smoothScatter(x=log2(x+min_nonzero), y=log2(y+min_nonzero), xlab=lib1, ylab=lib2, main=name, colramp=colors, nbin=275)
@@ -275,13 +228,13 @@ plotCor2("UHR_2", "HBR_2", "UHR_2 vs HBR_2", "royalblue2")
 #Do we see the expected pattern for all eight libraries (i.e. replicates most similar, then tumor vs. normal)?
 
 #Calculate the FPKM sum for all 6 libraries
-fpkm_matrix[,"sum"]=apply(fpkm_matrix[,data_columns], 1, sum)
+gene_expression[,"sum"]=apply(gene_expression[,data_columns], 1, sum)
 
 #Identify the genes with a grand sum FPKM of at least 5 - we will filter out the genes with very low expression across the board
-i = which(fpkm_matrix[,"sum"] > 5)
+i = which(gene_expression[,"sum"] > 5)
 
 #Calculate the correlation between all pairs of data
-r=cor(fpkm_matrix[i,data_columns], use="pairwise.complete.obs", method="pearson")
+r=cor(gene_expression[i,data_columns], use="pairwise.complete.obs", method="pearson")
 
 #Print out these correlation values
 r
@@ -351,7 +304,7 @@ main_title="sig DE Transcripts"
 par(cex.main=0.8)
 sig_genes=tn_de[sig,"test_id"]
 sig_gene_names=gene_mapping[sig_genes]
-data=log2(as.matrix(fpkm_matrix[sig_genes,data_columns])+1)
+data=log2(as.matrix(gene_expression[sig_genes,data_columns])+1)
 heatmap.2(data, hclustfun=myclust, distfun=mydist, na.rm = TRUE, scale="none", dendrogram="both", margins=c(6,7), Rowv=TRUE, Colv=TRUE, symbreaks=FALSE, key=TRUE, symkey=FALSE, density.info="none", trace="none", main=main_title, cexRow=0.3, cexCol=1, labRow=sig_gene_names,col=rev(heat.colors(75)))
 
 dev.off()
