@@ -1,6 +1,6 @@
 #!/usr/bin/env Rscript
 
-#./Tutorial_Module4_ERCC_DE.R /gscmnt/gc2801/analytics/jwalker/RNAseqTutorial/refs/ERCC/ERCC_Controls_Analysis.txt /gscmnt/gc2801/analytics/jwalker/RNAseqTutorial/de/tophat_cufflinks/ref_only/gene_exp.diff
+#./Tutorial_Module4_ERCC_DE.R $RNA_HOME/refs/ERCC/ERCC_Controls_Analysis.txt $RNA_HOME/de/ballgown/ref_only/UHR_vs_HBR_gene_results.tsv
 
 library(ggplot2)
 
@@ -13,17 +13,18 @@ sortErccData = order(erccData[,'ERCC.ID'])
 erccData = erccData[sortErccData,]
 
 diffData = read.delim(diffFile)
-diffIdx = which(diffData[,'gene'] %in% erccData[,'ERCC.ID'])
+diffIdx = which(diffData[,'id'] %in% erccData[,'ERCC.ID'])
 diffData = diffData[diffIdx,]
-sortDiffData = order(diffData[,'gene']) 
+sortDiffData = order(diffData[,'id']) 
 diffData = diffData[sortDiffData,]
 
-diffData[,'observed_log2_fc'] = diffData[,'log2.fold_change.'] * -1
+# TODO, is the inverse needed?
+diffData[,'observed_log2_fc'] = log2(diffData[,'fc'])
 diffData[,'expected_log2_fc'] = erccData[,'log2.Mix.1.Mix.2.']
 diffData[,'subgroup'] = erccData[,'subgroup']
 
-okDiffDataIdx = which(diffData[,'status']=='OK')
-diffData = diffData[okDiffDataIdx,]
+#okDiffDataIdx = which(diffData[,'status']=='OK')
+#diffData = diffData[okDiffDataIdx,]
 
 model <- lm(observed_log2_fc ~ expected_log2_fc, data=diffData)
 r_squared = summary(model)[['r.squared']]
