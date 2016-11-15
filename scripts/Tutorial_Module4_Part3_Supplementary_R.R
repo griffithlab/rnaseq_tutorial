@@ -141,13 +141,12 @@ legend("topright", legend_text, lty=NULL)
 
 
 #### Plot #2 - the distribution of transcript sizes as a histogram
-#In this analysis we supplied Cufflinks with transcript models so the lengths will be those of known transcripts
+#In this analysis we supplied StringTie with transcript models so the lengths will be those of known transcripts
 #However, if we had used a de novo transcript discovery mode, this step would give us some idea of how well transcripts were being assembled
 #If we had a low coverage library, or other problems, we might get short 'transcripts' that are actually only pieces of real transcripts
 
-# TODO : We can use structure(bg)$trans which is a GRangesList, the lenght is there but can't figure out how to get at it
-# HINT: lapply(structure(bg)$trans, width)
-#hist(tn_fpkm[,"length"], breaks=50, xlab="Transcript length (bp)", main="Distribution of transcript lengths", col="steelblue")
+full_table <- texpr(bg , 'all')
+hist(full_table$length, breaks=50, xlab="Transcript length (bp)", main="Distribution of transcript lengths", col="steelblue")
 
 #### Summarize FPKM values for all 6 replicates
 #What are the minimum and maximum FPKM values for a particular library?
