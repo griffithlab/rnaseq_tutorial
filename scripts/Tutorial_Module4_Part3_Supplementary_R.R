@@ -315,7 +315,7 @@ output[1:25,c(1,4,5)]
 dir()
 
 
-#### Plot #16 - Create a heatmap to vizualize expression differences between the eight samples
+#### Plot #11 - Create a heatmap to vizualize expression differences between the eight samples
 #Define custom dist and hclust functions for use with heatmaps
 mydist=function(c) {dist(c,method="euclidian")}
 myclust=function(c) {hclust(c,method="average")}
