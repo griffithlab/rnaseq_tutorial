@@ -39,15 +39,18 @@ fpkm = log2(fpkm+1)
 tail(fpkm)
 
 # Create boxplots to display summary statistics for the FPKM values for each sample
-boxplot(fpkm,col=as.numeric(pheno_data$type),las=2,ylab='log2(FPKM+1)')
+boxplot(fpkm,col=as.numeric(pheno_data$type)+1,las=2,ylab='log2(FPKM+1)')
 
+# Display the transcript ID for a single row of data
 ballgown::transcriptNames(bg)[2763]
 
+# Display the gene name for a single row of data 
 ballgown::geneNames(bg)[2763]
 
-plot(fpkm[2763,] ~ pheno_data$type, border=c(1,2), main=paste(ballgown::geneNames(bg)[2763],' : ', ballgown::transcriptNames(bg)[2763]),pch=19, xlab="Type", ylab='log2(FPKM+1)')
+# Create a 
+plot(fpkm[2763,] ~ pheno_data$type, border=c(2,3), main=paste(ballgown::geneNames(bg)[2763],' : ', ballgown::transcriptNames(bg)[2763]),pch=19, xlab="Type", ylab='log2(FPKM+1)')
 
-points(fpkm[2763,] ~ jitter(as.numeric(pheno_data$type)), col=as.numeric(pheno_data$type))
+points(fpkm[2763,] ~ jitter(as.numeric(pheno_data$type)), col=as.numeric(pheno_data$type), pch=15)
 
 plotTranscripts(ballgown::geneIDs(bg)[2763], bg, main=c('Gene in sample HBR_Rep1'), sample=c('HBR_Rep1'))
 plotTranscripts(ballgown::geneIDs(bg)[2763], bg, main=c('Gene in sample HBR_Rep2'), sample=c('HBR_Rep2'))
