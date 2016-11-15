@@ -29,8 +29,14 @@ pdf(file=outfile)
 # Extract FPKM values from the 'bg' object
 fpkm = texpr(bg,meas="FPKM")
 
+# View the last several rows of the FPKM table
+tail(fpkm)
+
 # Transform the FPKM values by adding 1 and convert to a log2 scale
 fpkm = log2(fpkm+1)
+
+# View the last several rows of the transformed FPKM table
+tail(fpkm)
 
 # Create boxplots to display summary statistics for the FPKM values for each sample
 boxplot(fpkm,col=as.numeric(pheno_data$type),las=2,ylab='log2(FPKM+1)')
