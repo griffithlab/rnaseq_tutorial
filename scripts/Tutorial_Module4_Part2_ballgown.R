@@ -23,7 +23,7 @@ ls()
 # Print a summary of the ballgown object
 bg
 
-# Open a PDF file where we will save some plots
+# Open a PDF file where we will save some plots. We will save all figures and then view the PDF at the end
 pdf(file=outfile)
 
 # Extract FPKM values from the 'bg' object
@@ -47,11 +47,13 @@ ballgown::transcriptNames(bg)[2763]
 # Display the gene name for a single row of data 
 ballgown::geneNames(bg)[2763]
 
-# Create a 
+# Create a BoxPlot comparing the expression of a single gene for all replicates of both conditions
 plot(fpkm[2763,] ~ pheno_data$type, border=c(2,3), main=paste(ballgown::geneNames(bg)[2763],' : ', ballgown::transcriptNames(bg)[2763]),pch=19, xlab="Type", ylab='log2(FPKM+1)')
 
-points(fpkm[2763,] ~ jitter(as.numeric(pheno_data$type)), col=as.numeric(pheno_data$type), pch=15)
+# Add the FPKM values for each sample onto the plot 
+points(fpkm[2763,] ~ jitter(as.numeric(pheno_data$type)), col=as.numeric(pheno_data$type)+1, pch=16)
 
+# Create a plot of transcript structures observed in each replicate and color transcripts by expression level
 plotTranscripts(ballgown::geneIDs(bg)[2763], bg, main=c('Gene in sample HBR_Rep1'), sample=c('HBR_Rep1'))
 plotTranscripts(ballgown::geneIDs(bg)[2763], bg, main=c('Gene in sample HBR_Rep2'), sample=c('HBR_Rep2'))
 plotTranscripts(ballgown::geneIDs(bg)[2763], bg, main=c('Gene in sample HBR_Rep3'), sample=c('HBR_Rep3'))
@@ -61,6 +63,8 @@ plotTranscripts(ballgown::geneIDs(bg)[2763], bg, main=c('Gene in sample UHR_Rep3
 
 #plotMeans('TST',bg,groupvar="type",legend=FALSE)
 
+# Close the PDF device where we have been saving our plots
 dev.off()
 
+# Exit the R session
 quit(save="no")
