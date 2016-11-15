@@ -22,15 +22,15 @@ fpkm = log2(fpkm+1)
 
 boxplot(fpkm,col=as.numeric(pheno_data$type),las=2,ylab='log2(FPKM+1)')
 
-ballgown::transcriptNames(bg)[12]
+ballgown::transcriptNames(bg)[2763]
 
-ballgown::geneNames(bg)[12]
+ballgown::geneNames(bg)[2763]
 
-plot(fpkm[12,] ~ pheno_data$type, border=c(1,2), main=paste(ballgown::geneNames(bg)[12],' : ', ballgown::transcriptNames(bg)[12]),pch=19, xlab="Type", ylab='log2(FPKM+1)')
+plot(fpkm[2763,] ~ pheno_data$type, border=c(1,2), main=paste(ballgown::geneNames(bg)[2763],' : ', ballgown::transcriptNames(bg)[2763]),pch=19, xlab="Type", ylab='log2(FPKM+1)')
 
-points(fpkm[12,] ~ jitter(as.numeric(pheno_data$type)), col=as.numeric(pheno_data$type))
+points(fpkm[2763,] ~ jitter(as.numeric(pheno_data$type)), col=as.numeric(pheno_data$type))
 
-plotTranscripts(ballgown::geneIDs(bg)[1729], bg, main=c('Gene in sample HBR_Rep1'), sample=c('HBR_Rep1'))
+plotTranscripts(ballgown::geneIDs(bg)[2763], bg, main=c('Gene in sample HBR_Rep1'), sample=c('HBR_Rep1'))
 
 plotMeans('TST',bg,groupvar="type",legend=FALSE)
 
