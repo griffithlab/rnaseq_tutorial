@@ -80,6 +80,10 @@ load('bg.rda')
 # View a summary of the ballgown object
 bg
 
+# Load gene names for lookup later in the tutorial
+bg_table = texpr(bg, 'all')
+bg_gene_names = unique(bg_table[, 9:10])
+
 # Pull the gene_expression data frame from the ballgown object
 gene_expression = as.data.frame(gexpr(bg))
 
@@ -259,6 +263,7 @@ text(mds$points[,1], mds$points[,2], short_names, col=data_colors)
 
 # Calculate the differential expression results including significance
 results_genes = stattest(bg, feature="gene", covariate="type", getFC=TRUE, meas="FPKM")
+results_genes = merge(results_genes,bg_gene_names,by.x=c("id"),by.y=c("gene_id"))
 
 #### Plot #9 - View the distribution of differential expression values as a histogram
 #Display only those that are significant according to Ballgown
@@ -286,7 +291,7 @@ legend("topleft", "Significant", col="magenta", pch=16)
 #Get the gene symbols for the top N (according to corrected p-value) and display them on the plot
 topn = order(abs(results_genes[sig,"fc"]), decreasing=TRUE)[1:25]
 topn = order(results_genes[sig,"qval"])[1:25]
-text(x[topn], y[topn], results_genes[topn,"id"], col="black", cex=0.75, srt=45)
+text(x[topn], y[topn], results_genes[topn,"gene_name"], col="black", cex=0.75, srt=45)
 
 
 #### Write a simple table of differentially expressed transcripts to an output file
@@ -299,7 +304,7 @@ sig_tn_de = sigp[sigde,]
 #Order the output by or p-value and then break ties using fold-change
 o = order(sig_tn_de[,"qval"], -abs(sig_tn_de[,"de"]), decreasing=FALSE)
 
-output = sig_tn_de[o,c("id","fc","pval","qval","de")]
+output = sig_tn_de[o,c("gene_name","id","fc","pval","qval","de")]
 write.table(output, file="SigDE_supplementary_R.txt", sep="\t", row.names=FALSE, quote=FALSE)
 
 #View selected columns of the first 25 lines of output
@@ -318,9 +323,9 @@ myclust=function(c) {hclust(c,method="average")}
 main_title="sig DE Transcripts"
 par(cex.main=0.8)
 sig_genes=results_genes[sig,"id"]
-#sig_gene_names=gene_mapping[sig_genes]
+sig_gene_names=results_genes[sig,"gene_name"]
 data=log2(as.matrix(gene_expression[sig_genes,data_columns])+1)
-heatmap.2(data, hclustfun=myclust, distfun=mydist, na.rm = TRUE, scale="none", dendrogram="both", margins=c(6,7), Rowv=TRUE, Colv=TRUE, symbreaks=FALSE, key=TRUE, symkey=FALSE, density.info="none", trace="none", main=main_title, cexRow=0.3, cexCol=1, labRow=sig_genes,col=rev(heat.colors(75)))
+heatmap.2(data, hclustfun=myclust, distfun=mydist, na.rm = TRUE, scale="none", dendrogram="both", margins=c(6,7), Rowv=TRUE, Colv=TRUE, symbreaks=FALSE, key=TRUE, symkey=FALSE, density.info="none", trace="none", main=main_title, cexRow=0.3, cexCol=1, labRow=sig_gene_names,col=rev(heat.colors(75)))
 
 dev.off()
 
