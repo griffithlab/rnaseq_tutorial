@@ -1,25 +1,38 @@
+# Load libraries needed for this analysis
 library(ballgown)
 library(genefilter)
 library(dplyr)
 library(devtools)
 
+# Define a path for the output PDF to be written
 outfile="~/workspace/rnaseq/de/ballgown/ref_only/Tutorial_Part2_ballgown_output.pdf"
 
 # Load phenotype data
 pheno_data = read.csv("UHR_vs_HBR.csv")
 
+# Display the phenotype data
+pheno_data
+
 # Load the ballgown object from file
 load('bg.rda')
 
-pdf(file=outfile)
+# The load command, loads an R object from a file into memory in our R session. 
+# You can use ls() to view the names of variables that have been loaded
+ls()
 
-# print a summary of the ballgown object
+# Print a summary of the ballgown object
 bg
 
+# Open a PDF file where we will save some plots
+pdf(file=outfile)
+
+# Extract FPKM values from the 'bg' object
 fpkm = texpr(bg,meas="FPKM")
 
+# Transform the FPKM values by adding 1 and convert to a log2 scale
 fpkm = log2(fpkm+1)
 
+# Create boxplots to display summary statistics for the FPKM values for each sample
 boxplot(fpkm,col=as.numeric(pheno_data$type),las=2,ylab='log2(FPKM+1)')
 
 ballgown::transcriptNames(bg)[2763]
