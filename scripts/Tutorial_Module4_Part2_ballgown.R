@@ -31,8 +31,13 @@ plot(fpkm[2763,] ~ pheno_data$type, border=c(1,2), main=paste(ballgown::geneName
 points(fpkm[2763,] ~ jitter(as.numeric(pheno_data$type)), col=as.numeric(pheno_data$type))
 
 plotTranscripts(ballgown::geneIDs(bg)[2763], bg, main=c('Gene in sample HBR_Rep1'), sample=c('HBR_Rep1'))
+plotTranscripts(ballgown::geneIDs(bg)[2763], bg, main=c('Gene in sample HBR_Rep2'), sample=c('HBR_Rep2'))
+plotTranscripts(ballgown::geneIDs(bg)[2763], bg, main=c('Gene in sample HBR_Rep3'), sample=c('HBR_Rep3'))
+plotTranscripts(ballgown::geneIDs(bg)[2763], bg, main=c('Gene in sample UHR_Rep1'), sample=c('UHR_Rep1'))
+plotTranscripts(ballgown::geneIDs(bg)[2763], bg, main=c('Gene in sample UHR_Rep2'), sample=c('UHR_Rep2'))
+plotTranscripts(ballgown::geneIDs(bg)[2763], bg, main=c('Gene in sample UHR_Rep3'), sample=c('UHR_Rep3'))
 
-plotMeans('TST',bg,groupvar="type",legend=FALSE)
+#plotMeans('TST',bg,groupvar="type",legend=FALSE)
 
 dev.off()
 
