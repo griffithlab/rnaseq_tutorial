@@ -2,12 +2,6 @@
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
 
-export PATH=/home/ubuntu/bin/samtools-1.2:/home/ubuntu/bin/bam-readcount/bin:/home/ubuntu/bin/bowtie2-2.2.6:/home/ubuntu/bin/tophat-2.1.0.Linux_x86_64:/home/ubuntu/bin/STAR-STAR_2.5.0a/source:/home/ubuntu/bin/cufflinks-2.2.1.Linux_x86_64:/home/ubuntu/bin/HTSeq-0.6.1p1/scripts:/home/ubuntu/bin/FastQC:/home/ubuntu/bin/picard-tools-1.140:/home/ubuntu/bin/samstat-1.5.1/src:/home/ubuntu/bin/bedtools2/bin:/home/ubuntu/bin/flexbar_v2.4_linux64:/home/ubuntu/bin/R-3.2.2/bin:/home/ubuntu/bin/allpathslg-52488/bin:/home/ubuntu/bin/MUMmer3.23:/home/ubuntu/workspace/data/bin:/home/ubuntu/workspace/tools/anaconda/bin/:/home/ubuntu/bin/tabix-0.2.6:/home/ubuntu/bin/gkno_launcher:/home/ubuntu/workspace/data/bin:/home/ubuntu/bin/edirect:/home/ubuntu/bin/sratoolkit.2.5.4-1-ubuntu64/bin:$PATH
-export RNA_HOME=~/workspace/rnaseq
-export LD_LIBRARY_PATH=/home/ubuntu/bin/flexbar_v2.4_linux64:$LD_LIBRARY_PATH
-export MANPAGER=less
-
-
 # If not running interactively, don't do anything
 case $- in
     *i*) ;;
@@ -43,7 +37,7 @@ fi
 
 # set a fancy prompt (non-color, unless we know we "want" color)
 case "$TERM" in
-    xterm-color) color_prompt=yes;;
+    xterm-color|*-256color) color_prompt=yes;;
 esac
 
 # uncomment for a colored prompt, if the terminal has the capability; turned
@@ -90,6 +84,9 @@ if [ -x /usr/bin/dircolors ]; then
     alias egrep='egrep --color=auto'
 fi
 
+# colored GCC warnings and errors
+#export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
+
 # some more ls aliases
 alias ll='ls -alF'
 alias la='ls -A'
@@ -118,3 +115,47 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
+
+
+export PATH=$PATH:/home/ubuntu/tools/bowtie-1.1.2
+export PATH=$PATH:/home/ubuntu/tools/bowtie2-2.2.9
+export PATH=$PATH:/home/ubuntu/tools/trinityrnaseq-2.2.0
+export PATH=$PATH:/home/ubuntu/tools/hisat2-2.0.4
+export PATH=$PATH:/home/ubuntu/tools/sambamba_v0.6.4
+export PATH=$PATH:/home/ubuntu/tools/stringtie-1.3.0.Linux_x86_64
+export PATH=$PATH:/home/ubuntu/tools/gffcompare-0.9.8.Linux_x86_64
+export PATH=$PATH:/home/ubuntu/tools/RSEM-1.2.31
+export PATH=$PATH:/home/ubuntu/tools/cufflinks-2.2.1.Linux_x86_64
+export PATH=$PATH:/home/ubuntu/tools/bedtools2/bin
+alias picard='java -jar /home/ubuntu/tools/picard.jar'
+export PATH=$PATH:/home/ubuntu/tools/MUMmer3.23
+export PATH=$PATH:/home/ubuntu/tools/allpathslg-52488/bin
+export PATH=$PATH:/home/ubuntu/tools/bin/Sniffles/bin/sniffles-core-1.0.0
+export PATH=$PATH:/home/ubuntu/tools/ensembl-tools-release-86/scripts/variant_effect_predictor
+export PATH=/home/ubuntu/tools/bin:/home/ubuntu/workspace/data/anaconda/bin:$PATH
+export PATH=$PATH:/home/ubuntu/tools/VAAST_2.2.0/bin
+export PATH=$PATH:/home/ubuntu/tools/speedseq/bin
+export PATH=$PATH:/home/ubuntu/tools/hall_misc
+export LD_LIBRARY_PATH=/home/ubuntu/tools/root/lib:$LD_LIBRARY_PATH
+
+PATH="/home/ubuntu/tools/perl5/bin${PATH:+:${PATH}}"; export PATH;
+PERL5LIB="/home/ubuntu/tools/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
+PERL_LOCAL_LIB_ROOT="/home/ubuntu/tools/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
+PERL_MB_OPT="--install_base \"/home/ubuntu/tools/perl5\""; export PERL_MB_OPT;
+PERL_MM_OPT="INSTALL_BASE=/home/ubuntu/tools/perl5"; export PERL_MM_OPT;
+
+#RNA-seq specific environment variables
+export RNA_HOME=~/workspace/rnaseq
+
+export RNA_DATA_DIR=$RNA_HOME/data
+export RNA_DATA_TRIM_DIR=$RNA_DATA_DIR/trimmed
+
+export RNA_REFS_DIR=$RNA_HOME/refs
+export RNA_REF_INDEX=$RNA_REFS_DIR/chr22_with_ERCC92
+export RNA_REF_FASTA=$RNA_REF_INDEX.fa
+export RNA_REF_GTF=$RNA_REF_INDEX.gtf
+
+export RNA_ALIGN_DIR=$RNA_HOME/alignments/hisat2
+
+export PATH=$PATH:$RNA_HOME/tools/samtools-1.3.1:$RNA_HOME/tools/bam-readcount/bin:$RNA_HOME/tools/hisat2-2.0.4:$RNA_HOME/tools/stringtie-1.3.0.Linux_x86_64:$RNA_HOME/tools/gffcompare-0.9.8.Linux_x86_64:$RNA_HOME/tools/HTSeq-0.6.1p1/scripts:$RNA_HOME/tools/R-3.2.3/bin:$RNA_HOME/tools/FastQC:$RNA_HOME/tools/flexbar_v2.5_linux64:$RNA_HOME/tools/bedtools2/bin
+

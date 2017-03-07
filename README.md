@@ -5,9 +5,15 @@ An educational tutorial and working demonstration pipeline for RNA-seq analysis 
 This repository is used to store code and certain raw materials for a detailed RNA-seq tutorial.  To actually complete this tutorial, go to the <a href="https://github.com/griffithlab/rnaseq_tutorial/wiki">RNA-seq tutorial wiki</a>.
 
 Citation:
-Malachi Griffith\*, Jason R. Walker, Nicholas C. Spies, Benjamin J. Ainscough, Obi L. Griffith\*. 2015. <a href="http://dx.doi.org/10.1371/journal.pcbi.1004393">Informatics for RNA-seq: A web resource for analysis on the cloud</a>. 11(8):e1004393.
+Malachi Griffith\*, Jason R. Walker, Nicholas C. Spies, Benjamin J. Ainscough, Obi L. Griffith\*. 2015. <a href="http://dx.doi.org/10.1371/journal.pcbi.1004393">Informatics for RNA-seq: A web resource for analysis on the cloud</a>. PLoS Comp Biol. 11(8):e1004393.
 
 \*To whom correspondence should be addressed: E-mail: mgriffit[AT]genome.wustl.edu, ogriffit[AT]genome.wustl.edu
+
+Note: An archived version of this tutorial exists <a href="https://github.com/griffithlab/rnaseq_tutorial_v1">here</a>. This version is maintained for consistency with the published materials (<a href="http://dx.doi.org/10.1371/journal.pcbi.1004393">Griffith et al. 2015. PLoS Comp Biol.</a>) and for past students wishing to review covered material. However, we strongly suggest that you continue with the current version of the tutorial below.
+
+### Want to contribute to the RNA-seq Wiki?
+
+[Fork it and send a pull request.](https://github.com/griffithlab/rnaseq_tutorial_wiki.git)
 
 ===============
 ###Tutorial Table of Contents

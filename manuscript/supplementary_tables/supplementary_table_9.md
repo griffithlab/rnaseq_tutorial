@@ -19,4 +19,4 @@ The following table lists RNA-seq workshops and other tutorials complementary to
 | HarvardX. Case study: RNA-seq data analysis | https://www.edx.org/course/case-study-rna-seq-data-analysis-harvardx-ph525-5x |
 | Princeton RNA-seq workshop | http://www.princeton.edu/genomics/sequencing/instructions/rna-seq-workshop/RNA-seq-introduction-v2.pdf |
 | NCBI NOW (Next generation sequencing Online Workshop) | http://www.ncbi.nlm.nih.gov/news/09-30-2015-ncbi-now-next-gen-seq-course/ |
-
+| NCBI comparison of RNA-seq aligners tutorial | https://github.com/NCBI-Hackathons/RNA_mapping/wiki | 
