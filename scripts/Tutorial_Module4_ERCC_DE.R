@@ -29,10 +29,12 @@ diffData[,'subgroup'] = erccData[,'subgroup']
 model <- lm(observed_log2_fc ~ expected_log2_fc, data=diffData)
 r_squared = summary(model)[['r.squared']]
 
+p = ggplot(diffData, aes(x=expected_log2_fc, y=observed_log2_fc))
+p = p + geom_point(aes(color=subgroup)) 
+p = p + geom_smooth(method=lm) 
+p = p + annotate('text', 1, 2, label=paste("R^2 =", r_squared, sep=' '))
+p = p + xlab("Expected Fold Change (log2 scale)") + ylab("Observed Fold Change in RNA-seq data (log2 scale)")
+
 pdf('Tutorial_Module4_ERCC_DE.pdf')
-ggplot(diffData, aes(x=expected_log2_fc, y=observed_log2_fc)
-       ) + geom_point(aes(color=subgroup)
-       ) + geom_smooth(method=lm
-       ) + annotate('text', 1, 2,
-                    label=paste("R^2 =", r_squared, sep=' '))
+print(p)
 dev.off()
