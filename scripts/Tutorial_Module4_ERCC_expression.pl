@@ -6,7 +6,7 @@ use warnings;
 use IO::File;
 
 my $ercc_file = 'ERCC_Controls_Analysis.txt';
-my $counts_file = 'gene_read_counts_table_all.tsv';
+my $counts_file = 'gene_read_counts_table_all_final.tsv';
 my $ercc_counts_file = 'ercc_read_counts.tsv';
 
 my $ercc_fh = IO::File->new($ercc_file,'r');
@@ -33,7 +33,7 @@ my %count_data;
 print $ercc_counts_fh "ID\tSubgroup\tLabel\tMix\tConcentration\tCount\n";
 while (my $counts_line = $counts_fh->getline) {
     chomp($counts_line);
-    my @count_entry = split(' ',$counts_line);
+    my @count_entry = split('\t',$counts_line);
     if ($ercc_data{$count_entry[0]}) {
         my $id = $count_entry[0];
         my $subgroup = $ercc_data{$id}->[2];
