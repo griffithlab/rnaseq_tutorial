@@ -5,10 +5,9 @@ use warnings;
 
 use IO::File;
 
-my $data_dir = $ENV{RNA_HOME} .'/refs/ERCC';
-my $ercc_file = $data_dir .'/ERCC_Controls_Analysis.txt';
-my $counts_file = $ENV{RNA_HOME} .'/expression/tophat_counts/gene_read_counts_table_all.tsv';
-my $ercc_counts_file = $ENV{RNA_HOME} .'/expression/tophat_counts/ercc_read_counts.tsv';
+my $ercc_file = 'ERCC_Controls_Analysis.txt';
+my $counts_file = 'gene_read_counts_table_all_final.tsv';
+my $ercc_counts_file = 'ercc_read_counts.tsv';
 
 my $ercc_fh = IO::File->new($ercc_file,'r');
 unless ($ercc_fh) { die('Failed to find file: '. $ercc_file) }
@@ -34,7 +33,7 @@ my %count_data;
 print $ercc_counts_fh "ID\tSubgroup\tLabel\tMix\tConcentration\tCount\n";
 while (my $counts_line = $counts_fh->getline) {
     chomp($counts_line);
-    my @count_entry = split(' ',$counts_line);
+    my @count_entry = split('\t',$counts_line);
     if ($ercc_data{$count_entry[0]}) {
         my $id = $count_entry[0];
         my $subgroup = $ercc_data{$id}->[2];
