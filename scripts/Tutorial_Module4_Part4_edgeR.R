@@ -17,10 +17,7 @@ setwd(working_dir)
 mapping=read.table("~/workspace/rnaseq/de/htseq_counts/ENSG_ID2Name.txt", header=FALSE, stringsAsFactors=FALSE, row.names=1)
 
 # Read in count matrix
-dat=read.table("~/workspace/rnaseq/expression/htseq_counts/gene_read_counts_table_all_final.tsv", header=TRUE, stringsAsFactors=FALSE, row.names=1)
-
-#The last 5 rows are summary data, remove
-rawdata=dat[1:(length(rownames(dat))-5),]
+rawdata=read.table("~/workspace/rnaseq/expression/htseq_counts/gene_read_counts_table_all_final.tsv", header=TRUE, stringsAsFactors=FALSE, row.names=1)
 
 # Check dimensions
 dim(rawdata)
