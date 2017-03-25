@@ -102,8 +102,23 @@ sub get_trans_data{
     my $fh = IO::File->new($trans_file, 'r');
     while (my $line = $fh->getline) {
         chomp($line);
+        next if ($line =~ /^\#/);
         my @entry = split("\t", $line);
-    
+        next unless ($entry[2] eq 'transcript');
+        my $trans_id;
+        my $exp;
+        if ($entry[8] =~ /transcript_id\s+\"(\w+)\"\;/){
+            $trans_id = $1;
+        }else{
+            die "\n\nCould not find transcript id in line: $line\n\n";
+        }
+        if ($entry[8] =~ /$expression_metric\s+\"(\S+)\"\;/i){
+            $exp = $1;
+        }else{
+            die "\n\nCould not find expression value ($expression_metric) in line: $line\n\n";
+        }
+
+    }
 
     $fh->close;
 
