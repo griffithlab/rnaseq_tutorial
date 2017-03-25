@@ -46,6 +46,13 @@ foreach my $result_dir (@result_dirs){
 }
 my $sample_list_s = join("\t", @sample_list);
 
+#Parse transcript expression values
+my %trans_data;
+foreach my $s (sort {$a <=> $b} keys %samples){
+    my $result_dir = $samples{$s}{dir};
+    my $trans_exp = &get_trans_data('-expression_metric'=>$expression_metric, '-dir'=>$result_dir);
+    $trans_data{$s} = $trans_exp;
+}
 
 #Parse gene expression values
 my %gene_data;
@@ -81,9 +88,27 @@ foreach my $gid (sort keys %gids){
 }
 $go_fh->close;
 
-
 exit;
 
+sub get_trans_data{
+    my %args = @_;
+    my $expression_metric = $args{'-expression_metric'};
+    my $dir = $args{'-dir'};
+    my %exp;
+    my $trans_file = $dir . "/transcripts.gtf";
+    die "\n\nCould not find transcript abundance file: $trans_file\n\n" unless(-e $trans_file);
+    $expression_metric = 'cov' if ($expression_metric =~ /^coverage$/i);
+
+    my $fh = IO::File->new($trans_file, 'r');
+    while (my $line = $fh->getline) {
+        chomp($line);
+        my @entry = split("\t", $line);
+    
+
+    $fh->close;
+
+    return(\%exp);
+}
 
 sub get_gene_data{
     my %args = @_;
