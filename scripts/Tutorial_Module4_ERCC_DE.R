@@ -1,5 +1,12 @@
 #!/usr/bin/env Rscript
 
+#Jason Walker, jason.walker[AT]wustl.edu
+#Malachi Griffith, mgriffit[AT]wustl.edu
+#Obi Griffith, obigriffith[AT]wustl.edu
+#The McDonnell Genome Institute, Washington University School of Medicine
+
+#R tutorial for Informatics for RNA-sequence Analysis workshops
+
 #./Tutorial_Module4_ERCC_DE.R $RNA_HOME/refs/ERCC/ERCC_Controls_Analysis.txt $RNA_HOME/de/ballgown/ref_only/UHR_vs_HBR_gene_results.tsv
 
 library(ggplot2)

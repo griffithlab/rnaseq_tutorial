@@ -1,9 +1,9 @@
-#Tutorial_Module3_Part2_cummeRbund.R
+#Jason Walker, jason.walker[AT]wustl.edu
+#Malachi Griffith, mgriffit[AT]wustl.edu
+#Obi Griffith, obigriffith[AT]wustl.edu
+#The McDonnell Genome Institute, Washington University School of Medicine
 
-#Malachi Griffith, mgriffit[AT]genome.wustl.edu
-#Obi Griffith, ogriffit[AT]genome.wustl.edu
-#The Genome Institute, Washington Univerisity School of Medicine
-#R tutorial for CBW - Informatics for RNA-sequence Analysis
+#R tutorial for Informatics for RNA-sequence Analysis workshops
 
 
 # Optional:

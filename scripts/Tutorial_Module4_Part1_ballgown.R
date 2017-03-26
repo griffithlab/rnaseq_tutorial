@@ -1,3 +1,10 @@
+#Jason Walker, jason.walker[AT]wustl.edu
+#Malachi Griffith, mgriffit[AT]wustl.edu
+#Obi Griffith, obigriffith[AT]wustl.edu
+#The Genome McDonnell Institute, Washington University School of Medicine
+
+#R tutorial for Informatics for RNA-sequence Analysis workshops
+
 library(ballgown)
 library(genefilter)
 library(dplyr)

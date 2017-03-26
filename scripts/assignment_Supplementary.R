@@ -1,13 +1,12 @@
 #Integrated Assignment visualization
 #This code is adapted from: Tutorial_Part3_Supplementary_R.R
 
-#Malachi Griffith, mgriffit[AT]genome.wustl.edu
-#Obi Griffith, ogriffit[AT]genome.wustl.edu
+#Malachi Griffith, mgriffit[AT]wustl.edu
+#Obi Griffith, obigriffith[AT]wustl.edu
 #Jason Walker, jason.walker[AT]wustl.edu
+#McDonnell Genome Institute, Washington University School of Medicine
 
-#McDonneLll Genome Institute, Washington Univerisity School of Medicine
-#R tutorial for CBW - Bioinformatics for Cancer Genomics - RNA Sequence Analysis
-#R tutorial for CSHL - Advanced Sequencing Technologies & Applications
+#R tutorial for Informatics for RNA Sequence Analysis workshops
 
 #Starting from the output of the integrated assignment.
 
