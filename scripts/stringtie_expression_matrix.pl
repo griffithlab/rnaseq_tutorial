@@ -44,7 +44,9 @@ foreach my $result_dir (@result_dirs){
     $samples{$s}{name} = $sample_name;
     $samples{$s}{dir} = $result_dir;
 }
+my $sample_count = keys @sample_list;
 my $sample_list_s = join("\t", @sample_list);
+print "\n\nProcessing data for the following $sample_count samples:\n@sample_list";
 
 #Parse transcript expression values
 my %trans_data;
@@ -62,6 +64,17 @@ foreach my $s (sort {$a <=> $b} keys %samples){
     $gene_data{$s} = $gene_exp;
 }
 
+#Get a list of unique transcript IDs found across all data files
+my %tids;
+foreach my $s (sort {$a <=> $b} keys %samples){
+    my $data = $trans_data{$s};
+    foreach my $tid (keys %{$data}){
+        $tids{$tid}++;
+    }
+}
+my $tcount = keys %tids;
+print "\n\nGathered $expression_metric expression values for $tcount unique transcripts";
+
 #Get a list of unique gene IDs found across all data files
 my %gids;
 foreach my $s (sort {$a <=> $b} keys %samples){
@@ -70,6 +83,28 @@ foreach my $s (sort {$a <=> $b} keys %samples){
         $gids{$gid}++;
     }
 }
+my $gcount = keys %gids;
+print "\n\nGathered $expression_metric expression values for $gcount unique genes";
+
+#Write out the transcript file
+my $to_fh = IO::File->new($transcript_matrix_file, 'w');
+unless ($to_fh) { die('Failed to open file: '. $transcript_matrix_file); }
+print $to_fh "Transcript_ID\t$sample_list_s\n";
+foreach my $tid (sort keys %tids){
+    my @line;
+    push(@line, $tid);
+    foreach my $s (sort {$a <=> $b} keys %samples){
+        my $data = $trans_data{$s};
+        my $exp = "na";
+        if (defined($data->{$tid})){
+            $exp = $data->{$tid}->{exp};
+        }
+        push(@line, $exp);
+    }
+    my $line = join("\t", @line);
+    print $to_fh "$line\n";
+}
+$to_fh->close;
 
 #Write out the gene file
 my $go_fh = IO::File->new($gene_matrix_file, 'w');
@@ -80,13 +115,19 @@ foreach my $gid (sort keys %gids){
     push(@line, $gid);
     foreach my $s (sort {$a <=> $b} keys %samples){
         my $data = $gene_data{$s};
-        my $exp = $data->{$gid}->{exp};
+        my $exp = "na";
+        if (defined($data->{$gid})){
+            $exp = $data->{$gid}->{exp};
+        }
         push(@line, $exp);
     }
     my $line = join("\t", @line);
     print $go_fh "$line\n";
 }
 $go_fh->close;
+
+
+print "\n\n";
 
 exit;
 
@@ -107,7 +148,9 @@ sub get_trans_data{
         next unless ($entry[2] eq 'transcript');
         my $trans_id;
         my $exp;
-        if ($entry[8] =~ /transcript_id\s+\"(\w+)\"\;/){
+        if($entry[8] =~ /gene_id\s+\"(ERCC\S+)\"\;/){
+            $trans_id = $1;
+        }elsif ($entry[8] =~ /transcript_id\s+\"(\w+)\"\;/){
             $trans_id = $1;
         }else{
             die "\n\nCould not find transcript id in line: $line\n\n";
@@ -117,11 +160,9 @@ sub get_trans_data{
         }else{
             die "\n\nCould not find expression value ($expression_metric) in line: $line\n\n";
         }
-
+        $exp{$trans_id}{exp} = $exp;
     }
-
     $fh->close;
-
     return(\%exp);
 }
 
