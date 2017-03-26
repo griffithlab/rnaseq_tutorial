@@ -40,6 +40,12 @@ kallisto_gene = kallisto_gene[gene_names, sample_columns]
 stringtie_tran = stringtie_tran[tran_names, sample_columns]
 kallisto_tran = kallisto_tran[tran_names, sample_columns]
 
+#Take a look at the top of each data.frame
+head(htseq_gene)
+head(stringtie_gene)
+head(kallisto_gene)
+head(stringtie_tran)
+head(kallisto_tran)
 
 
 
