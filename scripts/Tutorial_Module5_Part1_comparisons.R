@@ -24,3 +24,11 @@ dim(kallisto_gene)
 
 dim(stringtie_tran)
 dim(kallisto_tran)
+
+#Reorganize the data.frames slightly for consistency
+kallisto_names = c("length", "HBR_Rep1", "HBR_Rep2", "HBR_Rep3", "UHR_Rep1", "UHR_Rep2", "UHR_Rep3") 
+names(kallisto_gene) = kallisto_names
+names(kallisto_tran) = kallisto_names
+
+
+

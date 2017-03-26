@@ -11,8 +11,8 @@ my $kallisto_transcript_matrix_in = '';
 my $kallisto_transcript_matrix_out = '';
 
 GetOptions('gtf_file=s'=>\$gtf_file, 
-	   'kallisto_transcript_matrix_in=s'=>\$kallisto_transcript_matrix_in, 
-	   'kallisto_transcript_matrix_out=s'=>\$kallisto_transcript_matrix_out);
+    	   'kallisto_transcript_matrix_in=s'=>\$kallisto_transcript_matrix_in, 
+	       'kallisto_transcript_matrix_out=s'=>\$kallisto_transcript_matrix_out);
 
 
 unless($gtf_file && $kallisto_transcript_matrix_in && $kallisto_transcript_matrix_out){
