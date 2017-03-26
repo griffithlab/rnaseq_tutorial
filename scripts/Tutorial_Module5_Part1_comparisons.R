@@ -25,10 +25,17 @@ dim(kallisto_gene)
 dim(stringtie_tran)
 dim(kallisto_tran)
 
-#Reorganize the data.frames slightly for consistency
+#Reorganize the data.frames for total consistency
 kallisto_names = c("length", "HBR_Rep1", "HBR_Rep2", "HBR_Rep3", "UHR_Rep1", "UHR_Rep2", "UHR_Rep3") 
 names(kallisto_gene) = kallisto_names
 names(kallisto_tran) = kallisto_names
+
+sample_columns = c("HBR_Rep1", "HBR_Rep2", "HBR_Rep3", "UHR_Rep1", "UHR_Rep2", "UHR_Rep3")
+htseq_gene = htseq_gene[,sample_columns]
+stringtie_gene = stringtie_gene[,sample_columns]
+kallisto_gene = kallisto_gene[,sample_columns]
+stringtie_tran = stringtie_tran[,sample_columns]
+kallisto_tran = kallisto_tran[,sample_columns]
 
 
 
