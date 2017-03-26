@@ -38,7 +38,7 @@ htseq_gene = htseq_gene[gene_names, sample_columns]
 stringtie_gene = stringtie_gene[gene_names, sample_columns]
 kallisto_gene = kallisto_gene[gene_names, sample_columns]
 stringtie_tran = stringtie_tran[tran_names, sample_columns]
-kallisto_tran = kallisto_tran[tran_names ,sample_columns]
+kallisto_tran = kallisto_tran[tran_names, sample_columns]
 
 
 
