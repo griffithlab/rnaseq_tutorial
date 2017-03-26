@@ -105,6 +105,7 @@ foreach my $tid (sort keys %tids){
     print $to_fh "$line\n";
 }
 $to_fh->close;
+print "\n\nPrinted transcript $expression_metric expression matrix to $transcript_matrix_file";
 
 #Write out the gene file
 my $go_fh = IO::File->new($gene_matrix_file, 'w');
@@ -125,10 +126,9 @@ foreach my $gid (sort keys %gids){
     print $go_fh "$line\n";
 }
 $go_fh->close;
-
+print "\n\nPrinted gene $expression_metric expression matrix to $gene_matrix_file";
 
 print "\n\n";
-
 exit;
 
 sub get_trans_data{
