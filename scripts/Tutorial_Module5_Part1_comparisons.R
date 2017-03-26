@@ -30,12 +30,16 @@ kallisto_names = c("length", "HBR_Rep1", "HBR_Rep2", "HBR_Rep3", "UHR_Rep1", "UH
 names(kallisto_gene) = kallisto_names
 names(kallisto_tran) = kallisto_names
 
-sample_columns = c("HBR_Rep1", "HBR_Rep2", "HBR_Rep3", "UHR_Rep1", "UHR_Rep2", "UHR_Rep3")
-htseq_gene = htseq_gene[,sample_columns]
-stringtie_gene = stringtie_gene[,sample_columns]
-kallisto_gene = kallisto_gene[,sample_columns]
-stringtie_tran = stringtie_tran[,sample_columns]
-kallisto_tran = kallisto_tran[,sample_columns]
+sample_names = c("HBR_Rep1", "HBR_Rep2", "HBR_Rep3", "UHR_Rep1", "UHR_Rep2", "UHR_Rep3")
+gene_names = row.names(kallisto_gene)
+tran_names = row.names(kallisto_tran)
+
+htseq_gene = htseq_gene[gene_names, sample_columns]
+stringtie_gene = stringtie_gene[gene_names, sample_columns]
+kallisto_gene = kallisto_gene[gene_names, sample_columns]
+stringtie_tran = stringtie_tran[tran_names, sample_columns]
+kallisto_tran = kallisto_tran[tran_names ,sample_columns]
+
 
 
 
