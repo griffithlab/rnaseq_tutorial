@@ -57,7 +57,6 @@ names(data) = c("kallisto", "stringtie", "htseq")
 p = ggplot(data, aes(log2(kallisto+stabvar), log2(stringtie+stabvar)))
 p = p + geom_point()
 p = p + geom_point(aes(colour = log2(htseq+stabvar))) + scale_colour_gradient(low = "yellow", high = "red")
-p = p + scale_x_log2() + scale_y_log2()
 
 pdf(file="Tutorial_Module5_Part1_comparisons.pdf")
 print(p)
