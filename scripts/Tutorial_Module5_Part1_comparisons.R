@@ -66,9 +66,10 @@ p1 = p1 + labs(title = "Comparison of expression values [log2(value + 0.1) scale
 # Indicate with the points whether the data are real transcripts vs. spike-in controls
 
 
-#Plot stringtie transcript TPMs vs. stringtie transcript FPKMs
+#3. Plot stringtie transcript TPMs vs. stringtie transcript FPKMs
 
 
+#4. Plot kallisto transcript TPMs vs. stringtie FPKMs 
 
 
 #Print out the plots created above and store in a single PDF file
