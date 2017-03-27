@@ -34,11 +34,11 @@ sample_names = c("HBR_Rep1", "HBR_Rep2", "HBR_Rep3", "UHR_Rep1", "UHR_Rep2", "UH
 gene_names = row.names(kallisto_gene)
 tran_names = row.names(kallisto_tran)
 
-htseq_gene = htseq_gene[gene_names, sample_columns]
-stringtie_gene = stringtie_gene[gene_names, sample_columns]
-kallisto_gene = kallisto_gene[gene_names, sample_columns]
-stringtie_tran = stringtie_tran[tran_names, sample_columns]
-kallisto_tran = kallisto_tran[tran_names, sample_columns]
+htseq_gene = htseq_gene[gene_names, sample_names]
+stringtie_gene = stringtie_gene[gene_names, sample_names]
+kallisto_gene = kallisto_gene[gene_names, sample_names]
+stringtie_tran = stringtie_tran[tran_names, sample_names]
+kallisto_tran = kallisto_tran[tran_names, sample_names]
 
 #Take a look at the top of each data.frame
 head(htseq_gene)
