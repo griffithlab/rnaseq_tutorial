@@ -55,7 +55,7 @@ data = data.frame(kallisto_gene[,"HBR_Rep1"], stringtie_gene[,"HBR_Rep1"], htseq
 names(data) = c("kallisto", "stringtie", "htseq")
 p = ggplot(data, aes(kallisto, stringtie))
 p = p + geom_point()
-p = p + geom_point(aes(colour = htseq)) + scale_colour_gradient(low = "yellow", medium = "orange", high = "red")
+p = p + geom_point(aes(colour = htseq)) + scale_colour_gradient(low = "yellow", mid = "orange", high = "red")
 
 
 pdf(file="Tutorial_Module5_Part1_comparisons.pdf")
