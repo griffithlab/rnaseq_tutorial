@@ -56,7 +56,7 @@ names(data) = c("kallisto", "stringtie", "htseq")
 p = ggplot(data, aes(kallisto, stringtie))
 p = p + geom_point()
 p = p + geom_point(aes(colour = htseq)) + scale_colour_gradient(low = "yellow", high = "red")
-
+p = p + scale_x_log2() + scale_y_log2()
 
 pdf(file="Tutorial_Module5_Part1_comparisons.pdf")
 print(p)
