@@ -56,6 +56,8 @@ names(data) = c("kallisto", "stringtie", "htseq")
 p = ggplot(data, aes(kallisto, stringtie))
 
 
-
+pdf(file="Tutorial_Module5_Part1_comparisons.pdf")
+print(p)
+dev.off()
 
 
