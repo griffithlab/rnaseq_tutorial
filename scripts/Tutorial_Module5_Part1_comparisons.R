@@ -51,11 +51,12 @@ head(stringtie_tran)
 head(kallisto_tran)
 
 #Plot kallisto transcript TPMs vs stringtie transcript TPMs
+stabvar = 0.1
 data = data.frame(kallisto_gene[,"HBR_Rep1"], stringtie_gene[,"HBR_Rep1"], htseq_gene[,"HBR_Rep1"])
 names(data) = c("kallisto", "stringtie", "htseq")
-p = ggplot(data, aes(kallisto, stringtie))
+p = ggplot(data, aes(log2(kallisto+stabvar), log2(stringtie+stabvar)))
 p = p + geom_point()
-p = p + geom_point(aes(colour = htseq)) + scale_colour_gradient(low = "yellow", high = "red")
+p = p + geom_point(aes(colour = log2(htseq+stabvar))) + scale_colour_gradient(low = "yellow", high = "red")
 p = p + scale_x_log2() + scale_y_log2()
 
 pdf(file="Tutorial_Module5_Part1_comparisons.pdf")
