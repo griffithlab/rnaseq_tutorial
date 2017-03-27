@@ -6,6 +6,9 @@
 
 #R tutorial for Informatics for RNA-sequence Analysis workshops
 
+#Load libraries
+library(ggplot2)
+
 #Set the base working dir from which to access the input files
 working_dir = '/home/ubuntu/workspace/rnaseq/expression'
 setwd(working_dir)
