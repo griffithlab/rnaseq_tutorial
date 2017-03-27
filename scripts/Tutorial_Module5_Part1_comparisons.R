@@ -57,6 +57,8 @@ names(data) = c("kallisto", "stringtie", "htseq")
 p = ggplot(data, aes(log2(kallisto+stabvar), log2(stringtie+stabvar)))
 p = p + geom_point()
 p = p + geom_point(aes(colour = log2(htseq+stabvar))) + scale_colour_gradient(low = "yellow", high = "red")
+p = p + xlab("Kallisto TPM") + ylab("StringTie TPM") + labs(colour = "HtSeq Counts")
+p = p + title("Comparison of expression values [log2(value + 0.1) scaled]")
 
 pdf(file="Tutorial_Module5_Part1_comparisons.pdf")
 print(p)
