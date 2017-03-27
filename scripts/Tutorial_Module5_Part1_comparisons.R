@@ -47,6 +47,10 @@ head(kallisto_gene)
 head(stringtie_tran)
 head(kallisto_tran)
 
+#Plot kallisto transcript TPMs vs stringtie transcript TPMs
+data = data.frame(kallisto_gene[,"HBR_Rep1"], stringtie_gene[,"HBR_Rep1"], htseq_gene[,"HBR_Rep1"])
+names(data) = c("kallisto", "stringtie", "htseq")
+p = ggplot(data, aes(kallisto, stringtie))
 
 
 
