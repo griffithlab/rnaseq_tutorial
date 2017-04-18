@@ -17,7 +17,7 @@ Note: An archived version of this tutorial exists <a href="https://github.com/gr
 
 [Fork it and send a pull request.](https://github.com/griffithlab/rnaseq_tutorial_wiki.git)
 
-===============
+<hr>
 
 ### Tutorial Table of Contents
 <ol start="0">
