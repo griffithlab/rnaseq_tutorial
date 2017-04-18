@@ -1,4 +1,4 @@
-###Supplementary Table 8.  General resources for RNA-seq analysis
+### Supplementary Table 8.  General resources for RNA-seq analysis
 
 The following table provides a list of general resources to help understand the background of RNA biology, next generation sequencing, RNA-seq laboratory methods, and RNA-seq analysis.  Additional educational resources can be found in the resources section of the online tutorial at www.rnaseq.wiki. 
 

@@ -1,4 +1,4 @@
-###Supplementary Table 2.  Tools for RNA-seq analysis
+### Supplementary Table 2.  Tools for RNA-seq analysis
 All tools used in the online tutorial (www.rnaseq.wiki) are referenced below (in bold) along with alternative tools in each category.  Where possible a citation is provided.  Links are also provided to help the user evaluate the code and the level of maintenance.  Where possible the link goes directly to a source controlled repository such as a git repo.  Additional lists of tools can be found here: Alamancos et al. (arXiv), Hooper et al. [<a href="http://www.ncbi.nlm.nih.gov/pubmed/24447644">24447644</a>], the rna-seqblog, and RNA-seq - Protocols and Algorithms.  This table is meant to be comprehensive but not exhaustive.  Some RNA-seq analysis applications that are not explicitly covered here include co-regulation (co-expression), disease classification, time series, expression compendium databases, outlier expression, data normalization, and miRNA analysis.
 
 | Category | Representative tools |

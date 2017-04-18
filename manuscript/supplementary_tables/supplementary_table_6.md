@@ -1,4 +1,4 @@
-###Supplementary Table 6.  Critical file formats used in RNA-seq analysis
+### Supplementary Table 6.  Critical file formats used in RNA-seq analysis
 
 The following table describes several file formats used in most RNA-seq analysis workflows as well as several files specific to the expression analysis tools used by the online tutorials that accompany this article (at www.rnaseq.wiki).
 

@@ -1,4 +1,4 @@
-###Supplementary Table 7.  Common RNA-seq questions and their answers.
+### Supplementary Table 7.  Common RNA-seq questions and their answers.
 
 The following table summarizes a list of commonly asked questions relating to RNA-seq analysis with links to BioStar (PMID: 22046109) posts where these questions have been addressed by the community.
 
