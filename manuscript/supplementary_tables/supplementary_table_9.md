@@ -1,4 +1,4 @@
-###Supplementary Table 9.  RNA-seq workshops and online tutorials
+### Supplementary Table 9.  RNA-seq workshops and online tutorials
 
 The following table lists RNA-seq workshops and other tutorials complementary to this article.  These examples are limited to online materials or short workshops.  Not listed here are formal training programs or degrees in bioinformatics.  For ongoing discussion of this topic, refer to these BioStar (PMID: 22046109) posts: https://www.biostars.org/p/79845/ and https://www.biostars.org/p/11034/.
 

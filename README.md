@@ -1,4 +1,4 @@
-###Informatics for RNA-seq: A web resource for analysis on the cloud
+### Informatics for RNA-seq: A web resource for analysis on the cloud
 ===============
 An educational tutorial and working demonstration pipeline for RNA-seq analysis including an introduction to: cloud computing, next generation sequence file formats, reference genomes, gene annotation, expression analysis, differential expression analysis, alternative splicing analysis, data visualization, and interpretation.
 
@@ -16,7 +16,7 @@ Note: An archived version of this tutorial exists <a href="https://github.com/gr
 [Fork it and send a pull request.](https://github.com/griffithlab/rnaseq_tutorial_wiki.git)
 
 ===============
-###Tutorial Table of Contents
+### Tutorial Table of Contents
 <ol start="0">
   <li><strong>Module 0 - Introduction and Cloud Computing</strong></li>
   <ol start="i">
