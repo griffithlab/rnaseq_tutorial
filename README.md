@@ -67,7 +67,7 @@ Note: An archived version of this tutorial exists <a href="https://github.com/gr
    <ol start="i">  
    <li><a href="https://github.com/griffithlab/rnaseq_tutorial/wiki/Kallisto">Use of Kallisto for Abundance Estimation</a></li>
   </ol>
-  <li><strong>Module 6 - De novo transcript reconstruction</strong><li>
+  <li><strong>Module 6 - De novo transcript reconstruction</strong></li>
     <ol start="i">
     <li><a href=https://github.com/griffithlab/rnaseq_tutorial/wiki/Trinity_assembly_and_analysis.md">6-i De novo RNA-Seq Assembly and Analysis Using Trinity</a></li>
     </ol>
