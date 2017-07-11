@@ -63,10 +63,18 @@ Note: An archived version of this tutorial exists <a href="https://github.com/gr
    <li><a href="https://github.com/griffithlab/rnaseq_tutorial/wiki/Differential-Splicing">Differential Splicing</a></li>
    <li><a href="https://github.com/griffithlab/rnaseq_tutorial/wiki/Transcript-Assembly-Visualization">Transcript Assembly Visualization</a></li>
   </ol>
-  <li><strong>Module 5 - Reference free analysis</strong></li>
+  <li><strong>Module 5 - Reference free expression analysis</strong></li>
    <ol start="i">  
    <li><a href="https://github.com/griffithlab/rnaseq_tutorial/wiki/Kallisto">Use of Kallisto for Abundance Estimation</a></li>
   </ol>
+  <li><strong>Module 6 - De novo transcript reconstruction</strong><li>
+    <ol start="i">
+    <li><a href=https://github.com/griffithlab/rnaseq_tutorial/wiki/Trinity_assembly_and_analysis.md">6-i De novo RNA-Seq Assembly and Analysis Using Trinity</a></li>
+    </ol>
+    <li><strong>Module 7 - Functional Annotation of Transcripts</li>
+    <ol start='i'>
+     <li><a href="https://github.com/griffithlab/rnaseq_tutorial/wiki/Trinotate_functional_annotation.md">7-i Functional Annotation of Assembled Transcripts Using Trinotate</li>
+    </ol>
   <li><strong>Appendix</strong></li>
   <ol start="i">
    <li><a href="https://github.com/griffithlab/rnaseq_tutorial/wiki/Abbreviations">Abbreviations</a></li>
