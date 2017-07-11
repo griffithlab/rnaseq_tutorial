@@ -86,6 +86,7 @@ names(HBR1_tran_data2) = c("stringtie_TPM", "stringtie_FPKM")
 p3 = ggplot(HBR1_tran_data2, aes(log2(stringtie_TPM+stabvar), log2(stringtie_FPKM+stabvar)))
 p3 = p3 + geom_point()
 p3 = p3 + geom_point(aes(colour = spikein_status))
+p3 = p3 + geom_abline(intercept = 0, slope = 1)
 p3 = p3 + xlab("StringTie TPM") + ylab("StringTie FPKM") + labs(colour = "SpikeIn Status")
 p3 = p3 + labs(title = "HBR1 transcript expression values [log2(value + 0.1) scaled]")
 
