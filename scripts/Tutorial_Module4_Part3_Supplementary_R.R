@@ -18,52 +18,6 @@ library(ballgown)
 #If X11 not available, open a pdf device for output of all plots
 pdf(file="Tutorial_Part3_Supplementary_R_output.pdf")
 
-#### Basic R usage.
-
-#Lines beginning with "#" are comments.  All other lines should be executed *IN ORDER*
-#Copy and paste from this document to the R commandline interface
-#OR if running R on a Mac use: <command> <enter>
-#OR if running R on a Windows machine use: <ctrl> r
-
-#To learn about any command type: ?command_name  OR  help.search("command_name")
-#e.g.    ?read.table
-
-#This tutorial assumes you are running R on your laptop and therefore the graphics generated can be viewed directly
-#If you were running this tutorial in a Linux terminal without X you would write each graph to a file and then open that file
-#Every time you execute a 'plot()', 'hist()', 'boxplot()', etc. command, a new window will open to render the graph
-#Or if you leave this window open, each time you draw a new graph it will replace the old one
-#Similarly, we will often open a graph, and then in subsequent steps add annotation to that graph (legends, labels, etc.)
-#I recommend that you just leave the graphics window open and keep viewing it as you go.
-
-#Test your graphics by running the R graphics demo.  
-#Press <enter> when prompted, then view the graph and press <enter> to continue to the next graphic
-#try this on your own laptop installations of R (it won't work interactively on the Amazon cloud without X11)
-#demo(graphics)
-
-#Clean up workspace - i.e. delete variable created by the graphics demo
-rm(list = ls(all = TRUE))
-
-#Working with variables in R
-x = 5
-y = 10
-z = x*y
-
-#Create a sequence of numbers and assign this sequence to a variable called 'my_sequence'
-my_sequence = 1:13
-
-#The contents of any variable can be printed to the screen by simply typing in the name of the variable and hitting <enter>
-#If you do this for a variable that contains a large amount of data, it may take a while for everything to print out
-#If you do that by accident, you can abort a command by pressing <esc>
-#View the contents of x, y, z, and 'my_sequence'
-x
-y
-z
-my_sequence
-
-#List the variables that exist in your current work space
-ls()
-
-
 #### Import the gene expression data from the HISAT2/StringTie/Ballgown tutorial
 
 #Set working directory where results files exist
