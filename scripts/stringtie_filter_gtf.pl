@@ -24,7 +24,7 @@ unless($expression_metric && $result_dirs && $input_gtf_file && $filtered_gtf_fi
     print "\n\nRequired parameters missing\n\n";
     print "Usage:\n\n";
     print "cd \$RNA_HOME/expression/stringtie/ref_guided_merged\n";
-    print "./stringtie_filter_gtf.pl --expression_metric=FPKM --result_dirs='HBR_Rep1,HBR_Rep2,HBR_Rep3,UHR_Rep1,UHR_Rep2,UHR_Rep3' --input_gtf_file='\$RNA_HOME/expression/stringtie/ref_guided/stringtie_merged.gtf' --filtered_gtf_file='\$RNA_HOME/expression/stringtie/ref_guided/stringtie_merged.gtf' --exp_cutoff=0 --min_sample_count=1\n\n";
+    print "./stringtie_filter_gtf.pl --expression_metric=FPKM --result_dirs='HBR_Rep1,HBR_Rep2,HBR_Rep3,UHR_Rep1,UHR_Rep2,UHR_Rep3' --input_gtf_file='/home/ubuntu/workspace/rnaseq/expression/stringtie/ref_guided/stringtie_merged.gtf' --filtered_gtf_file='/home/ubuntu/workspace/rnaseq/expression/stringtie/ref_guided/stringtie_merged.filtered.gtf' --exp_cutoff=0 --min_sample_count=1\n\n";
     exit();
 }
 
@@ -62,17 +62,48 @@ foreach my $s (sort {$a <=> $b} keys %samples){
     $trans_data{$s} = $trans_exp;
 }
 
-#Get a list of unique transcript IDs found across all data files
-my %tids;
+#Determine the transcripts that meet the minimum expression criteria. 
+#Count the number of qualifying samples for each
+my %tids1;
 foreach my $s (sort {$a <=> $b} keys %samples){
     my $data = $trans_data{$s};
     foreach my $tid (keys %{$data}){
-        $tids{$tid}++;
+        if ($data->{$tid}->{exp} > $exp_cutoff){
+            $tids1{$tid}++;
+	}
     }
 }
-my $tcount = keys %tids;
-print "\n\nGathered $expression_metric expression values for $tcount unique transcripts";
+my %tids2;
+foreach my $tid (keys %tids1){
+    if ($tids1{$tid} >= $min_sample_count){
+        $tids2{$tid} = 1;
+    }
+}
+my $tcount = keys %tids2;
+print "\n\nGathered $tcount unique transcripts meet the min expression (>$exp_cutoff $expression_metric) and sample (>= $min_sample_count) criteria";
 
+#Use the list of passing transcript IDs to produce a filtered version of the input GTF
+my $fh1 = IO::File->new($input_gtf_file, 'r') || die "\n\nCould not open file: $input_gtf_file\n\n";
+my $fh2 = IO::File->new($filtered_gtf_file, 'w') || die "\n\nCould not open file: $filtered_gtf_file\n\n";
+while (my $line = $fh1->getline){
+    chomp($line);
+    if ($line =~ /^\#/){
+        print $fh2 "$line\n";
+        next;
+    }
+    my @entry = split("\t", $line);
+    my $trans_id;
+    if($entry[8] =~ /gene_id\s+\"(ERCC\S+)\"\;/){
+        $trans_id = $1;
+    }elsif ($entry[8] =~ /transcript_id\s+\"(\S+)\"\;/){
+        $trans_id = $1;
+    }else{
+        die "\n\nCould not find transcript id in line: $line\n\n";
+    }
+    print $fh2 "$line\n" if ($tids2{$trans_id});
+}
+$fh1->close;
+$fh2->close;
 
 print "\n\n";
 exit;
