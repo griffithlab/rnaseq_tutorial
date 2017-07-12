@@ -22,7 +22,9 @@ GetOptions('expression_metric=s'=>\$expression_metric, #Choice of expression val
 
 unless($expression_metric && $result_dirs && $input_gtf_file && $filtered_gtf_file && defined($exp_cutoff) && defined($min_sample_count)){
     print "\n\nRequired parameters missing\n\n";
-    print "Usage:  ./stringtie_filter_gtf.pl --expression_metric=FPKM --result_dirs='HBR_Rep1,HBR_Rep2,HBR_Rep3,UHR_Rep1,UHR_Rep2,UHR_Rep3' --input_gtf_file='' --filtered_gtf_file='' --exp_cutoff=0 --min_sample_count=1\n\n";
+    print "Usage:\n\n";
+    print "cd \$RNA_HOME/expression/stringtie/ref_guided_merged\n";
+    print "./stringtie_filter_gtf.pl --expression_metric=FPKM --result_dirs='HBR_Rep1,HBR_Rep2,HBR_Rep3,UHR_Rep1,UHR_Rep2,UHR_Rep3' --input_gtf_file='\$RNA_HOME/expression/stringtie/ref_guided/stringtie_merged.gtf' --filtered_gtf_file='\$RNA_HOME/expression/stringtie/ref_guided/stringtie_merged.gtf' --exp_cutoff=0 --min_sample_count=1\n\n";
     exit();
 }
 
@@ -94,7 +96,7 @@ sub get_trans_data{
         my $exp;
         if($entry[8] =~ /gene_id\s+\"(ERCC\S+)\"\;/){
             $trans_id = $1;
-        }elsif ($entry[8] =~ /transcript_id\s+\"(\w+)\"\;/){
+        }elsif ($entry[8] =~ /transcript_id\s+\"(\S+)\"\;/){
             $trans_id = $1;
         }else{
             die "\n\nCould not find transcript id in line: $line\n\n";
