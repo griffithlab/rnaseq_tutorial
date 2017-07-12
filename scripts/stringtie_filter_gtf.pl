@@ -92,6 +92,7 @@ while (my $line = $fh1->getline){
         next;
     }
     my @entry = split("\t", $line);
+    next if $entry[2] eq 'gene';
     my $trans_id;
     if($entry[8] =~ /gene_id\s+\"(ERCC\S+)\"\;/){
         $trans_id = $1;
