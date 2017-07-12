@@ -35,25 +35,26 @@ Note: An archived version of this tutorial exists <a href="https://github.com/gr
   <li><strong>Module 1 - Introduction to RNA sequencing</strong></li>
   <ol start="i">
    <li><a href="https://github.com/griffithlab/rnaseq_tutorial/wiki/Installation">Installation</a></li>
-   <li><a href="https://github.com/griffithlab/rnaseq_tutorial/wiki/Reference-Genome">Reference Genome</a></li>
-   <li><a href="https://github.com/griffithlab/rnaseq_tutorial/wiki/Annotation">Annotation</a></li>
+   <li><a href="https://github.com/griffithlab/rnaseq_tutorial/wiki/Reference-Genome">Reference Genomes</a></li>
+   <li><a href="https://github.com/griffithlab/rnaseq_tutorial/wiki/Annotation">Annotations</a></li>
    <li><a href="https://github.com/griffithlab/rnaseq_tutorial/wiki/Indexing">Indexing</a></li>
    <li><a href="https://github.com/griffithlab/rnaseq_tutorial/wiki/RNAseq-Data">RNA-seq Data</a></li>
-   <li><a href="https://github.com/griffithlab/rnaseq_tutorial/wiki/PreAlignment-QC">PreAlignment QC</a></li>
+   <li><a href="https://github.com/griffithlab/rnaseq_tutorial/wiki/PreAlignment-QC">Pre-Alignment QC</a></li>
   </ol>
   <li><strong>Module 2 - RNA-seq Alignment and Visualization</strong></li>
   <ol start="i">
    <li><a href="https://github.com/griffithlab/rnaseq_tutorial/wiki/Adapter-Trim">Adapter Trim</a></li>
    <li><a href="https://github.com/griffithlab/rnaseq_tutorial/wiki/Alignment">Alignment</a></li>
    <li><a href="https://github.com/griffithlab/rnaseq_tutorial/wiki/IGV-Tutorial">IGV</a></li>
-   <li><a href="https://github.com/griffithlab/rnaseq_tutorial/wiki/PostAlignment-Visualization">PostAlignment Visualization</a></li>
-   <li><a href="https://github.com/griffithlab/rnaseq_tutorial/wiki/PostAlignment-QC">PostAlignment QC</a></li>
+   <li><a href="https://github.com/griffithlab/rnaseq_tutorial/wiki/PostAlignment-Visualization">Alignment Visualization</a></li>
+   <li><a href="https://github.com/griffithlab/rnaseq_tutorial/wiki/PostAlignment-QC">Alignment QC</a></li>
   </ol>
   <li><strong>Module 3 - Expression and Differential Expression</strong></li>
   <ol start="i">
    <li><a href="https://github.com/griffithlab/rnaseq_tutorial/wiki/Expression">Expression</a></li>
    <li><a href="https://github.com/griffithlab/rnaseq_tutorial/wiki/Differential-Expression">Differential Expression</a></li>
    <li><a href="https://github.com/griffithlab/rnaseq_tutorial/wiki/DE-Visualization">DE Visualization</a></li>
+   <li><a href="https://github.com/griffithlab/rnaseq_tutorial/wiki/Kallisto">Kallisto for Reference-Free Abundance Estimation</a></li>
   </ol>
   <li><strong>Module 4 - Isoform Discovery and Alternative Expression</strong></li>
   <ol start="i">
@@ -61,22 +62,19 @@ Note: An archived version of this tutorial exists <a href="https://github.com/gr
    <li><a href="https://github.com/griffithlab/rnaseq_tutorial/wiki/de-novo-Transcript-Assembly">de novo Transcript Assembly</a></li>
    <li><a href="https://github.com/griffithlab/rnaseq_tutorial/wiki/Transcript-Assembly-Merge">Transcript Assembly Merge</a></li>
    <li><a href="https://github.com/griffithlab/rnaseq_tutorial/wiki/Differential-Splicing">Differential Splicing</a></li>
-   <li><a href="https://github.com/griffithlab/rnaseq_tutorial/wiki/Transcript-Assembly-Visualization">Transcript Assembly Visualization</a></li>
+   <li><a href="https://github.com/griffithlab/rnaseq_tutorial/wiki/Transcript-Assembly-Visualization">Splicing Visualization</a></li>
   </ol>
-  <li><strong>Module 5 - Reference free expression analysis</strong></li>
-   <ol start="i">  
-   <li><a href="https://github.com/griffithlab/rnaseq_tutorial/wiki/Kallisto">Use of Kallisto for Abundance Estimation</a></li>
-  </ol>
-  <li><strong>Module 6 - De novo transcript reconstruction</strong></li>
+  <li><strong>Module 5 - De novo transcript reconstruction</strong></li>
     <ol start="i">
-    <li><a href=https://github.com/griffithlab/rnaseq_tutorial/wiki/Trinity_assembly_and_analysis">De novo RNA-Seq Assembly and Analysis Using Trinity</a></li>
+    <li><a href=https://github.com/griffithlab/rnaseq_tutorial/wiki/Trinity-Assembly-And-Analysis">De novo RNA-Seq Assembly and Analysis Using Trinity</a></li>
     </ol>
-  <li><strong>Module 7 - Functional Annotation of Transcripts</strong></li>
+  <li><strong>Module 6 - Functional Annotation of Transcripts</strong></li>
     <ol start="i">
-    <li><a href="https://github.com/griffithlab/rnaseq_tutorial/wiki/Trinotate_functional_annotation">Functional Annotation of Assembled Transcripts Using Trinotate</a></li>
+    <li><a href="https://github.com/griffithlab/rnaseq_tutorial/wiki/Trinotate-Functional-Annotation">Functional Annotation of Assembled Transcripts Using Trinotate</a></li>
     </ol>
   <li><strong>Appendix</strong></li>
   <ol start="i">
+   <li><a href="https://github.com/griffithlab/rnaseq_tutorial/wiki/Saving-Your-Results">Saving Your Results</a></li>
    <li><a href="https://github.com/griffithlab/rnaseq_tutorial/wiki/Abbreviations">Abbreviations</a></li>
    <li><a href="https://github.com/griffithlab/rnaseq_tutorial/wiki/Lectures">Lectures</a></li>
    <li><a href="https://github.com/griffithlab/rnaseq_tutorial/wiki/Solutions">Practical Exercise Solutions</a></li>
