@@ -8,17 +8,21 @@ use Data::Dumper;
 
 my $expression_metric = '';
 my $result_dirs = '';
-my $transcript_matrix_file = '';
-my $gene_matrix_file = '';
+my $input_gtf_file = '';
+my $filtered_gtf_file = '';
+my $exp_cutoff = '';
+my $min_sample_count = '';
 
-GetOptions('expression_metric=s'=>\$expression_metric, 
-           'result_dirs=s'=>\$result_dirs, 
-           'transcript_matrix_file=s'=>\$transcript_matrix_file,
-           'gene_matrix_file=s'=>\$gene_matrix_file);
+GetOptions('expression_metric=s'=>\$expression_metric, #Choice of expression value type
+           'result_dirs=s'=>\$result_dirs, #Dir with expression value GTF files
+           'input_gtf_file=s'=>\$input_gtf_file, #Transcript assembly GTF to be filtered 
+           'filtered_gtf_file=s'=>\$filtered_gtf_file, #Filtered version of the assembly GTF
+	   'exp_cutoff=f'=>\$exp_cutoff, #Value must be greater than this for transcript to expressed
+	   'min_sample_count=i'=>\$min_sample_count); #At least this many samples with transcript expressed
 
-unless($expression_metric && $result_dirs && $transcript_matrix_file && $gene_matrix_file){
+unless($expression_metric && $result_dirs && $input_gtf_file && $filtered_gtf_file && defined($exp_cutoff) && defined($min_sample_count)){
     print "\n\nRequired parameters missing\n\n";
-    print "Usage:  ./stringtie_expression_matrix.pl --expression_metric=TPM  --result_dirs='HBR_Rep1,HBR_Rep2,HBR_Rep3,UHR_Rep1,UHR_Rep2,UHR_Rep3' --transcript_matrix_file=transcript_tpms_all_samples.tsv --gene_matrix_file=gene_tpms_all_samples.tsv\n\n";
+    print "Usage:  ./stringtie_filter_gtf.pl --expression_metric=FPKM --result_dirs='HBR_Rep1,HBR_Rep2,HBR_Rep3,UHR_Rep1,UHR_Rep2,UHR_Rep3' --input_gtf_file='' --filtered_gtf_file='' --exp_cutoff=0 --min_sample_count=1\n\n";
     exit();
 }
 
@@ -56,14 +60,6 @@ foreach my $s (sort {$a <=> $b} keys %samples){
     $trans_data{$s} = $trans_exp;
 }
 
-#Parse gene expression values
-my %gene_data;
-foreach my $s (sort {$a <=> $b} keys %samples){
-    my $result_dir = $samples{$s}{dir};
-    my $gene_exp = &get_gene_data('-expression_metric'=>$expression_metric, '-dir'=>$result_dir);
-    $gene_data{$s} = $gene_exp;
-}
-
 #Get a list of unique transcript IDs found across all data files
 my %tids;
 foreach my $s (sort {$a <=> $b} keys %samples){
@@ -75,58 +71,6 @@ foreach my $s (sort {$a <=> $b} keys %samples){
 my $tcount = keys %tids;
 print "\n\nGathered $expression_metric expression values for $tcount unique transcripts";
 
-#Get a list of unique gene IDs found across all data files
-my %gids;
-foreach my $s (sort {$a <=> $b} keys %samples){
-    my $data = $gene_data{$s};
-    foreach my $gid (keys %{$data}){
-        $gids{$gid}++;
-    }
-}
-my $gcount = keys %gids;
-print "\n\nGathered $expression_metric expression values for $gcount unique genes";
-
-#Write out the transcript file
-my $to_fh = IO::File->new($transcript_matrix_file, 'w');
-unless ($to_fh) { die('Failed to open file: '. $transcript_matrix_file); }
-print $to_fh "Transcript_ID\t$sample_list_s\n";
-foreach my $tid (sort keys %tids){
-    my @line;
-    push(@line, $tid);
-    foreach my $s (sort {$a <=> $b} keys %samples){
-        my $data = $trans_data{$s};
-        my $exp = "na";
-        if (defined($data->{$tid})){
-            $exp = $data->{$tid}->{exp};
-        }
-        push(@line, $exp);
-    }
-    my $line = join("\t", @line);
-    print $to_fh "$line\n";
-}
-$to_fh->close;
-print "\n\nPrinted transcript $expression_metric expression matrix to $transcript_matrix_file";
-
-#Write out the gene file
-my $go_fh = IO::File->new($gene_matrix_file, 'w');
-unless ($go_fh) { die('Failed to open file: '. $gene_matrix_file); }
-print $go_fh "Gene_ID\t$sample_list_s\n";
-foreach my $gid (sort keys %gids){
-    my @line;
-    push(@line, $gid);
-    foreach my $s (sort {$a <=> $b} keys %samples){
-        my $data = $gene_data{$s};
-        my $exp = "na";
-        if (defined($data->{$gid})){
-            $exp = $data->{$gid}->{exp};
-        }
-        push(@line, $exp);
-    }
-    my $line = join("\t", @line);
-    print $go_fh "$line\n";
-}
-$go_fh->close;
-print "\n\nPrinted gene $expression_metric expression matrix to $gene_matrix_file";
 
 print "\n\n";
 exit;
@@ -165,45 +109,4 @@ sub get_trans_data{
     $fh->close;
     return(\%exp);
 }
-
-sub get_gene_data{
-    my %args = @_;
-    my $expression_metric = $args{'-expression_metric'};
-    my $dir = $args{'-dir'};
-    my %exp;
-    my $gene_file = $dir . "/gene_abundances.tsv";
-    die "\n\nCould not find gene abundance file: $gene_file\n\n" unless(-e $gene_file);
-
-    my $fh = IO::File->new($gene_file, 'r');
-    my $l = 0;
-    my $c = 0;
-    my $metric_col;
-    while (my $line = $fh->getline) {
-        chomp($line);
-        my @entry = split("\t", $line);
-        $l++;
-        if ($l == 1){
-            foreach my $col (@entry){
-                if ($col =~ /$expression_metric/i){
-                    $metric_col = $c;
-                }
-                $c++;
-            }
-            next;
-        }
-        die "\n\nCould not find metric col for $expression_metric\n\n" unless (defined ($metric_col));
-
-        my $gene_id = $entry[0];
-        my $gene_name = $entry[1];
-        my $ref = $entry[2];
-        my $strand = $entry[3];
-        my $start = $entry[4];
-        my $end = $entry[5];
-        my $exp = $entry[$metric_col];
-        $exp{$gene_id}{exp} = $exp;
-    }
-    $fh->close;
-    return(\%exp);
-}
-
 
