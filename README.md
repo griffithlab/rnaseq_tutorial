@@ -66,7 +66,7 @@ Note: An archived version of this tutorial exists <a href="https://github.com/gr
   </ol>
   <li><strong>Module 5 - De novo transcript reconstruction</strong></li>
     <ol start="i">
-    <li><a href=https://github.com/griffithlab/rnaseq_tutorial/wiki/Trinity-Assembly-And-Analysis">De novo RNA-Seq Assembly and Analysis Using Trinity</a></li>
+    <li><a href="https://github.com/griffithlab/rnaseq_tutorial/wiki/Trinity-Assembly-And-Analysis">De novo RNA-Seq Assembly and Analysis Using Trinity</a></li>
     </ol>
   <li><strong>Module 6 - Functional Annotation of Transcripts</strong></li>
     <ol start="i">
