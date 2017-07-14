@@ -13,7 +13,7 @@
 sudo mount /dev/xvdb /workspace
 
 #Make ephemeral storage mounts persistent
-echo -e "LABEL=cloudimg-rootfs / ext4 defaults 0 0\n/dev/xvdb /workspace auto defaults,nobootwait 0 2" | sudo tee /etc/fstab
+echo -e "LABEL=cloudimg-rootfs / ext4 defaults,discard 0 0\n/dev/xvdb /workspace ext4 defaults,nofail 0 2" | sudo tee /etc/fstab
 
 #change permissions on required drives
 sudo chown -R ubuntu:ubuntu /workspace
