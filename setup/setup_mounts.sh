@@ -13,6 +13,7 @@
 sudo mount /dev/xvdb /workspace
 
 #Make ephemeral storage mounts persistent
+#See http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-using-volumes.html for guidance on setting up fstab records for AWS
 echo -e "LABEL=cloudimg-rootfs / ext4 defaults,discard 0 0\n/dev/xvdb /workspace ext4 defaults,nofail 0 2" | sudo tee /etc/fstab
 
 #change permissions on required drives
