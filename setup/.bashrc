@@ -116,36 +116,33 @@ if ! shopt -oq posix; then
   fi
 fi
 
+export WORKSPACE=/home/ubuntu/workspace
+export TOOLS=$HOME/tools
+export DATA=$WORKSPACE/data
+export TRINITY_HOME=/home/ubuntu/tools/trinityrnaseq-Trinity-v2.5.1
+export PICARD=$TOOLS/picard.jar
 
-export PATH=$PATH:/home/ubuntu/tools/bowtie-1.1.2
-export PATH=$PATH:/home/ubuntu/tools/bowtie2-2.2.9
-export PATH=$PATH:/home/ubuntu/tools/trinityrnaseq-2.2.0
-export PATH=$PATH:/home/ubuntu/tools/hisat2-2.0.4
-export PATH=$PATH:/home/ubuntu/tools/sambamba_v0.6.4
-export PATH=$PATH:/home/ubuntu/tools/stringtie-1.3.0.Linux_x86_64
-export PATH=$PATH:/home/ubuntu/tools/gffcompare-0.9.8.Linux_x86_64
-export PATH=$PATH:/home/ubuntu/tools/RSEM-1.2.31
-export PATH=$PATH:/home/ubuntu/tools/cufflinks-2.2.1.Linux_x86_64
-export PATH=$PATH:/home/ubuntu/tools/bedtools2/bin
-alias picard='java -jar /home/ubuntu/tools/picard.jar'
-export PATH=$PATH:/home/ubuntu/tools/MUMmer3.23
-export PATH=$PATH:/home/ubuntu/tools/allpathslg-52488/bin
-export PATH=$PATH:/home/ubuntu/tools/bin/Sniffles/bin/sniffles-core-1.0.0
-export PATH=$PATH:/home/ubuntu/tools/ensembl-tools-release-86/scripts/variant_effect_predictor
-export PATH=/home/ubuntu/tools/bin:/home/ubuntu/workspace/data/anaconda/bin:$PATH
-export PATH=$PATH:/home/ubuntu/tools/VAAST_2.2.0/bin
-export PATH=$PATH:/home/ubuntu/tools/speedseq/bin
-export PATH=$PATH:/home/ubuntu/tools/hall_misc
-export LD_LIBRARY_PATH=/home/ubuntu/tools/root/lib:$LD_LIBRARY_PATH
+export PATH=$TOOLS/samtools-1.3.1:$PATH
+export PATH=$TOOLS/bam-readcount/bin:$PATH
+export PATH=$TOOLS/gkno_launcher:$PATH
+export PATH=$TOOLS/hisat2-2.0.4:$PATH
+export PATH=$TOOLS/stringtie-1.3.0.Linux_x86_64:$PATH
+export PATH=$TOOLS/gffcompare-0.9.8.Linux_x86_64:$PATH
+export PATH=$TOOLS/HTSeq-0.6.1p1/scripts:$PATH
+export PATH=$TOOLS/FastQC:$PATH
+export PATH=$TOOLS/flexbar_v2.5_linux64:$PATH
+export PATH=/home/ubuntu/bin/bedtools2/bin:$PATH
+export PATH=$TOOLS/kallisto_linux-v0.43.0:$PATH
+export PATH=$TOOLS/tophat-2.1.1.Linux_x86_64:$PATH
+export PATH=$TOOLS/Salmon-0.8.2_linux_x86_64/bin:$PATH
+export PATH=$HOME/bin:$PATH
+export PATH=$TOOLS/apache-ant-1.9.9/bin:$PATH
+export PATH=$TOOLS/MUMmer3.23:$PATH
+export PATH=$TOOLS/Sniffles-master/bin/sniffles-core-1.0.7:$PATH
+export PATH=$PATH:$HOME/.local/bin
 
-PATH="/home/ubuntu/tools/perl5/bin${PATH:+:${PATH}}"; export PATH;
-PERL5LIB="/home/ubuntu/tools/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
-PERL_LOCAL_LIB_ROOT="/home/ubuntu/tools/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
-PERL_MB_OPT="--install_base \"/home/ubuntu/tools/perl5\""; export PERL_MB_OPT;
-PERL_MM_OPT="INSTALL_BASE=/home/ubuntu/tools/perl5"; export PERL_MM_OPT;
-
-#RNA-seq specific environment variables
 export RNA_HOME=~/workspace/rnaseq
+export RNA_EXT_DATA_DIR=/home/ubuntu/CourseData/RNA_data
 
 export RNA_DATA_DIR=$RNA_HOME/data
 export RNA_DATA_TRIM_DIR=$RNA_DATA_DIR/trimmed
@@ -156,6 +153,3 @@ export RNA_REF_FASTA=$RNA_REF_INDEX.fa
 export RNA_REF_GTF=$RNA_REF_INDEX.gtf
 
 export RNA_ALIGN_DIR=$RNA_HOME/alignments/hisat2
-
-export PATH=$PATH:$RNA_HOME/tools/samtools-1.3.1:$RNA_HOME/tools/bam-readcount/bin:$RNA_HOME/tools/hisat2-2.0.4:$RNA_HOME/tools/stringtie-1.3.0.Linux_x86_64:$RNA_HOME/tools/gffcompare-0.9.8.Linux_x86_64:$RNA_HOME/tools/HTSeq-0.6.1p1/scripts:$RNA_HOME/tools/R-3.2.3/bin:$RNA_HOME/tools/FastQC:$RNA_HOME/tools/flexbar_v2.5_linux64:$RNA_HOME/tools/bedtools2/bin
-
