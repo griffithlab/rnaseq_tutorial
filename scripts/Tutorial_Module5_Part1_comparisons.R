@@ -97,3 +97,5 @@ print(p2)
 print(p3)
 dev.off()
 
+#Quit R
+quit(save="no")
