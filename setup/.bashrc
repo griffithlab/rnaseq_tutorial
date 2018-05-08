@@ -116,40 +116,18 @@ if ! shopt -oq posix; then
   fi
 fi
 
-export WORKSPACE=/home/ubuntu/workspace
-export TOOLS=$HOME/tools
-export DATA=$WORKSPACE/data
-export TRINITY_HOME=/home/ubuntu/tools/trinityrnaseq-Trinity-v2.5.1
-export PICARD=$TOOLS/picard.jar
+export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
+export PATH=/usr/local/trinityrnaseq-Trinity-v2.6.5:/usr/local/centrifuge-1.0.3-beta:/usr/local/Salmon-latest_linux_x86_64/bin:/usr/local/STAR-Fusion-v1.3.1:/usr/local/libexec:/usr/local/SPAdes-3.11.1-Linux/bin:/usr/local/hisat2-2.1.0:/usr/local/canu/:$PATH
+export TRINITY_HOME=/usr/local/trinityrnaseq-Trinity-v2.6.5
 
-export PATH=$TOOLS/samtools-1.3.1:$PATH
-export PATH=$TOOLS/bam-readcount/bin:$PATH
-export PATH=$TOOLS/gkno_launcher:$PATH
-export PATH=$TOOLS/hisat2-2.0.4:$PATH
-export PATH=$TOOLS/stringtie-1.3.0.Linux_x86_64:$PATH
-export PATH=$TOOLS/gffcompare-0.9.8.Linux_x86_64:$PATH
-export PATH=$TOOLS/HTSeq-0.6.1p1/scripts:$PATH
-export PATH=$TOOLS/FastQC:$PATH
-export PATH=$TOOLS/flexbar_v2.5_linux64:$PATH
-export PATH=/home/ubuntu/bin/bedtools2/bin:$PATH
-export PATH=$TOOLS/kallisto_linux-v0.43.0:$PATH
-export PATH=$TOOLS/tophat-2.1.1.Linux_x86_64:$PATH
-export PATH=$TOOLS/Salmon-0.8.2_linux_x86_64/bin:$PATH
-export PATH=$HOME/bin:$PATH
-export PATH=$TOOLS/apache-ant-1.9.9/bin:$PATH
-export PATH=$TOOLS/MUMmer3.23:$PATH
-export PATH=$TOOLS/Sniffles-master/bin/sniffles-core-1.0.7:$PATH
-export PATH=$PATH:$HOME/.local/bin
-
+#RNAseq-specific environment variables
 export RNA_HOME=~/workspace/rnaseq
 export RNA_EXT_DATA_DIR=/home/ubuntu/CourseData/RNA_data
-
 export RNA_DATA_DIR=$RNA_HOME/data
 export RNA_DATA_TRIM_DIR=$RNA_DATA_DIR/trimmed
-
 export RNA_REFS_DIR=$RNA_HOME/refs
 export RNA_REF_INDEX=$RNA_REFS_DIR/chr22_with_ERCC92
 export RNA_REF_FASTA=$RNA_REF_INDEX.fa
 export RNA_REF_GTF=$RNA_REF_INDEX.gtf
-
 export RNA_ALIGN_DIR=$RNA_HOME/alignments/hisat2
+
