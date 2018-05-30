@@ -1,4 +1,4 @@
-#Tutorial_Module5_Part1_comparisons.R
+#Tutorial_Part1_comparisons.R
 
 #Malachi Griffith, mgriffit[AT]wustl.edu
 #Obi Griffith, obigriffith[AT]wustl.edu
@@ -91,7 +91,7 @@ p3 = p3 + xlab("StringTie TPM") + ylab("StringTie FPKM") + labs(colour = "SpikeI
 p3 = p3 + labs(title = "HBR1 transcript expression values [log2(value + 0.1) scaled]")
 
 #Print out the plots created above and store in a single PDF file
-pdf(file="Tutorial_Module5_Part1_comparisons.pdf")
+pdf(file="Tutorial_comparisons.pdf")
 print(p1)
 print(p2)
 print(p3)

@@ -7,7 +7,7 @@
 
 #R tutorial for Informatics for RNA-sequence Analysis workshops
 
-#./Tutorial_Module4_ERCC_DE.R $RNA_HOME/refs/ERCC/ERCC_Controls_Analysis.txt $RNA_HOME/de/ballgown/ref_only/UHR_vs_HBR_gene_results.tsv
+#./Tutorial_ERCC_DE.R $RNA_HOME/refs/ERCC/ERCC_Controls_Analysis.txt $RNA_HOME/de/ballgown/ref_only/UHR_vs_HBR_gene_results.tsv
 
 library(ggplot2)
 
@@ -42,6 +42,6 @@ p = p + geom_smooth(method=lm)
 p = p + annotate('text', 1, 2, label=paste("R^2 =", r_squared, sep=' '))
 p = p + xlab("Expected Fold Change (log2 scale)") + ylab("Observed Fold Change in RNA-seq data (log2 scale)")
 
-pdf('Tutorial_Module4_ERCC_DE.pdf')
+pdf('Tutorial_ERCC_DE.pdf')
 print(p)
 dev.off()

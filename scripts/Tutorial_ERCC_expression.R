@@ -25,7 +25,7 @@ p = p + geom_point(aes(shape=Label,color=Label))
 p = p + geom_smooth(method=lm) + annotate('text', 5, -3, label=paste("R^2 =", count_r_squared, sep=' '))
 p = p + xlab("Expected concentration (log2 scale)") + ylab("Observed read count (log2 scale)")
 
-pdf('Tutorial_Module4_ERCC_expression.pdf')
+pdf('Tutorial_ERCC_expression.pdf')
 print(p)
 dev.off()
 
