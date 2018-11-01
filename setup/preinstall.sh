@@ -9,13 +9,12 @@
 sudo umount /mnt
 
 #Mount ephemeral storage
-sudo mkfs /dev/xvdb
-sudo mount /dev/xvdb /workspace
+sudo mkfs /dev/nvme0n1
+sudo mount /dev/nvme0n1 /workspace
 
 #Make ephemeral storage mounts persistent
 #See http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-using-volumes.html for guidance on setting up fstab records for AWS
-echo -e "LABEL=cloudimg-rootfs / ext4 defaults,discard 0 0\n/dev/xvdb /workspace ext4 defaults,nofail 0 2" | sudo tee /etc/fstab
+echo -e "LABEL=cloudimg-rootfs / ext4 defaults,discard 0 0\n/dev/nvme0n1 /workspace ext4 defaults,nofail 0 2" | sudo tee /etc/fstab
 
 #change permissions on required drives
 sudo chown -R ubuntu:ubuntu /workspace
-
