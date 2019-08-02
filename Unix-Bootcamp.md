@@ -207,7 +207,7 @@ is identical to using the `-p` option.
 Many programs will provide information about the command being called by passing a `-h` or `--help` option.
 
 ```bash
-ubuntu@:~$mkdir --help
+[username@biowulf ~]$mkdir --help
 Usage: mkdir [OPTION]... DIRECTORY...
 Create the DIRECTORY(ies), if they do not already exist.
 
@@ -242,27 +242,29 @@ When you are using the man command, press `space` to scroll down a page, `b` to 
 Let's change directory to the root directory, and then into our home directory
 
 ```bash
-ubuntu@:~/workspace/Learning_unix/Outer_directory/Inner_directory$ cd /
-ubuntu@:/$ cd home
-ubuntu@:/home$ cd ubuntu
-ubuntu@:~$
+[username@biowulf ~]$ cd /
+[username@biowulf /]$
+[username@biowulf /]$ cd home
+[username@biowulf home]$
+[username@biowulf home]$ cd username/
+[username@biowulf ~]$
 ```
 
 In this case, we may as well have just changed directory in one go:
 ```bash
-cd /home/ubuntu/
+cd /home/username/
 ```
 
 The leading `/` is incredibly important. The following two commands are very different:
 
 ```bash
-cd /home/ubuntu/
-cd home/ubuntu/
+cd /home/username/
+cd home/username/
 ```
 
-The first command says go the `unbuntu` directory that is beneath the `home` directory that is at the top level (the root) of the file system. There can only be one `/home/ubuntu` directory on any Unix system. 
+The first command says go the `username` directory that is beneath the `home` directory that is at the top level (the root) of the file system. There can only be one `/home/username` directory on any Unix system. 
 
-The second command says go to the `unbuntu` directory that is beneath the `home` directory that is located wherever I am right now. There can potentially be many `home/ubuntu` directories on a Unix system (though this is unlikely).
+The second command says go to the `username` directory that is beneath the `home` directory that is located wherever I am right now. There can potentially be many `home/username` directories on a Unix system (though this is unlikely).
 
 Learn and understand the difference between these two commands.
 
@@ -270,14 +272,13 @@ Learn and understand the difference between these two commands.
 
 ## 9: Climbing the tree ##
 
-Frequently, you will find that you want to go 'upwards' one level in the directory tree. Two dots `..` are used in Unix to refer to the _parent_ directory of wherever you are. Every directory has a parent except the root level of the computer. Let's go into the `Learning_unix` directory and then navigate up three levels:
+Frequently, you will find that you want to go 'upwards' one level in the directory tree. Two dots `..` are used in Unix to refer to the _parent_ directory of wherever you are. Every directory has a parent except the root level of the computer. Let's go into the `Inner_directory` directory and then navigate up three levels:
 
 ```bash
-ubuntu@:~$ cd workspace/Learning_unix/
-ubuntu@:~/workspace/Learning_unix$ cd ..
-ubuntu@:~/workspace$ cd ..
-ubuntu@:~$ cd ..
-ubuntu@:/home$
+[username@biowulf ~]$ cd workspace/Outer_directory/Inner_directory/
+[username@biowulf Inner_directory]$ cd ..
+[username@biowulf Outer_directory]$ cd ..
+[username@biowulf workspace]$
 ```
 
 What if you wanted to navigate up _two_ levels in the file system in one go? It's very simple, just use two sets of the `..` operator, separated by a forward slash:
@@ -290,7 +291,7 @@ cd ../..
     
 ## 10: Absolute and relative paths ##
 
-Using `cd ..` allows us to change directory _relative_ to where we are now. You can also always change to a directory based on its _absolute_ location. E.g. if you are working in the `/home/ubuntu/workspace/Learning_unix` directory and you then want to change to the `/tmp` directory, then you could do either of the following:
+Using `cd ..` allows us to change directory _relative_ to where we are now. You can also always change to a directory based on its _absolute_ location. E.g. if you are working in the `/home/username/workspace/Outer_directory/Inner_directory` directory and you then want to change to the `/tmp` directory, then you could do either of the following:
 
     $ cd ../../../../tmp
 
@@ -317,25 +318,17 @@ cd -
 
 Hopefully, you should find that `cd` and `cd ~` do the same thing, i.e. they take you back to your home directory (from wherever you were). You will frequently want to jump straight back to your home directory, and typing `cd` is a very quick way to get there.
 
-You can also use the `~` as a quick way of navigating into subdirectories of your home directory when your current directory is somewhere else. I.e. the quickest way of navigating from the root directory to your `Learning_unix` directory is as follows:
+You can also use the `~` as a quick way of navigating into subdirectories of your home directory when your current directory is somewhere else. I.e. the quickest way of navigating from the root directory to your `Outer_directory` directory is as follows:
 
 ```bash
-ubuntu@:~$ cd /
-ubuntu@:/$ cd ~/workspace/Learning_unix
+[username@biowulf ~]$ cd /
+[username@biowulf /]$ cd ~/workspace/Outer_directory
 ```
 [home directory]: http://en.wikipedia.org/wiki/Tilde#Directories_and_URLs
 
 ---
 
 ## 12: Making the `ls` command more useful ##
-
-The `..` operator that we saw earlier can also be used with the `ls` command, e.g. you can list directories that are 'above' you:
-
-```bash
-ubuntu@:~/workspace/Learning_unix$ cd ~/Learning_unix/Outer_directory/
-ubuntu@:~/workspace/Learning_unix/Outer_directory$ ls ../../
-command_line_course  Learning_unix  linux_bootcamp
-```
 
 Time to learn another useful command-line option. If you add the letter 'l' to the `ls` command it will give you a longer output compared to the default:
 
@@ -352,9 +345,10 @@ ls -l
 ls -R 
 ls -l -t -r 
 ls -lh
+ls -alt
 ```
 
-Note that the last example combine multiple options but only use one dash. This is a very common way of specifying multiple command-line options.
+Note that the last examples combine multiple options but only use one dash. This is a very common way of specifying multiple command-line options.
 
 ---
 
