@@ -1,6 +1,6 @@
 # Unix Bootcamp Tutorial
 
-**Modified by : Amy Stonelake, NIH/NCI/CCR/BTEP for use on NIH HPC Biowulf,Aug 2019**<br>
+**Modified by : Amy Stonelake, NIH/NCI/CCR/BTEP for use on NIH HPC Biowulf, Aug 2019**<br>
 **Adapted by : Jason Walker, McDonnell Genome Institute**<br>
 **Additional adaptation by : Alex Wagner, McDonnell Genome Institute**<br>
 **Original author : Keith Bradnam, UC Davis Genome Center**<br>
@@ -162,8 +162,8 @@ bin data mail workspace
 We are in the home directory on the computer but we want to to work in the new `Learning_unix` directory. To change directories in Unix, we use the [cd][] command:
 
 ```bash
-cd workspace/Learning_unix
-ubuntu@:~/workspace/Learning_unix$
+cd workspace
+[username@biowulf workspace]$ ls
 ```
 
 Notice that — on this system — the command prompt has expanded to include our current directory. This doesn't happen by default on all Unix systems, but you should know that you can configure what information appears as part of the command prompt.
@@ -171,16 +171,14 @@ Notice that — on this system — the command prompt has expanded to include ou
 Let's make two new subdirectories and navigate into them:
 
 ```bash
-ubuntu@:~/workspace/Learning_unix$ mkdir Outer_directory
-ubuntu@:~/workspace/Learning_unix$ cd Outer_directory
-ubuntu@:~/workspace/Learning_unix/Outer_directory$
-
-ubuntu@:~/workspace/Learning_unix/Outer_directory$ mkdir Inner_directory
-ubuntu@:~/workspace/Learning_unix/Outer_directory$ cd Inner_directory/
-ubuntu@:~/workspace/Learning_unix/Outer_directory/Inner_directory$
+[username@biowulf workspace]$ mkdir Outer_directory
+[username@biowulf workspace]$ cd Outer_directory/
+[username@biowulf Outer_directory]$ mkdir Inner_directory
+[username@biowulf Outer_directory]$ cd Inner_directory/
+[username@biowulf Inner_directory]$ 
 ```
 
-Now our command prompt is getting quite long, but it reveals that we are four levels beneath the home directory. We created the two directories in separate steps, but it is possible to use the `mkdir` command in way to do this all in one step. 
+We created the two directories in separate steps, but it is possible to use the `mkdir` command in way to do this all in one step. 
 
 Like most Unix commands, `mkdir` supports *command-line options* which let you alter its behavior and functionality. Command-like options are — as the name suggests — optional arguments that are placed after the command name. They often take the form of single letters (following a dash). If we had used the `-p` option of the `mkdir` command we could have done this in one step. E.g.
 
