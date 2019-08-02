@@ -456,18 +456,19 @@ The '?' character is also a wild-card but for only a single character.
 In the earlier example, the destination for the `mv` command was a directory name (colors). So we moved a file from its source location to a target location, but note that the target could have also been a (different) file name, rather than a directory. E.g. let's make a new file and move it whilst renaming it at the same time:
 
 ```bash
-ubuntu@:~/workspace/Learning_unix$ touch rags
-ubuntu@:~/workspace/Learning_unix$ ls
+[username@biowulf Inner_directory]$ touch rags
+[username@biowulf Inner_directory]$ ls
 colors  counts  rags
-ubuntu@:~/workspace/Learning_unix$ mv rags counts/riches
-ubuntu@:~/workspace/Learning_unix$ ls counts/
-earth.txt  heaven.txt  riches
+[username@biowulf Inner_directory]$ mv rags counts/riches
+[username@biowulf Inner_directory]$ ls counts/
+one_fish.txt  riches  two_fish.txt
+[username@biowulf Inner_directory]$
 ```
 
 In this example we create a new file ('rags') and move it to a new location and in the process change the name (to 'riches'). So `mv` can rename a file as well as move it. The logical extension of this is using `mv` to rename a file without moving it (you have to use `mv` to do this as Unix does not have a separate 'rename' command):
 
 ```bash
-ubuntu@:~/workspace/Learning_unix$ mv counts/riches counts/rags
+[username@biowulf Inner_directory]$ mv counts/riches counts/rags
 ```
     
 ---
@@ -477,9 +478,10 @@ ubuntu@:~/workspace/Learning_unix$ mv counts/riches counts/rags
 It is important to understand that as long as you have specified a 'source' and a 'target' location when you are moving a file, then it doesn't matter what your *current* directory is. You can move or copy things within the same directory or between different directories regardless of whether you are in any of those directories. Moving directories is just like moving files:
 
 ```bash
-ubuntu@:~/workspace/Learning_unix$ mkdir fish
-ubuntu@:~/workspace/Learning_unix$ mv counts fish
-ubuntu@:~/workspace/Learning_unix$ ls -R .
+[username@biowulf Inner_directory]$ mkdir fish
+[username@biowulf Inner_directory]$ mv counts fish
+[username@biowulf Inner_directory]$ ls -R .
+
 .:
 colors  fish
 
@@ -490,13 +492,13 @@ blue_fish.txt  red_fish.txt
 counts
 
 ./fish/counts:
-one_fish.txt  rags  two_fish.txt
+one_fish.txt  riches  two_fish.txt
 ```
 
 This step moves the counts directory inside the fish directory. 
 
 >***EXERCISE:***<br>
->Try creating a 'net' directory inside 'Learning_unix' and then `cd` to your home directory. Can you move `fish` inside `net` without using `cd`?
+>Try creating a 'net' directory inside 'Inner_directory' and then `cd` to your home directory. Can you move `fish` inside `net` without using `cd`?
 
 ---
 
@@ -504,7 +506,7 @@ This step moves the counts directory inside the fish directory.
     
 ## 19: Removing files ##
 
-You've seen how to remove a directory with the `rmdir` command, but `rmdir` won't remove directories if they contain any files. So how can we remove the files we have created (inside `Learning_Unix/Temp`)? In order to do this, we will have to use the [rm][] (remove) command.
+You've seen how to remove a directory with the `rmdir` command, but `rmdir` won't remove directories if they contain any files. So how can we remove the files we have created? In order to do this, we will have to use the [rm][] (remove) command.
 
 >***Please read the next section VERY carefully. Misuse of the `rm` command can lead to needless death & destruction*** 
 
@@ -513,14 +515,14 @@ Potentially, `rm` is a very dangerous command; if you delete something with `rm`
 Let me repeat that last part again. It is possible to delete EVERY file you have ever created with the `rm` command. Are you scared yet? You should be. Luckily there is a way of making `rm` a little bit safer. We can use it with the `-i` command-line option which will ask for confirmation before deleting anything (remember to use tab-completion):
 
 ```bash
-ubuntu@:~/workspace/Learning_unix$ cd net/fish/counts
-ubuntu@:~/workspace/Learning_unix/net/fish/counts$ ls
+[username@biowulf fish]$ cd counts
+[username@biowulf counts]$ ls
 one_fish.txt  rags  two_fish.txt
-ubuntu@:~/workspace/Learning_unix/net/fish/counts$ rm -i one_fish.txt  rags  two_fish.txt
+[username@biowulf counts]$ rm -i one_fish.txt  rags  two_fish.txt
 rm: remove regular empty file 'one_fish.txt'? y
 rm: remove regular empty file 'rags'? y
 rm: remove regular empty file 'two_fish.txt'? y
-ubuntu@:~/workspace/Learning_unix/net/fish/counts$ ls
+[username@biowulf counts$ ls
 ```
     
 We could have simplified this step by using a wild-card (e.g. `rm -i *.txt`) or we could have made things more complex by removing each file with a separate `rm` command. Let's finish cleaning up:
