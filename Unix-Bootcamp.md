@@ -89,13 +89,13 @@ There are four things that you should note here:
 
 1. You will probably see different output to what is shown here, it depends on your computer setup. Don't worry about that for now. 
 2. The `[username@biowulf ~]$` text that you see is the Unix [command prompt][]. In this case, it contains a user name ('username') and the name of the current directory ('~', more on that later). Note that the command prompt might not look the same on different Unix systems. In this case, the `$` sign marks the end of the prompt. 
-3. The output of the `ls` command lists three things. In this case, they are both directories, but they could also be files. We'll learn how to tell them apart later on. You will probably see something different on your own computer.
+3. The output of the `ls` command lists three things. In this case, they are all directories, but they could also be files. We'll learn how to tell them apart later on. You will probably see something different on your own computer.
 4. After the `ls` command finishes it produces a new command prompt, ready for you to type your next command.
 
 The `ls` command is used to list the contents of _any_ directory, not necessarily the one that you are currently in. Try the following. What do you see? It may be different than what is listed here. 
 
 ```bash
-[username@biowulf ~]$ ls bin/
+[username@biowulf ~]$ ls /bin
 
 ```
 
@@ -128,11 +128,11 @@ You might notice some of these names appearing in different colors. Many Unix sy
 There may be many hundreds of directories on any Unix machine, so how do you know which one you are in? The command [pwd][] will Print the [Working Directory][] and that's pretty much all this command does:
 
 ```bash
-ubuntu@:~$ pwd
-/home/ubuntu
+[username@biwoulf ~]$ pwd
+/home/username
 ```
 
-When you log in to a Unix computer, you are typically placed into your _home_ directory. In this example, after we log in, we are placed in a directory called 'ubuntu' which itself is a *subdirectory* of another directory called 'home'. Conversely, 'users' is the *parent* directory of 'clmuser'. The first forward slash that appears in a list of directory names always refers to the top level directory of the file system (known as the [root directory][]). The remaining forward slash (between 'home' and 'ubuntu') delimits the various parts of the directory hierarchy. If you ever get 'lost' in Unix, remember the `pwd` command.
+When you log in to a Unix computer, you are typically placed into your _home_ directory. In this example, after we log in, we are placed in a directory called 'username' which itself is a *subdirectory* of another directory called 'home'. The first forward slash that appears in a list of directory names always refers to the top level directory of the file system (known as the [root directory][]). The remaining forward slash (between 'home' and 'username') delimits the various parts of the directory hierarchy. If you ever get 'lost' in Unix, remember the `pwd` command.
 
 As you learn Unix you will frequently type commands that don't seem to work. Most of the time this will be because you are in the wrong directory, so it's a really good habit to get used to running the `pwd` command a lot.
 
@@ -148,9 +148,9 @@ As you learn Unix you will frequently type commands that don't seem to work. Mos
 If we want to make a new directory (e.g. to store some work related data), we can use the [mkdir][] command:
 
 ```bash
-ubuntu@:~$ mkdir workspace/Learning_unix
-ubuntu@:~$ ls workspace
-data  Learning_unix  lib  lost+found
+[username@biowulf ~]$ mkdir workspace
+[username@biowulf ~]$ ls 
+bin data mail workspace
 ```
 
 [mkdir]: http://en.wikipedia.org/wiki/Tilde#Directories_and_URLs
