@@ -54,8 +54,8 @@ The lessons from this point onwards will assume very little apart from the follo
 2. You know how to launch a terminal program on that system.
 	Mac users can establish a connection to Biowulf using Terminal.
 	PC users will need to download the PuTTy program from http://www.putty.org
-3. You have a home directory where you can create/edit new files 
-	NIH Biowulf users have a home director with limited space (16 GB) and a data directory that can be increased in size if needed. 
+3. You have a home directory where you can create/edit new files.
+	NIH Biowulf users have a home directory with limited space (16 GB) and a data directory that can be increased in size if needed. 
 
 In the following documentation, we will also assume that the logged in user has a username 'username' and the home directory is located at `/home/username`.
 
@@ -333,9 +333,12 @@ You can also use the `~` as a quick way of navigating into subdirectories of you
 Time to learn another useful command-line option. If you add the letter 'l' to the `ls` command it will give you a longer output compared to the default:
 
 ```bash
-ubuntu@:~/workspace/Learning_unix$ ls -l /home
+[username@biowulf Outer_directory$ ls -l /home/username
 total 4
-drwxr-xr-x 12 ubuntu ubuntu 4096 Nov 12 01:45 ubuntu
+drwxr-xr-x 3 username username 24576 Mar 18 11:46 bin
+drwxr-xr-x 2 username username  4096 Aug  9  2018 data
+drwxr-xr-x 5 username username  4096 Mar 25 14:59 mail
+drwxr-xr-x 12 username username 4096 Nov 12 01:45 workspace
 ```
 
 For each file or directory we now see more information (including file ownership and modification times). The 'd' at the start of each line indicates that these are directories. There are many, many different options for the `ls` command. Try out the following (against any directory of your choice) to see how the output changes.
@@ -357,12 +360,12 @@ Note that the last examples combine multiple options but only use one dash. This
 We now have a few (empty) directories that we should remove. To do this use the [rmdir][] command, this will only remove empty directories so it is quite safe to use. If you want to know more about this command (or any Unix command), then remember that you can just look at its man page.
 
 ```bash
-ubuntu@:~$ cd ~/workspace/Learning_unix/Outer_directory/
-ubuntu@:~/workspace/Learning_unix/Outer_directory$ rmdir Inner_directory/
-ubuntu@:~/workspace/Learning_unix/Outer_directory$ cd ..
-ubuntu@:~/workspace/Learning_unix$ rmdir Outer_directory/
-ubuntu@:~/workspace/Learning_unix$ ls
-ubuntu@:~/workspace/Learning_unix$
+[username@biowulf ~]$ cd ~/workspace/Outer_directory
+[username@biowulf Outer_directory]$ rmdir Inner_directory
+[username@biowulf Outer_directory]$ cd ..
+[username@biowulf workspace]$ rmdir Outer_directory
+[username@biowulf workspace]$ ls
+[username@biowulf workspace]$
 ```
 
 >***EXERCISE:***<br>
@@ -379,7 +382,7 @@ ubuntu@:~/workspace/Learning_unix$
 
 Saving keystrokes may not seem important, but the longer that you spend typing in a terminal window, the happier you will be if you can reduce the time you spend at the keyboard. Especially, as prolonged typing is not good for your body. So the best Unix tip to learn early on is that you can [tab complete][] the names of files and programs on most Unix systems. Type enough letters that uniquely identify the name of a file, directory or program and press tab...Unix will do the rest. E.g. if you type 'tou' and then press tab, Unix should autocomplete the word to 'touch' (this is a command which we will learn more about in a minute). In this case, tab completion will occur because there are no other Unix commands that start with 'tou'. If pressing tab doesn't do anything, then you have not have typed enough unique characters. In this case pressing tab _twice_ will show you all possible completions. This trick can save you a LOT of typing!
 
-Navigate to your home directory, and then use the `cd` command to change to the `Learning_unix` directory. Use tab completion to complete directory name. If there are no other directories starting with 'L' in your home directory, then you should only need to type 'cd' + 'L' + 'tab'.
+Navigate to your home directory, and then use the `cd` command to change to the `workspace` directory. Use tab completion to complete directory name. If there are no other directories starting with 'w' in your home directory, then you should only need to type 'cd' + 'w' + 'tab'.
 
 >***Tab completion will make your life easier and make you more productive!***
 
@@ -395,18 +398,18 @@ Another great time-saver is that Unix stores a list of all the commands that you
 The following sections will deal with Unix commands that help us to work with files, i.e. copy files to/from places, move files, rename files, remove files, and most importantly, look at files. First, we need to have some files to play with. The Unix command [touch][] will let us create a new, empty file. The touch command does other things too, but for now we just want a couple of files to work with.
 
 ```bash
-ubuntu@:~$ cd workspace/Learning_unix/
-ubuntu@:~/workspace/Learning_unix$ touch red_fish.txt
-ubuntu@:~/workspace/Learning_unix$ touch blue_fish.txt
-ubuntu@:~/workspace/Learning_unix$ ls
+[username@biowulf ~]$ cd workspace/Outer_directory/Inner_directory
+[username@biowulf Inner_directory]$ touch red_fish.txt
+[username@biowulf Inner_directory]$ touch blue_fish.txt
+[username@biowulf Inner_directory]$ ls
 red_fish.txt  blue_fish.txt
 ```
 
 `touch` also accepts multiple files as arguments.
 
 ```bash 
-ubuntu@:~/workspace/Learning_unix$ touch one_fish.txt two_fish.txt
-ubuntu@:~/workspace/Learning_unix$ ls
+[username@biowulf Inner_directory]$ touch one_fish.txt two_fish.txt
+[username@biowulf Inner_directory]$ ls
 blue_fish.txt  one_fish.txt  red_fish.txt  two_fish.txt
 ```
 
@@ -419,12 +422,12 @@ blue_fish.txt  one_fish.txt  red_fish.txt  two_fish.txt
 Now, let's assume that we want to move these files to a new directory ('colors'). We will do this using the Unix [mv][] (move) command. Remember to use tab completion:
 
 ```bash
-ubuntu@:~/workspace/Learning_unix$ mkdir colors
-ubuntu@:~/workspace/Learning_unix$ mv red_fish.txt colors/
-ubuntu@:~/workspace/Learning_unix$ mv blue_fish.txt colors/
-ubuntu@:~/workspace/Learning_unix$ ls
+[username@biowulf Inner_directory]$ mkdir colors
+[username@biowulf Inner_directory]$ mv red_fish.txt colors/
+[username@biowulf Inner_directory]$ mv blue_fish.txt colors/
+[username@biowulf Inner_directory]$ ls
 colors  one_fish.txt  two_fish.txt
-ubuntu@:~/workspace/Learning_unix$ ls colors/
+[username@biowulf Inner_directory]$ ls colors/
 blue_fish.txt  red_fish.txt
 ```
 
@@ -434,12 +437,12 @@ blue_fish.txt  red_fish.txt
 For the `mv` command, we always have to specify a source file (or directory) that we want to move, and then specify a target location. If we had wanted to we could have moved both files in one go by typing any of the following commands:
 
 ```bash
-mv *.txt Temp/ 
-mv *t Temp/ 
-mv *ea* Temp/
+mv *.txt counts/ 
+mv *t counts/ 
+mv *fi* counts/
 ```
 
-The asterisk `*` acts as a [wild-card character][], essentially meaning 'match anything'. The second example works because there are no other files or directories in the directory that end with the letters 't' (if there was, then they would be moved too). Likewise, the third example works because only those two files contain the letters 'ea' in their names. Using wild-card characters can save you a lot of typing.
+The asterisk `*` acts as a [wild-card character][], essentially meaning 'match anything'. The second example works because there are no other files or directories in the directory that end with the letters 't' (if there was, then they would be moved too). Likewise, the third example works because only those two files contain the letters 'fi' in their names. Using wild-card characters can save you a lot of typing.
 
 The '?' character is also a wild-card but for only a single character.
 
