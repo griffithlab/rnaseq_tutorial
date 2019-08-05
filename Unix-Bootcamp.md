@@ -398,18 +398,18 @@ Another great time-saver is that Unix stores a list of all the commands that you
 The following sections will deal with Unix commands that help us to work with files, i.e. copy files to/from places, move files, rename files, remove files, and most importantly, look at files. First, we need to have some files to play with. The Unix command [touch][] will let us create a new, empty file. The touch command does other things too, but for now we just want a couple of files to work with.
 
 ```bash
-[username@biowulf ~]$ cd workspace/Outer_directory/Inner_directory
-[username@biowulf Inner_directory]$ touch red_fish.txt
-[username@biowulf Inner_directory]$ touch blue_fish.txt
-[username@biowulf Inner_directory]$ ls
+[username@biowulf ~]$ cd workspace
+[username@biowulf workspace]$ touch red_fish.txt
+[username@biowulf workspace]$ touch blue_fish.txt
+[username@biowulf workspace]$ ls
 red_fish.txt  blue_fish.txt
 ```
 
 `touch` also accepts multiple files as arguments.
 
 ```bash 
-[username@biowulf Inner_directory]$ touch one_fish.txt two_fish.txt
-[username@biowulf Inner_directory]$ ls
+[username@biowulf workspace]$ touch one_fish.txt two_fish.txt
+[username@biowulf workspace]$ ls
 blue_fish.txt  one_fish.txt  red_fish.txt  two_fish.txt
 ```
 
@@ -422,12 +422,12 @@ blue_fish.txt  one_fish.txt  red_fish.txt  two_fish.txt
 Now, let's assume that we want to move these files to a new directory ('colors'). We will do this using the Unix [mv][] (move) command. Remember to use tab completion:
 
 ```bash
-[username@biowulf Inner_directory]$ mkdir colors
-[username@biowulf Inner_directory]$ mv red_fish.txt colors/
-[username@biowulf Inner_directory]$ mv blue_fish.txt colors/
-[username@biowulf Inner_directory]$ ls
+[username@biowulf workspace]$ mkdir colors
+[username@biowulf workspace]$ mv red_fish.txt colors/
+[username@biowulf workspace]$ mv blue_fish.txt colors/
+[username@biowulf workspace]$ ls
 colors  one_fish.txt  two_fish.txt
-[username@biowulf Inner_directory]$ ls colors/
+[username@biowulf workspace]$ ls colors/
 blue_fish.txt  red_fish.txt
 ```
 
@@ -456,19 +456,18 @@ The '?' character is also a wild-card but for only a single character.
 In the earlier example, the destination for the `mv` command was a directory name (colors). So we moved a file from its source location to a target location, but note that the target could have also been a (different) file name, rather than a directory. E.g. let's make a new file and move it whilst renaming it at the same time:
 
 ```bash
-[username@biowulf Inner_directory]$ touch rags
-[username@biowulf Inner_directory]$ ls
+[username@biowulf workspace]$ touch rags
+[username@biowulf workspace]$ ls
 colors  counts  rags
-[username@biowulf Inner_directory]$ mv rags counts/riches
-[username@biowulf Inner_directory]$ ls counts/
+[username@biowulf workspace]$ mv rags counts/riches
+[username@biowulf workspace]$ ls counts/
 one_fish.txt  riches  two_fish.txt
-[username@biowulf Inner_directory]$
 ```
 
 In this example we create a new file ('rags') and move it to a new location and in the process change the name (to 'riches'). So `mv` can rename a file as well as move it. The logical extension of this is using `mv` to rename a file without moving it (you have to use `mv` to do this as Unix does not have a separate 'rename' command):
 
 ```bash
-[username@biowulf Inner_directory]$ mv counts/riches counts/rags
+[username@biowulf workspace]$ mv counts/riches counts/rags
 ```
     
 ---
@@ -478,9 +477,9 @@ In this example we create a new file ('rags') and move it to a new location and 
 It is important to understand that as long as you have specified a 'source' and a 'target' location when you are moving a file, then it doesn't matter what your *current* directory is. You can move or copy things within the same directory or between different directories regardless of whether you are in any of those directories. Moving directories is just like moving files:
 
 ```bash
-[username@biowulf Inner_directory]$ mkdir fish
-[username@biowulf Inner_directory]$ mv counts fish
-[username@biowulf Inner_directory]$ ls -R .
+[username@biowulf workspace]$ mkdir fish
+[username@biowulf workspace]$ mv counts fish
+[username@biowulf workspace]$ ls -R .
 
 .:
 colors  fish
@@ -492,13 +491,13 @@ blue_fish.txt  red_fish.txt
 counts
 
 ./fish/counts:
-one_fish.txt  riches  two_fish.txt
+one_fish.txt  rags  two_fish.txt
 ```
 
 This step moves the counts directory inside the fish directory. 
 
 >***EXERCISE:***<br>
->Try creating a 'net' directory inside 'Inner_directory' and then `cd` to your home directory. Can you move `fish` inside `net` without using `cd`?
+>Try creating a 'net' directory inside 'workspace' and then `cd` to your home directory. Can you move `fish` inside `net` without using `cd`?
 
 ---
 
@@ -515,12 +514,12 @@ Potentially, `rm` is a very dangerous command; if you delete something with `rm`
 Let me repeat that last part again. It is possible to delete EVERY file you have ever created with the `rm` command. Are you scared yet? You should be. Luckily there is a way of making `rm` a little bit safer. We can use it with the `-i` command-line option which will ask for confirmation before deleting anything (remember to use tab-completion):
 
 ```bash
-[username@biowulf fish]$ cd counts
+[username@biowulf workspace]$ cd net/fish/counts
 [username@biowulf counts]$ ls
 one_fish.txt  rags  two_fish.txt
 [username@biowulf counts]$ rm -i one_fish.txt  rags  two_fish.txt
 rm: remove regular empty file 'one_fish.txt'? y
-rm: remove regular empty file 'rags'? y
+rm: remove regular empty file 'riches'? y
 rm: remove regular empty file 'two_fish.txt'? y
 [username@biowulf counts$ ls
 ```
@@ -528,9 +527,9 @@ rm: remove regular empty file 'two_fish.txt'? y
 We could have simplified this step by using a wild-card (e.g. `rm -i *.txt`) or we could have made things more complex by removing each file with a separate `rm` command. Let's finish cleaning up:
 
 ```bash
-ubuntu@:~/workspace/Learning_unix/net/fish/counts$ cd ~/workspace/Learning_unix/
-ubuntu@:~/workspace/Learning_unix$ rmdir -p net/fish/counts/
-ubuntu@:~/workspace/Learning_unix$ rm -ir colors/
+[username@biowulf ~]$ cd ~/workspace/
+[username@biowulf workspace]$ rmdir -p net/fish/counts/
+[username@biowulf workspace]$ rm -ir colors/
 rm: descend into directory 'colors/'? y
 rm: remove regular empty file 'colors/red_fish.txt'? y
 rm: remove regular empty file 'colors/blue_fish.txt'? y
@@ -546,20 +545,21 @@ rm: remove directory 'colors/'? y
 Copying files with the [cp][] (copy) command is very similar to moving them. Remember to always specify a source and a target location. Let's create a new file and make a copy of it:
 
 ```bash
-ubuntu@:~/workspace/Learning_unix$ touch file1
-ubuntu@:~/workspace/Learning_unix$ cp file1 file2
-ubuntu@:~/workspace/Learning_unix$ ls
+[username@biowulf workspace]$ touch file1
+[username@biowulf workspace]$ cp file1 file2
+[username@biowulf workspace]$ ls
 file1  file2
 ```
 
 What if we wanted to copy files from a different directory to our current directory? Let's put a file in our home directory (specified by `~` remember) and copy it to the current directory (`Learning_unix`):
 
 ```bash
-ubuntu@:~/workspace/Learning_unix$ touch ~/file3
-ubuntu@:~/workspace/Learning_unix$ ls ~
-file3  tools  workspace
-ubuntu@:~/workspace/Learning_unix$ cp ~/file3 .
-ubuntu@:~/workspace/Learning_unix$ ls
+[username@biowulf workspace]$ touch ~/file3
+[username@biowulf workspace]
+$ ls ~
+file3  workspace
+[username@biowulf workspace]$ cp ~/file3 .
+[username@biowulf workspace]$ ls
 file1  file2  file3
 ```
 
