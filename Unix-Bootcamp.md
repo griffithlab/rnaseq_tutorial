@@ -558,7 +558,7 @@ What if we wanted to copy files from a different directory to our current direct
 [username@biowulf workspace]
 $ ls ~
 file3  workspace
-[username@biowulf workspace]$ cp ~/file3 .
+[username@biowulf workspace]$ cp ~/file3 .r	
 [username@biowulf workspace]$ ls
 file1  file2  file3
 ```
@@ -594,10 +594,10 @@ The `cp` command also allows us (with the use of a command-line option) to copy 
 So far we have covered listing the contents of directories and moving/copying/deleting either files and/or directories. Now we will quickly cover how you can look at files. The [less][less command] command lets you view (but not edit) text files. We will use the [echo][echo command] command to put some text in a file and then view it:
 
 ```bash
-ubuntu@:~/workspace/Learning_unix$ echo "Call me Ishmael."
+[username@biowulf workspace]$ echo "Call me Ishmael."
 Call me Ishmael.
-ubuntu@:~/workspace/Learning_unix$ echo "Call me Ishmael." > opening_lines.txt
-ubuntu@:~/workspace/Learning_unix$ ls
+[username@biowulf workspace]$ echo "Call me Ishmael." > opening_lines.txt
+[username@biowulf workspace]$ ls
 opening_lines.txt
 ubuntu@:~/workspace/Learning_unix$ less opening_lines.txt
 ```
@@ -621,8 +621,8 @@ When you are using less, you can bring up a page of help commands by pressing `h
 Let's add another line to the file:
 
 ```bash
-ubuntu@:~/workspace/Learning_unix$ echo "The primroses were over." >> opening_lines.txt
-ubuntu@:~/workspace/Learning_unix$ cat opening_lines.txt
+[username@biowulf workspace]$ echo "The primroses were over." >> opening_lines.txt
+[username@biowulf workspace]$ cat opening_lines.txt
 Call me Ishmael.
 The primroses were over.
 ```
@@ -631,6 +631,9 @@ Notice that we use `>>` and not just `>`. This operator will **append** to a fil
 
 ```bash
 cat opening_lines.txt > file_copy.txt
+[username@biowulf workspace]$ less file_copy.txt
+hit `q` to exit "less"
+[username@biowulf workspace]$rm file_copy.txt
 ```
 
 [cat command]: http://en.wikipedia.org/wiki/Cat_(Unix)
@@ -640,17 +643,17 @@ cat opening_lines.txt > file_copy.txt
 ## 24: Counting characters in a file ##
 
 ```bash
-ubuntu@:~/workspace/Learning_unix$ ls
+[username@biowulf workspace]$ ls
 opening_lines.txt
 
-ubuntu@:~/workspace/Learning_unix$ ls -l
+[username@biowulf workspace]$ ls -l
 total 4
--rw-rw-r-- 1 ubuntu ubuntu 42 Jun 15 04:13 opening_lines.txt
+-rw-rw-r-- 1 username username 42 Jun 15 04:13 opening_lines.txt
 
-ubuntu@:~/workspace/Learning_unix$ wc opening_lines.txt
+[username@biowulf workspace]$ wc opening_lines.txt
  2  7 42 opening_lines.txt
 
-ubuntu@:~/workspace/Learning_unix$ wc -l opening_lines.txt
+[username@biowulf workspace]$ wc -l opening_lines.txt
 2 opening_lines.txt
 ```
 
