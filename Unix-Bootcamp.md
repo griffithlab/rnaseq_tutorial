@@ -686,12 +686,12 @@ The bottom of the nano window shows you a list of simple commands which are all 
 One other use of the `echo` command is for displaying the contents of something known as *environment variables*. These contain user-specific or system-wide values that either reflect simple pieces of information (your username), or lists of useful locations on the file system. Some examples:
 
 ```bash
-ubuntu@:~/workspace/Learning_unix$ echo $USER
-ubuntu
-ubuntu@:~/workspace/Learning_unix$ echo $HOME
-/home/ubuntu
-ubuntu@:~/workspace/Learning_unix$ echo $PATH
-/home/ubuntu/bin:/home/ubuntu/.local/bin:/home/ubuntu/tools/perl5/bin:/home/ubuntu/tools/bin:/home/ubuntu/workspace/data/anaconda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/ubuntu/tools/bowtie-1.1.2:/home/ubuntu/tools/bowtie2-2.2.9:/home/ubuntu/tools/trinityrnaseq-2.2.0:/home/ubuntu/tools/hisat2-2.0.4:/home/ubuntu/tools/sambamba_v0.6.4:/home/ubuntu/tools/stringtie-1.3.0.Linux_x86_64:/home/ubuntu/tools/gffcompare-0.9.8.Linux_x86_64:/home/ubuntu/tools/RSEM-1.2.31:/home/ubuntu/tools/cufflinks-2.2.1.Linux_x86_64:/home/ubuntu/tools/bedtools2/bin:/home/ubuntu/tools/MUMmer3.23:/home/ubuntu/tools/allpathslg-52488/bin:/home/ubuntu/tools/bin/Sniffles/bin/sniffles-core-1.0.0:/home/ubuntu/tools/ensembl-tools-release-86/scripts/variant_effect_predictor:/home/ubuntu/tools/VAAST_2.2.0/bin:/home/ubuntu/tools/speedseq/bin:/home/ubuntu/tools/hall_misc
+[username@biowulf workspace]$ echo $USER
+username
+[username@biowulf workspace]$ echo $HOME
+/home/username
+[username@biowulf workspace]$ echo $PATH
+/home/username/bin:/home/username/.local/bin:/home/username/tools/perl5/bin:/home/username/tools/bin:/home/username/workspace/data/anaconda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/username
 ```
 
 The last one shows the content of the `$PATH` environment variable, which displays a — colon separated — list of directories that are expected to contain programs that you can run. This includes all of the Unix commands that you have seen so far. These are files that live in directories which are run like programs (e.g. `ls` is just a special type of file in the `/bin` directory).
@@ -794,11 +794,10 @@ When he was nearly thirteen, my brother Jem got his arm badly broken at the elbo
 One of the most poweful features of Unix is that you can send the output from one command or program to any other command (as long as the second commmand accepts input of some sort). We do this by using what is known as a [pipe][]. This is implemented using the '|' character (which is a character which always seems to be on different keys depending on the keyboard that you are using). Think of the pipe as simply connecting two Unix programs. Here's an example which introduces some new Unix commands:
 
 ```bash
-ubuntu@:~/workspace/Learning_unix$ grep was opening_lines.txt | wc -c
+[username@biowulf workspace]$ grep was opening_lines.txt | wc -c
 316
 
-ubuntu@:~/workspace/Learning_unix$
-grep was opening_lines.txt | sort | head -n 3 | wc -c
+[username@biowulf workspace]$ grep was opening_lines.txt | sort | head -n 3 | wc -c
 130
 ```
 
