@@ -67,7 +67,7 @@ A *terminal* is the common name for the program that does two main things. It al
 
 Open the terminal application. You should now see something that looks like the following:
 
-![Terminal application][]
+<img width="581" alt="Screen Shot 2019-08-06 at 8 41 45 AM" src="https://user-images.githubusercontent.com/41751561/62542267-75bcfb00-b829-11e9-8c72-e73ab50009ff.png">
 
 There will be many situations where it will be useful to have multiple terminals open and it will be a matter of preference as to whether you want to have multiple windows, or one window with multiple tabs (there are typically keyboard shortcuts for switching between windows, or moving between tabs). 
 
